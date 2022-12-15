@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('external_people', function (Blueprint $table) {
             $table->id();
-            $table->integer('key'); //Not null
-            $table->string('password'); //Not null
-            $table->enum('rol', ['admin', 'staff', 'expositor', 'teacher']); //Not null
-            $table->boolean('permanent');
-            $table->timestamps(); 
+            $table->string('fullName', 100); //Not null
+            $table->enum('genre', ['female', 'male']); //Not null
+            $table->timestamps();
             $table->softDeletes();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('external_people');
     }
 };
