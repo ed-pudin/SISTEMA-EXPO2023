@@ -11,6 +11,21 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
+    <link
+      class="jsbin"
+      href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      class="jsbin"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+    ></script>
+    <script
+      class="jsbin"
+      src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
+    ></script>
+
 </head>
 <body>
 <div class="container-fluid">
@@ -25,34 +40,34 @@
                 </a>
 
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
-                    <li class="nav-item">
+                    <li>
                         <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                            <i class="bi bi-calendar2-heart-fill fs-1"></i>
-                            <p>Evento</p>
+                            <i class="bi bi-calendar2-heart-fill fs-5"></i>
+                            <p class="d-none d-sm-block">Evento</p>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                            <i class="bi bi-people-fill fs-1"></i>
-                            <p>Invitados</p>
+                            <i class="bi bi-people-fill fs-3"></i>
+                            <p class="d-none d-sm-block">Invitados</p>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                            <i class="bi bi-buildings-fill fs-1"></i>
-                            <p>Empresas</p>
+                            <i class="bi bi-buildings-fill fs-3"></i>
+                            <p class="d-none d-sm-block">Empresas</p>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
-                            <i class="bi bi-mortarboard-fill fs-1"></i>
-                            <p>Maestros</p>
+                            <i class="bi bi-mortarboard-fill fs-3"></i>
+                            <p class="d-none d-sm-block">Maestros</p>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-                            <i class="bi bi-x-circle-fill fs-2"></i>
-                            <p>Salir</p>
+                            <i class="bi bi-x-circle-fill fs-3"></i>
+                            <p class="d-none d-sm-block">Salir</p>
                         </a>
                     </li>
                 </ul>
