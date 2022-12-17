@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body style="background-image: url('background-1.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
     <nav class="navbar navbar-expand-lg bg-light sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">LOGO EXPO</a>
@@ -20,7 +20,7 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                
+
                 <ul class="navbar-nav ">
                     <li class="nav-item">
                     <a class="nav-link active" href="#">QR Expositor</a>
