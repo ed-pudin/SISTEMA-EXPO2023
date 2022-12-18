@@ -1,0 +1,7 @@
+/*Mayor a 768*/
+@media (min-width: 768px){
+    .search{
+        position: relative;
+        float: right;
+    }
+}
