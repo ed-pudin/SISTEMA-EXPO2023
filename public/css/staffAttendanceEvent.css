@@ -1,0 +1,9 @@
+.vh-80{
+    height: 60vh!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-external{
+    display: none;
+}

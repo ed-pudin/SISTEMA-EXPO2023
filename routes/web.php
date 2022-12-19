@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/edna', function () {
-    return view('staff/companies');
+    return view('staff/attendanceEvent');
 });

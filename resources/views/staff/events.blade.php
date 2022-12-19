@@ -5,7 +5,7 @@
     <div class="container-fluid" >
         <div class="row">
             <h5 class="card-title text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">STAFF - EVENTOS</h5>
-            <div class="">
+            <div>
                 <div class="col-lg-5 my-3 search">
                     <div class="input-group rounded">
                         <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
