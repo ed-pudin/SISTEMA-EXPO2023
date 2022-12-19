@@ -20,24 +20,20 @@
                     <thead>
                         <tr>
                             <th scope="col">Empresa</th>
-                            <th scope="col">Invitado</th>
                             <th scope="col">Acción</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Evento 0</td>
-                            <td> Jhon Lenon</td>
                             <td><button type="button" class="btn btn-dark">Asistencia</button></td>
                         </tr>
                         <tr>
                             <td>Evento 1</td>
-                            <td>Jhon Lenon</td>
                             <td><button type="button" class="btn btn-dark">Asistencia</button></td>
                         </tr>
                         <tr>
                             <td>Evento 2</td>
-                            <td>Jhon Lenon</td>
                             <td><button type="button" class="btn btn-dark">Asistencia</button></td>
                         </tr>
                     </tbody>
