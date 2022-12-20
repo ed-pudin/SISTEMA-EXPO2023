@@ -29,7 +29,7 @@
 
 
 </head>
-<body style="background-image: url('background-1.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
+<body style="background-image: url('images/back6.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
     <nav class="navbar navbar-expand-lg bg-light sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">LOGO EXPO</a>

@@ -19,7 +19,7 @@
 
 <style>
     div.test {
-        background-image: url('images/background-2.png');
+        background-image: url('images/back6.png');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -71,7 +71,7 @@
     input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
         filter: invert(1);
     }
-    
+
 </style>
 
 <!-- ------------- -->
@@ -90,7 +90,7 @@
         </div>
         <div class="row" >
             <div class="tab-content p-0">
-                <div class="tab-pane fade show active" id="visualize-event" role="tabpanel" aria-labelledby="visualize-event-tab"> 
+                <div class="tab-pane fade show active" id="visualize-event" role="tabpanel" aria-labelledby="visualize-event-tab">
                     <div class="table-responsive">
                         <table class="table table-light" style="text-align-last:center;">
                             <thead>
@@ -216,7 +216,7 @@
                             <button id="regEvent" type="submit" class="col-md-4 col-sm-12 btn btn-primary">REGISTRAR</button>
                         </div>
                     </form>
-                
+
                 </div>
 
             </div>
@@ -242,7 +242,7 @@
         </div>
         <div class="row" >
             <div class="tab-content p-0">
-                <div class="tab-pane fade show active" id="visualize-guests" role="tabpanel" aria-labelledby="visualize-guests-tab"> 
+                <div class="tab-pane fade show active" id="visualize-guests" role="tabpanel" aria-labelledby="visualize-guests-tab">
                     <div class="table-responsive">
                         <table class="table table-light" style="text-align-last:center;">
                             <thead>
@@ -286,7 +286,7 @@
                         <div class="col-md-3"></div>
 
                         <div class="col-md-3"></div>
-                        <div class="col-md-6 col-sm-12 my-5"> 
+                        <div class="col-md-6 col-sm-12 my-5">
                             <div class="form-floating">
                                 <select class="form-select" id="regGuestEntreprise">
                                     <option value="1">Ninguna</option>
@@ -302,7 +302,7 @@
                             <button id="regGuest" type="submit" class="col-md-4 col-sm-12 btn btn-primary">REGISTRAR</button>
                         </div>
                     </form>
-                
+
                 </div>
 
             </div>
