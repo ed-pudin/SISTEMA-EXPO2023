@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/staffEvent.css') }}">
     <link rel="stylesheet" href="{{ asset('css/staffAttendanceEvent.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/staffAttendanceExpositor.css') }}">
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
     <script src="{{ asset('js/staffAttendanceEvent.js') }}"></script>
     <script src="{{ asset('js/staffAttendanceCompany.js') }}"></script>
 
