@@ -3,6 +3,7 @@
 @section('Content')
 <div class="col-sm p-3 test">
     <div class="container-fluid" >
+        <!--ID : {{$id}}-->
         <div class="row">
             <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Empresa: Accenture</h5>
             <div class="p-3" style="border: 1px solid white; border-radius:5px">

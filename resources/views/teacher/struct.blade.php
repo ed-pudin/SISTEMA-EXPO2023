@@ -34,7 +34,7 @@
 
                 <ul class="nav navbar-nav navbar-left">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Registrar expositor</a>
+                        <a class="nav-link active" href="{{route('registroExpositor.index')}}">Registrar expositor</a>
                     </li>
                 </ul>
 
