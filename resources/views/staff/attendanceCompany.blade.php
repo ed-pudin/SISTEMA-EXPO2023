@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="d-md-flex justify-content-center align-items-center">
-                        <button type="submit"class="btn btn-dark col-md-3 mt-3">Enviar</button>
+                        <button type="submit"class="btn btn-primary col-md-3 mt-3">Enviar</button>
                     </div>
                 </form>
             </div>
@@ -44,7 +44,7 @@
                             <label for="addPerson">Nombre completo</label>
                         </div>
                     </div>
-                    <button type="button" onclick=addPersonCompany() class="btn btn-dark col-md-3 mt-3">Añadir</button>
+                    <button type="button" onclick=addPersonCompany() class="btn btn-primary col-md-3 mt-3">Añadir</button>
                     <div class="my-3" id="validatePerson" style="display: none; color: #39f6e4">
                         Llena el campo correspondiente.
                     </div>

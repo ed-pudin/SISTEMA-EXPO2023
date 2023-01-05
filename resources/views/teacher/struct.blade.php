@@ -8,6 +8,8 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
     <!-- JavaScript Bundle with Popper -->
     <script
     class="jsbin"
@@ -24,7 +26,7 @@
 
 </head>
 <body style="background-image: url('images/back6.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
-    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">LOGO EXPO</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,13 +36,16 @@
 
                 <ul class="nav navbar-nav navbar-left">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('registroExpositor.index')}}">Registrar expositor</a>
+                        <a class="nav-link active" href="{{route('registroExpositor.index')}}">
+                        <p class="m-0"> Registrar expositor </p> </a>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav ms-auto">
-                    <li>
-                        <a class="nav-link" href="#">Salir</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <p class="m-0"> Salir </p>
+                        </a>
                     </li>
                 </ul>
             </div>

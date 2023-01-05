@@ -38,7 +38,7 @@
 
             </div>
 
-            <div class="p-3 my-4" style="border: 1px solid white; border-radius:5px">
+            <div class="p-3 my-4" style="border: 2px solid; border-image: linear-gradient(to right, #39f6e4, #a7ee54); border-image-slice: 1; border-radius:50%">
                 <form class="my-4 form-student" id="form-student">
 
                     <!--HIDDEN INPUTS-->
@@ -70,8 +70,10 @@
 
                     </div>
 
-                    <hr style="height:3px; border:0px; background: linear-gradient(to right, #39f6e4, #a7ee54); opacity: 1;
-                    box-shadow: 0 20px 20px -20px #333;">
+                    <div class="col-12 d-md-flex justify-content-center align-items-center">
+                        <hr class="col-md-8 col-12 mt-4" style="height:2px; border:0px; background: linear-gradient(to right, #39f6e4, #a7ee54); opacity: 1;
+                        box-shadow: 0 20px 20px -20px #333;">
+                    </div>
 
                     <div class="d-flex justify-content-center flex-wrap m-t3">
                         <div class="col-12 col-md-2 my-2 mx-3 mx-xl-5">
@@ -107,7 +109,7 @@
 
 
                     <div class="col-12 my-2" style="text-align:center;">
-                        <button id="regGuest" type="submit" class="col-md-4 col-sm-12 btn btn-dark">Registrar equipo</button>
+                        <button id="regGuest" type="submit" class="col-md-4 col-sm-12 btn btn-primary">Registrar equipo</button>
                     </div>
 
                 </form>

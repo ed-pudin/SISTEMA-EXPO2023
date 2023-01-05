@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/staffEvent.css') }}">
     <link rel="stylesheet" href="{{ asset('css/staffAttendanceEvent.css') }}">
     <link rel="stylesheet" href="{{ asset('css/staffAttendanceExpositor.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -28,7 +29,6 @@
       class="jsbin"
       src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
     ></script>
-
 
 </head>
 <body style="background-image: url('../images/back6.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
@@ -60,7 +60,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav ms-auto">
-                <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">
                             <p class="m-0"> Salir </p>
                         </a>
