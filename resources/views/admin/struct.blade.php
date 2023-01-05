@@ -26,48 +26,58 @@
       src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
     ></script>
 
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
 </head>
 <body>
 <div class="container-fluid">
     
     <div class="row">
         
-        <div class="col-sm-auto bg-light sticky-top">
-            <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+        <div class="col-sm-auto bg-dark sticky-top">
+            <div class="d-flex flex-sm-column flex-row flex-nowrap bg-dark align-items-center sticky-top">
                 <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
                     <!-- AQUI VA EL LOGO!!!!!! -->
-                    <i class="bi-bootstrap fs-1"></i>
+                    <i class="bi bi-bootstrap fs-1"></i>
                 </a>
 
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
                     <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                            <i class="bi bi-calendar2-heart-fill fs-5"></i>
-                            <p class="d-none d-sm-block">Evento</p>
+                        <a href="{{ route('adminRegistroEventos.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                            <i class="bi bi-calendar2-heart-fill fs-5">
+                                <p class="d-none d-sm-block">Evento</p>
+                            </i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                            <i class="bi bi-people-fill fs-3"></i>
-                            <p class="d-none d-sm-block">Invitados</p>
+                        <a href="{{ route('adminRegistroInvitados.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                            <i class="bi bi-people-fill fs-3">
+                                <p class="d-none d-sm-block">Invitados</p>
+                            </i>
+                            
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                            <i class="bi bi-buildings-fill fs-3"></i>
-                            <p class="d-none d-sm-block">Empresas</p>
+                        <a href="{{ route('adminRegistroEmpresas.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                            <i class="bi bi-buildings-fill fs-3">
+                                <p class="d-none d-sm-block">Empresas</p>
+                            </i>
+                            
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
-                            <i class="bi bi-mortarboard-fill fs-3"></i>
-                            <p class="d-none d-sm-block">Maestros</p>
+                        <a href="{{ route('adminRegistroMaestros.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+                            <i class="bi bi-mortarboard-fill fs-3">
+                                <p class="d-none d-sm-block">Maestros</p>
+                            </i>
+                            
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-                            <i class="bi bi-x-circle-fill fs-3"></i>
-                            <p class="d-none d-sm-block">Salir</p>
+                            <i class="bi bi-x-circle-fill fs-3">
+                                <p class="d-none d-sm-block">Salir</p>
+                            </i>
                         </a>
                     </li>
                 </ul>

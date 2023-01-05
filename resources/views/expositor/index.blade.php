@@ -1,6 +1,8 @@
 @extends('expositor.struct')
 
 @section('Content')
+
+
 <div class="col-sm p-3 min-vh-80">
     <div class="container-fluid" style="height:80vh">
         <div class="row" style="justify-content: center; height: 80vh">

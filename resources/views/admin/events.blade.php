@@ -17,66 +17,11 @@
 
 </script>
 
-<style>
-    div.test {
-        background-image: url('images/back6.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-attachment:fixed;
-    }
-
-    label,h1 {
-        color:snow;
-    }
-
-    .form-select, input:not(input[type=image]),input:not(input[type=image]):focus {
-        background-color:black;
-        color:snow;
-    }
-
-    div.input-group-text {
-        color: #39f6e4;
-        background-color:rgba(1,1,1,0);
-        border-radius: 0rem;
-        border: none;
-    }
-
-    .form-control, .form-select {
-        border-radius: 0rem;
-        border: none;
-        border-bottom: 2px solid #39f6e4;
-    }
-
-    .form-control:focus, .form-select:focus {
-        border-bottom: 2px solid #e23a87;
-    }
-
-    .btn-primary {
-        color: snow;
-        background-color: #e23a87;
-        border: none;
-    }
-
-    .btn-primary:hover {
-        color: snow;
-        background-color: #c9206c;
-        border: none;
-    }
-
-    .form-control:focus, .form-select:focus {
-        box-shadow: none;
-    }
-
-    input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
-        filter: invert(1);
-    }
-
-</style>
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 <!-- ------------- -->
 <!-- ADMIN EVENTOS -->
-<div class="col-sm p-3 min-vh-100 test tab-pane show active">
+<div class="col-sm p-3 min-vh-100 backgroundImg tab-pane show active">
     <div class="container-fluid" >
         <div class="row">
             <ul class="nav nav-tabs" id="tabAdminEvent" role="admin-event">
@@ -229,7 +174,7 @@
 <!-- --------------- -->
 <!-- ADMIN INVITADOS -->
 <div class="col-sm p-3 min-vh-100 test tab-pane" hidden>
-    <div class="container-fluid" >
+    <div class="container-fluid">
         <div class="row">
             <ul class="nav nav-tabs" id="tabAdminGuests" role="admin-guests">
                 <li class="nav-item" role="admin-guests">

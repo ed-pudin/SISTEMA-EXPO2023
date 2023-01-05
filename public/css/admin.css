@@ -1,0 +1,82 @@
+div.backgroundImg {
+    background-image: url('../images/back6.png');
+    background-color: #020202;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment:fixed;
+}
+
+label,h1,h4 {
+    color:snow;
+}
+
+.form-select, input:not(input[type=image]),input:not(input[type=image]):focus {
+    background-color:black;
+    color:snow;
+}
+
+div.input-group-text {
+    color: #39f6e4;
+    background-color:rgba(1,1,1,0);
+    border-radius: 0rem;
+    border: none;
+}
+
+.form-control, .form-select {
+    border-radius: 0rem;
+    border: none;
+    border-bottom: 2px solid #39f6e4;
+}
+
+.form-control:focus, .form-select:focus {
+    border-bottom: 2px solid #e23a87;
+}
+
+.btn-primary {
+    color: snow;
+    background-color: #e23a87;
+    border: none;
+    border-radius: 15px;
+}
+
+.btn-primary:hover {
+    color: snow;
+    background-color: #c9206c;
+    border: none;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+i>p {
+    font-style:normal;
+    font-size:1.1rem!important;
+}
+
+a>i.bi, a>p, .navbar-brand {
+    color: #83c932;
+}
+
+.navbar-toggler-icon {
+    background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(131, 201, 50, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler-icon:hover {
+    background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(201, 32, 108, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+a:hover>i.bi, a:hover>p, .navbar-brand:hover, .navbar-toggler:hover {
+    color: #c9206c;
+}
+
+.bg-dark {
+    background-color: #000000!important;
+}

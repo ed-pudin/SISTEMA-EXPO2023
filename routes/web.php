@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\GuestsController;
+use App\Http\Controllers\TeachersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +18,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin/index');
+    return view('expositor/index');
 });
 
 Route::get('/edna', function () {
     return view('staff/attendanceExpositor');
 });
+
+// Acceso SOLO ADMIN
+Route::resource('adminRegistroEmpresas', CompaniesController::class ,[
+   'index' => 'adminRegistroEmpresas.index' 
+]);
+
+Route::resource('adminRegistroEventos', EventsController::class ,[
+    'index' => 'adminRegistroEventos.index' 
+ ]);
+
+ Route::resource('adminRegistroInvitados', GuestsController::class ,[
+    'index' => 'adminRegistroInvitados.index' 
+ ]);
+
+ Route::resource('adminRegistroMaestros', TeachersController::class ,[
+    'index' => 'adminRegistroMaestros.index' 
+ ]);
