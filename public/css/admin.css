@@ -46,14 +46,14 @@ div.input-group-text {
 
 .btn-primary {
     color: snow;
-    background-color: #e23a87;
+    background-color: #c53aff;
     border: none;
     border-radius: 15px;
 }
 
 .btn-primary:hover {
     color: snow;
-    background-color: #c9206c;
+    background-color: #861dc2;
     border: none;
 }
 
@@ -65,13 +65,16 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
     filter: invert(1);
 }
 
+
+a>i.bi, .nav-txt, .navbar-brand {
+    color: #c53aff;
+}
+
+
 .nav-txt {
     font-style:normal;
     font-size:1.1rem!important;
-}
-
-a>i.bi, .nav-txt, .navbar-brand {
-    color: #83c932;
+    color: snow;
 }
 
 .navbar-toggler-icon {
@@ -85,7 +88,7 @@ a>i.bi, .nav-txt, .navbar-brand {
 }
 
 .nav-txt:hover, a:hover>i.bi .nav-txt,a:hover>i.bi , .navbar-brand:hover, .navbar-toggler:hover {
-    color: #c9206c;
+    color: #39f6e4;
 }
 
 .bg-dark {
@@ -120,7 +123,7 @@ thead{
     border-bottom-width: 0.1rem;
     color: snow;
     background-color: black;
-    border-color: #c9206c;
+    border-color: #c53aff;
 }
 
 tbody {

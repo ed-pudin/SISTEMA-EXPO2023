@@ -38,7 +38,7 @@
             <div class="d-flex flex-sm-column flex-row flex-nowrap bg-dark align-items-center sticky-top">
                 <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
                     <!-- AQUI VA EL LOGO!!!!!! -->
-                    <i class="bi bi-bootstrap fs-1"></i>
+                    <img class="logo-img" src="{{ asset('images/LOGO.png') }}" height="30">
                 </a>
 
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
