@@ -88,7 +88,7 @@ a>i.bi, .nav-txt, .navbar-brand {
 }
 
 .nav-txt:hover, a:hover>i.bi .nav-txt,a:hover>i.bi , .navbar-brand:hover, .navbar-toggler:hover {
-    color: #39f6e4;
+    color: #0de4fe;
 }
 
 .bg-dark {
