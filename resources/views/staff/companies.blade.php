@@ -26,15 +26,15 @@
                     <tbody>
                         <tr>
                             <td>Evento 0</td>
-                            <td><button type="button" class="btn btn-dark">Asistencia</button></td>
+                            <td> <a href="{{route('staffEmpresa.show', 1)}}"><button type="button" class="btn btn-dark">Asistencia</button></td></a>
                         </tr>
                         <tr>
                             <td>Evento 1</td>
-                            <td><button type="button" class="btn btn-dark">Asistencia</button></td>
+                            <td> <a href="{{route('staffEmpresa.show', 2)}}"><button type="button" class="btn btn-dark">Asistencia</button></td></a>
                         </tr>
                         <tr>
                             <td>Evento 2</td>
-                            <td><button type="button" class="btn btn-dark">Asistencia</button></td>
+                            <td> <a href="{{route('staffEmpresa.show', 3)}}"><button type="button" class="btn btn-dark">Asistencia</button></td></a>
                         </tr>
                     </tbody>
                 </table>

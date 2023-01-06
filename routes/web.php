@@ -10,6 +10,9 @@ use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\GuestsController;
 use App\Http\Controllers\TeachersController;
+use App\Http\Controllers\StaffExpositorController;
+use App\Http\Controllers\StaffEventController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,8 +32,8 @@ Route::get('/home', function () {
     return view('welcome');
 });
 //Acceso solo maestros y admin
-Route::resource('registroExpositor', TeacherCreatesExpositorController::class, [
-    'index' => 'registroExpositor.index'
+Route::resource('teacherRegistroExpositor', TeacherCreatesExpositorController::class, [
+    'index' => 'teacherRegistroExpositor.index'
 ]);
 
 //Acceso solo expositores y admin
@@ -45,12 +48,21 @@ Route::resource('staffEmpresa', StaffCompanyController::class, [
         //1. Mostrar en staff las empresas
     'index' => 'staffEmpresa.index',
         //2. Mostrar en staff 1 empresa
-    'show/:id' => 'staffEmpresa.show'
+    'show' => 'staffEmpresa.show'
+]);
+//EXPOSITOR
+Route::resource('staffExpositor', StaffExpositorController::class, [
+    //1. Mostrar para leer el qr
+    'index' => 'staffExpositor.index',
 ]);
 
-//EXPOSITOR
-
 //EVENTO
+Route::resource('staffEvento', StaffEventController::class, [
+    //1. Mostrar en staff los eventos
+    'index' => 'staffEvento.index',
+    //2. Mostrar en staff 1 evento
+    'show' => 'staffEvento.show'
+]);
 
 // Acceso SOLO ADMIN
 Route::resource('adminRegistroEmpresas', CompaniesController::class ,[
