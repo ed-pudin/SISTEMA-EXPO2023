@@ -26,7 +26,7 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li>
                         <a class="nav-link active" href="#">
-                            <p class="m-0"> QR Expositor </p>
+                            <p class="m-0 nav-txt"> QR Expositor </p>
                         </a>
                     </li>
                 </ul>
@@ -34,7 +34,7 @@
                 <ul class="nav navbar-nav ms-auto">
                     <li>
                         <a class="nav-link active" href="#">
-                            <p class="m-0"> Salir </p>
+                            <p class="m-0 nav-txt"> Salir </p>
                         </a>
                     </li>
                 </ul>

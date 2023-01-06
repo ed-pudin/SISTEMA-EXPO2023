@@ -51,7 +51,7 @@
             <div class="tab-content p-0">
                 <div class="tab-pane fade show active" id="visualize-teacher" role="tabpanel" aria-labelledby="visualize-teacher-tab">
                     <div class="table-responsive">
-                        <table class="table table-light" style="text-align-last:center;">
+                        <table class="table" style="text-align-last:center;">
                             <thead>
                                 <tr>
                                     <th scope="col">Nombre</th>
@@ -85,7 +85,7 @@
                 <div class="tab-pane fade show" id="register-teacher" aria-labelledby="register-teacher-tab">
 
                     <form class="row align-items-center p-5">
-                        <h1 class="mb-5" style="text-align: center;"> Registrando Maestro </h1>
+                        <h1 style="text-align: center;"> Registrando Maestro </h1>
 
                         <div class="col-md-3"></div>
                         <div class=" col-md-6 col-sm-12 my-5">

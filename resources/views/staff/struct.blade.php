@@ -44,17 +44,17 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('staffEvento.index')}}">
-                            <p class="m-0"> Eventos </p>
+                            <p class="m-0 nav-txt"> Eventos </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="{{route('staffEmpresa.index')}}">
-                            <p class="m-0"> Empresas </p>
+                            <p class="m-0 nav-txt"> Empresas </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link "  href="{{route('staffExpositor.index')}}">
-                            <p class="m-0"> Expositor </p>
+                        <a class="nav-link " href="{{route('staffExpositor.index')}}">
+                            <p class="m-0 nav-txt"> Expositor </p>
                         </a>
                     </li>
                 </ul>
@@ -62,7 +62,7 @@
                 <ul class="nav navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <p class="m-0"> Salir </p>
+                            <p class="m-0 nav-txt"> Salir </p>
                         </a>
                     </li>
                 </ul>

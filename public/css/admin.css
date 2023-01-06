@@ -65,12 +65,12 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
     filter: invert(1);
 }
 
-i>p {
+.nav-txt {
     font-style:normal;
     font-size:1.1rem!important;
 }
 
-a>i.bi, a>p, .navbar-brand {
+a>i.bi, .nav-txt, .navbar-brand {
     color: #83c932;
 }
 
@@ -84,7 +84,7 @@ a>i.bi, a>p, .navbar-brand {
 "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(201, 32, 108, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-a:hover>i.bi, a:hover>p, .navbar-brand:hover, .navbar-toggler:hover {
+.nav-txt:hover, a:hover>i.bi .nav-txt,a:hover>i.bi , .navbar-brand:hover, .navbar-toggler:hover {
     color: #c9206c;
 }
 
@@ -103,6 +103,30 @@ hr.colorfull {
     opacity: 1;
     box-shadow: 0 20px 20px -20px #333;
 }
+
 div .div-colofull{
 
+}
+
+td {
+    border-color: #21decb;
+    border-bottom-width: 0.1rem;
+}
+
+thead{
+    border-bottom-width: 0.1rem;
+    color: snow;
+    background-color: black;
+    border-color: #c9206c;
+}
+
+tbody {
+    border-bottom-width: 0.05rem;
+    border-color: #21decb;
+    color: snow;
+    background-color: black;
+}
+
+table {
+    margin-top: 25px;
 }

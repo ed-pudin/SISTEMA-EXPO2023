@@ -37,7 +37,7 @@
             <div class="tab-content p-0">
                 <div class="tab-pane fade show active" id="visualize-event" role="tabpanel" aria-labelledby="visualize-event-tab">
                     <div class="table-responsive">
-                        <table class="table table-light" style="text-align-last:center;">
+                        <table class="table" style="text-align-last:center;">
                             <thead>
                                 <tr>
                                     <th scope="col">Imagen</th>

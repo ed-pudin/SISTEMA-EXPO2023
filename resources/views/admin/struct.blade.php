@@ -45,14 +45,14 @@
                     <li>
                         <a href="{{ route('adminRegistroEventos.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                             <i class="bi bi-calendar2-heart-fill fs-5">
-                                <p class="d-none d-sm-block">Evento</p>
+                                <p class="d-none d-sm-block nav-txt">Evento</p>
                             </i>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('adminRegistroInvitados.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
                             <i class="bi bi-people-fill fs-3">
-                                <p class="d-none d-sm-block">Invitados</p>
+                                <p class="d-none d-sm-block nav-txt">Invitados</p>
                             </i>
                             
                         </a>
@@ -60,7 +60,7 @@
                     <li>
                         <a href="{{ route('adminRegistroEmpresas.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
                             <i class="bi bi-buildings-fill fs-3">
-                                <p class="d-none d-sm-block">Empresas</p>
+                                <p class="d-none d-sm-block nav-txt">Empresas</p>
                             </i>
                             
                         </a>
@@ -68,7 +68,7 @@
                     <li>
                         <a href="{{ route('adminRegistroMaestros.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
                             <i class="bi bi-mortarboard-fill fs-3">
-                                <p class="d-none d-sm-block">Maestros</p>
+                                <p class="d-none d-sm-block nav-txt">Maestros</p>
                             </i>
                             
                         </a>
@@ -76,7 +76,7 @@
                     <li>
                         <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                             <i class="bi bi-x-circle-fill fs-3">
-                                <p class="d-none d-sm-block">Salir</p>
+                                <p class="d-none d-sm-block nav-txt">Salir</p>
                             </i>
                         </a>
                     </li>
