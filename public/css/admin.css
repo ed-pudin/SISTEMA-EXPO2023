@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+
 div.backgroundImg {
     background-image: url('../images/back6.png');
     background-color: #020202;
@@ -7,8 +14,12 @@ div.backgroundImg {
     background-attachment:fixed;
 }
 
-label,h1,h4 {
+p,label,h1,h4,h5 {
     color:snow;
+}
+
+b {
+    color:#21decb;
 }
 
 .form-select, input:not(input[type=image]),input:not(input[type=image]):focus {
@@ -79,4 +90,16 @@ a:hover>i.bi, a:hover>p, .navbar-brand:hover, .navbar-toggler:hover {
 
 .bg-dark {
     background-color: #000000!important;
+}
+
+.btn-primary{
+    font-style:bold;
+}
+
+hr.colorfull {
+    height:2px; 
+    border:0px; 
+    background: linear-gradient(to right, #39f6e4, #a7ee54); 
+    opacity: 1;
+    box-shadow: 0 20px 20px -20px #333;
 }

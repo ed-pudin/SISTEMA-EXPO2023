@@ -71,8 +71,7 @@
                     </div>
 
                     <div class="col-12 d-md-flex justify-content-center align-items-center">
-                        <hr class="col-md-8 col-12 mt-4" style="height:2px; border:0px; background: linear-gradient(to right, #39f6e4, #a7ee54); opacity: 1;
-                        box-shadow: 0 20px 20px -20px #333;">
+                        <hr class="colorfull col-md-8 col-12 mt-4">
                     </div>
 
                     <div class="d-flex justify-content-center flex-wrap m-t3">
