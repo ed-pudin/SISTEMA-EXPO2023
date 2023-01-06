@@ -5,9 +5,9 @@
     <div class="container-fluid" >
         <div class="row">
             <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Entrada para evento: Evento 0</h5>
-            <div class="container vh-80">
+            <div class="container vh-80 div-colorfull">
 
-                <div class="container py-5" style="background-color: white;">
+                <div class="container py-5">
 
                     <div class="d-flex justify-content-center my-4">
                         <div>
@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center my-4">
-                            <button type="submit" class="btn btn-dark col-md-6">Registrar entrada</button>
+                            <button type="submit" class="btn btn-primary col-md-6">Registrar entrada</button>
                         </div>
                     </form>
 
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center my-4">
-                                <button type="submit" class="btn btn-dark col-md-6">Registrar entrada</button>
+                                <button type="submit" class="btn btn-primary col-md-6">Registrar entrada</button>
                             </div>
                         </div>
                     </form>

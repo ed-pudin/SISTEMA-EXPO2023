@@ -6,7 +6,7 @@
         <!--ID : {{$id}}-->
         <div class="row">
             <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Empresa: Accenture</h5>
-            <div class="p-3" style="border: 1px solid white; border-radius:5px">
+            <div class="p-3 div-colorfull">
                 <form class="my-4 form-student" id="form-student">
 
                     <div id="dynamicInputs">

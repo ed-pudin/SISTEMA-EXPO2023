@@ -5,9 +5,10 @@
 <div class="d-flex justify-content-center mt-4 flex-wrap">
     <h5 class="text-center col-12" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Asistencia expositor</h5>
 
+    <div class="container col-12 col-md-8 d-flex justify-content-center p-5 mb-4 flex-wrap div-colorfull">    
+        <div class="col-12 col-md-8" id="reader">
 
-    <div class="col-12 col-md-8" id="reader">
-
+        </div>
     </div>
 
 

@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="table-responsive" style="background-color: white">
+            <div class="table-responsive">
                 <table class="table table-striped-columns" style="text-align-last:center;">
                     <thead>
                         <tr>

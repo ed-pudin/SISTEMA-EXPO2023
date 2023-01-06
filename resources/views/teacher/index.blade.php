@@ -38,7 +38,7 @@
 
             </div>
 
-            <div class="p-3 my-4" style="border: 2px solid; border-image: linear-gradient(to right, #39f6e4, #a7ee54); border-image-slice: 1; border-radius:50%">
+            <div class="p-3 my-4" style="">
                 <form class="my-4 form-student" id="form-student">
 
                     <!--HIDDEN INPUTS-->
