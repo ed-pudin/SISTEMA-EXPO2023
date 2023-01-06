@@ -38,7 +38,7 @@
 
             </div>
 
-            <div class="p-3 my-4" style="">
+            <div class="p-3 my-4 div-colorfull" style="">
                 <form class="my-4 form-student" id="form-student">
 
                     <!--HIDDEN INPUTS-->
