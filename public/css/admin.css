@@ -4,6 +4,16 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.dashboard-t{
+    background-color: #000000;
+    border-width: 0px 0px 3px 0px;
+    border-color: #0de4fe;
+}
+
+.center-text-v{
+    align-items:center;
+    justify-content:center;
+}
 
 div.backgroundImg {
     background-image: url('../images/back6.png');

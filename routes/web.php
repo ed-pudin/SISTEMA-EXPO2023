@@ -12,6 +12,7 @@ use App\Http\Controllers\GuestsController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\StaffExpositorController;
 use App\Http\Controllers\StaffEventController;
+use App\Http\Controllers\AdminHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,10 @@ Route::resource('staffEvento', StaffEventController::class, [
 ]);
 
 // Acceso SOLO ADMIN
+Route::resource('adminInicio', AdminHomeController::class ,[
+    'index' => 'adminInicio.index' 
+ ]);
+
 Route::resource('adminRegistroEmpresas', CompaniesController::class ,[
     'index' => 'adminRegistroEmpresas.index' 
  ]);
