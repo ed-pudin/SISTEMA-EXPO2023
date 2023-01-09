@@ -30,13 +30,13 @@
                             <th scope="row" ><i class="bi bi bi-0-square-fill fs-1"></i></th>
                             <td>Evento 0</td>
                             <td>Jhon Lenon</td>
-                            <td> <a href="{{route('staffEvento.show', 1)}}"><button type="button" class="btn btn-dark">Asistencia</button></td></a>
+                            <td> <a href="{{route('staffEvento.show', 1)}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
                         </tr>
                         <tr>
                         <th scope="row" ><i class="bi bi bi-1-square-fill fs-1"></i></th>
                             <td>Evento 1</td>
                             <td>Jhon Lenon</td>
-                            <td><a href="{{route('staffEvento.show', 2)}}"><button type="button" class="btn btn-dark">Asistencia</button></td><a>
+                            <td><a href="{{route('staffEvento.show', 2)}}"><button type="button" class="btn btn-primary">Asistencia</button></td><a>
                         </tr>
                        
                     </tbody>

@@ -61,19 +61,28 @@
                         </div>
                     </form>
 
-                    <form class="my-4 form-external">   
+                    <form class="my-4 form-external">
                         <div class="d-md-flex justify-content-center align-items-center">
-                            <div class="col-md-8 my-2 mx-3 mx-xl-5">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="regProjectName" placeholder="Nombre completo" required>
-                                        <label for="regProjectName">Nombre completo</label>
-                                    </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 my-2 mx-3 mx-xl-5">
+                                <div class="form-floating">
+                                    <select class="form-select" id="genre" onchange=setDynamicInputs()>
+                                        <option value="Female">Femenino</option>
+                                        <option value="Male">Masculino</option>
+                                    </select>
+                                    <label for="genre">Género</label>
                                 </div>
                             </div>
-
-                            <div class="d-flex justify-content-center my-4">
-                                <button type="submit" class="btn btn-primary col-md-6">Registrar entrada</button>
+                            
+                            <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="regEventExternal" placeholder="Nombre completo" required>
+                                    <label for="regEventExternal">Nombre completo</label>
+                                </div>
                             </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center my-4">
+                            <button type="submit" class="btn btn-primary col-md-6">Registrar entrada</button>
                         </div>
                     </form>
                     
