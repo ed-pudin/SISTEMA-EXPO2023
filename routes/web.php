@@ -13,6 +13,7 @@ use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\StaffExpositorController;
 use App\Http\Controllers\StaffEventController;
 use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +27,17 @@ use App\Http\Controllers\AdminHomeController;
 */
 
 Route::get('/', function () {
-    return view('expositor/index');
-});
-
-Route::get('/home', function () {
     return view('welcome');
 });
+
+
+//Acceso todos inicio sesion
+Route::resource('inicioSesion', LoginController::class, [
+    //1. Vista inicio sesion
+    'index' => 'inicioSesion.index',
+    //2. Enviar request
+]);
+
 //Acceso solo maestros y admin
 Route::resource('teacherRegistroExpositor', TeacherCreatesExpositorController::class, [
     'index' => 'teacherRegistroExpositor.index'

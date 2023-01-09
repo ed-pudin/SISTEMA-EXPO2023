@@ -105,6 +105,11 @@ a>i.bi, .nav-txt, .navbar-brand {
     background-color: #000000!important;
 }
 
+#password-reveal{
+    display: block!important;
+    color: red;
+}
+
 .btn-primary{
     font-style:bold;
 }
