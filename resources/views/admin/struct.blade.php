@@ -26,7 +26,6 @@
       src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
     ></script>
 
-
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 </head>
@@ -90,5 +89,6 @@
         @yield('Content')
     </div>
 </div>
+
 </body>
 </html>
