@@ -43,22 +43,22 @@
 
                     <div class="container py-5">
                         
-                        <form class="my-4 form-login">
-                            
+                        <form class="my-4 form-login" id="login" action="{{route('inicioSesion.store')}}" method="post">
+                            @csrf
                             <div class="col-12 d-flex justify-content-center my-5">
                                 <img class="logo-img col-10 col-md-4" src="{{ asset('images/LOGO.png') }}">
                             </div>
 
                             <div class="col-md-12 my-4 mx-3">
                                 <div class="" syle="transform-origin: unset;">
-                                    <input type="text" class="form-control text-center" id="key" placeholder="Clave de inicio de sesión" required>
+                                    <input type="text" class="form-control text-center" name="key" id="key" placeholder="Clave de inicio de sesión" required>
                                 </div>
                             </div>
                         
 
                             <div class="col-md-12 my-4 mx-3">
                                     <div class="" syle="transform-origin: unset;">
-                                        <input type="password" class="form-control text-center" id="pas" placeholder="Contraseña" required>
+                                        <input type="password" class="form-control text-center" name="pas" id="pas" placeholder="Contraseña" required>
                                     </div>
                             </div>
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class LoginController extends Controller
 {
@@ -13,6 +15,7 @@ class LoginController extends Controller
      */
     public function index()
     {
+        //session()->flush();
         return view('login');
     }
 
@@ -33,8 +36,26 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $user = new User();
+        $user = User::where('key', '=', $request->key, 'and')->where('password', '=', $request->pas)->first();
+        if($user != null){
+            $request->session()->put('id', $user->id);
+            //$user->assignRole($user->rol);
+
+            if($user->rol == 'admin'){
+                return redirect()->route('adminInicio.index');
+            }else if ($user->rol == 'staff'){
+                return redirect()->route('staffEmpresa.index');
+            }else if ($user->rol == 'expositor'){
+                return redirect()->route('expositorQR.index');
+            }else if($user->rol == 'teacher'){
+                return redirect()->route('teacherRegistroExpositor.index');
+            }
+        }
+        else{
+            return redirect()->route('inicioSesion.index');
+        }
     }
 
     /**
