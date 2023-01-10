@@ -110,12 +110,12 @@
                         <div class="col-md-3"></div>
                         <div class=" col-md-4 col-sm-12 mb-2">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="regTeacherPassword" placeholder="Contraseña">
+                                <input autocomplete="off" type="text" class="form-control" id="regTeacherPassword" placeholder="Contraseña">
                                 <label for="regTeacherPassword">Contraseña</label>
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-12 mb-2 align-items-center">
-                            <button id="autoPassword" class="btn btn-primary" onclick="generatePassword()">Generar Contraseña</button>
+                            <a type="button" id="autoPassword" class="btn btn-primary" onclick="generatePassword()">Generar Contraseña</a>
                         </div>
                         <div class="col-md-3"></div>
 

@@ -28,6 +28,31 @@ p,label,h1,h4,h5 {
     color:snow;
 }
 
+h1,h5 {
+    text-shadow: 0 0 10px #e23a87;
+}
+
+.nav-tabs {
+    align-items: end;
+    border-bottom: 2px solid #000; 
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background: black;
+    border: none;
+    color: #21decb;
+}
+
+.nav-tabs .nav-link {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border: none;
+    background-color: #333;
+    color: snow;
+}
+
 b {
     color:#21decb;
 }
@@ -99,6 +124,7 @@ a>i.bi, .nav-txt, .navbar-brand {
 
 .nav-txt:hover, a:hover>i.bi .nav-txt,a:hover>i.bi , .navbar-brand:hover, .navbar-toggler:hover {
     color: #0de4fe;
+    
 }
 
 .bg-dark {
@@ -129,6 +155,13 @@ hr.colorfull {
     border-radius:50%
 }
 
+
+tbody, td, tfoot, th, thead, tr {
+
+    text-align: center;
+}
+
+
 td {
     border-color: #21decb;
     border-bottom-width: 0.1rem;
@@ -150,4 +183,53 @@ tbody {
 
 table {
     margin-top: 25px;
+}
+
+.form-check-input:focus[type=radio], .form-check-input[type=radio] {
+    background: black;
+    border-color: #21decb;
+    border-width: 0.15rem;
+    box-shadow: 0 0 5px 0px #21decb;
+}
+
+.form-check-input:checked[type=radio] {
+    background: black;
+    border-color: #c53aff;
+    border-width: 0.25rem;
+    box-shadow: 0 0 10px 1px #c53aff;
+}
+
+.form-check-input[type=radio] {
+    width: 1em;
+    height: 1em;
+}
+
+
+.form-check-input:focus[type=checkbox], .form-check-input[type=checkbox] {
+    background: black;
+    border-color: #21decb;
+    border-width: 0.15rem;
+    box-shadow: 0 0 5px 0px #21decb;
+}
+
+.form-check-input:checked[type=checkbox] {
+    background: #c53aff;
+    border-color: #c53aff;
+    box-shadow: 0 0 10px 1px #c53aff;
+}
+
+a.btn-table>i.bi {
+    color: snow;
+}
+
+a.btn-table {
+    padding: 5px;
+}
+
+.btn-table {
+    background-color: #861dc2;
+}
+
+.btn-table:hover {
+    background-color: #c53aff;
 }

@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped-columns" style="text-align-last:center;">
+                <table class="table" style="text-align-last:center;">
                     <thead>
                         <tr>
                             <th scope="col">Imagen</th>
