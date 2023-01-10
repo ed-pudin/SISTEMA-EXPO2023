@@ -7,20 +7,23 @@
             <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">STAFF - EMPRESAS</h5>
             <div>
                 <div class="col-lg-5 my-3 search">
-                    <div class="input-group rounded">
-                        <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                        <span class="input-group-text border-0" id="search-addon">
-                            <i class="bi bi-search"></i>
-                        </span>
-                    </div>
+                    <form>
+                        <div class="input-group rounded">
+                            <div class="form-floating">
+                                <input autocomplete="off" id="searchCompany" type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                <label for="searchCompany">Nombre de la Empresa</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary bi bi-search p-1"><p class="m-0">Buscar</p> </button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped-columns" style="text-align-last:center;">
+                <table class="table" style="text-align-last:center;">
                     <thead>
                         <tr>
-                            <th scope="col">Empresa</th>
-                            <th scope="col">Acción</th>
+                            <th class="w-priority">Empresa</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -4,6 +4,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
+::selection {
+    background-color: #fff;
+    color:#c53aff;
+}
+
 .dashboard-t{
     background-color: #000000;
     border-width: 0px 0px 3px 0px;
@@ -24,7 +29,7 @@ div.backgroundImg {
     background-attachment:fixed;
 }
 
-p,label,h1,h4,h5 {
+p,label,h1,h4,h5,h2 {
     color:snow;
 }
 
@@ -56,6 +61,7 @@ h1,h5 {
 b {
     color:#21decb;
 }
+
 
 .form-select, input:not(input[type=image]),input:not(input[type=image]):focus {
     background-color:black;
@@ -89,6 +95,7 @@ div.input-group-text {
 .btn-primary:hover {
     color: snow;
     background-color: #861dc2;
+    box-shadow: 0 0 5px 2px #861dc2;
     border: none;
 }
 
@@ -186,6 +193,11 @@ table {
     text-align: center;
 }
 
+input[readonly]{
+    border-bottom: 2px solid #0de4fe!important;
+    text-shadow: 0 0 4px #ff0000!important;
+}
+
 .form-check-input:focus[type=radio], .form-check-input[type=radio] {
     background: black;
     border-color: #21decb;
@@ -241,3 +253,32 @@ a.btn-table {
 th.w-priority{
     min-width:20rem;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+
+    /* Remove default */
+    -webkit-appearance: none;
+  
+    /* Now your own custom styles */
+    height: 1rem;
+    width: 1rem;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-linecap='round' fill='none' stroke-width='2' stroke='rgb(0,0,0)'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-color: #c53aff;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button:hover {
+
+    /* Remove default */
+    -webkit-appearance: none;
+  
+    /* Now your own custom styles */
+    height: 1rem;
+    width: 1rem;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-linecap='round' fill='none' stroke-width='2' stroke='rgb(0,0,0)'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-color: #0de4fe;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 1px #0de4fe;
+    cursor: pointer;
+  }
