@@ -157,8 +157,8 @@ hr.colorfull {
 
 
 tbody, td, tfoot, th, thead, tr {
-
     text-align: center;
+    vertical-align: middle;
 }
 
 
@@ -183,6 +183,7 @@ tbody {
 
 table {
     margin-top: 25px;
+    text-align: center;
 }
 
 .form-check-input:focus[type=radio], .form-check-input[type=radio] {
@@ -220,10 +221,13 @@ table {
 
 a.btn-table>i.bi {
     color: snow;
+    margin: 0.5rem;
 }
 
 a.btn-table {
     padding: 5px;
+    width: fit-content;
+    height: fit-content;
 }
 
 .btn-table {
@@ -232,4 +236,8 @@ a.btn-table {
 
 .btn-table:hover {
     background-color: #c53aff;
+}
+
+th.w-priority{
+    min-width:20rem;
 }

@@ -21,8 +21,8 @@
 
 <!-- ------------- -->
 <!-- ADMIN EVENTOS -->
-<div class="col p-3 min-vh-100 backgroundImg tab-pane show active">
-    <div class="container-fluid" >
+<div class="col p-3 min-vh-100 w-50 backgroundImg tab-pane show active">
+    <div class="container-fluid">
         <div class="row">
             <ul class="nav nav-tabs" id="tabAdminEvent" role="admin-event">
                 <li class="nav-item" role="admin-event">
@@ -34,13 +34,13 @@
             </ul>
         </div>
         <div class="row" >
-            <div class="tab-content p-0">
+            <div class="tab-content">
                 <div class="tab-pane fade show active" id="visualize-event" role="tabpanel" aria-labelledby="visualize-event-tab">
-                    <div class="table-responsive col-lg-12 col-md-11">
+                    <div class="table-responsive">
                         <table class="table" style="text-align-last:center;">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
+                                    <th class="w-priority">Nombre</th>
                                     <th>Invitado</th>
                                     <th>Tipo</th>
                                     <th>Fecha</th>
@@ -53,7 +53,24 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Evento 0</td>
+                                    <td>Tips para empezar como programador en Amazon</td>
+                                    <td>Jhon Lenon</td>
+                                    <td>Conferencia</td>
+                                    <td>15/12/22</td>
+                                    <td>13:00:00</td>
+                                    <td>15:00:00</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Evento 1</td>
                                     <td>Jhon Lenon</td>
                                     <td>Conferencia</td>
                                     <td>15/12/22</td>
@@ -70,20 +87,21 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Evento 1</td>
-                                    <td>Jhon Lenon</td>
-                                    <td>Conferencia</td>
-                                    <td>15/12/22</td>
-                                    <td>13:00:00</td>
-                                    <td>15:00:00</td>
-                                </tr>
-                                <tr>
                                     <td>Evento 2</td>
                                     <td>Jhon Lenon</td>
                                     <td>Conferencia</td>
                                     <td>15/12/22</td>
                                     <td>13:00:00</td>
                                     <td>15:00:00</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-eye"></i></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -92,7 +110,7 @@
 
                 <div class="tab-pane fade show" id="register-event" aria-labelledby="register-event-tab">
 
-                    <form class="row align-items-center p-5">
+                    <form class="row align-items-center py-5 px-lg-5 px-md-3 px-sm-0">
                         <h1 style="text-align: center;"> Registrando un Evento </h1>
                         <div class="col-sm-12 my-2">
                             <div>

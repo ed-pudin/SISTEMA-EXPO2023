@@ -21,7 +21,7 @@
 
 <!-- --------------- -->
 <!-- ADMIN INVITADOS -->
-<div class="col-sm p-3 min-vh-100 backgroundImg tab-pane">
+<div class="col p-3 min-vh-100 w-50 backgroundImg tab-pane">
     <div class="container-fluid">
         <div class="row">
             <ul class="nav nav-tabs" id="tabAdminGuests" role="admin-guests">
@@ -40,24 +40,44 @@
                         <table class="table" style="text-align-last:center;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Empresa</th>
+                                    <th class="w-priority">Nombre</th>
+                                    <th class="w-priority">Empresa</th>
+                                    <th>Editar</th>
+                                    <th>Borrar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Invitado 0</td>
                                     <td>Empresa 0</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td>Invitado 1</td>
                                     <td>Empresa 1</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td>Invitado 2</td>
                                     <td>Empresa 3</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

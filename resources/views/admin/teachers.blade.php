@@ -34,8 +34,8 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 <!-- --------------- -->
-<!-- ADMIN INVITADOS -->
-<div class="col-sm p-3 min-vh-100 backgroundImg tab-pane">
+<!-- ADMIN MAESTROS  -->
+<div class="col p-3 min-vh-100 w-50 backgroundImg tab-pane">
     <div class="container-fluid">
         <div class="row">
             <ul class="nav nav-tabs" id="tabAdminTeacher" role="admin-teacher">
@@ -54,9 +54,11 @@
                         <table class="table" style="text-align-last:center;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Usuario</th>
-                                    <th scope="col">Contraseña</th>
+                                    <th class="w-priority">Nombre</th>
+                                    <th class="w-priority">Usuario</th>
+                                    <th class="w-priority">Contraseña</th>
+                                    <th>Editar</th>
+                                    <th>Borrar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,18 +66,36 @@
                                     <td>Maestro 0</td>
                                     <td>Usuario 0</td>
                                     <td>Password_0</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td>Maestro 1</td>
                                     <td>Usuario 1</td>
                                     <td>Password_1</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td>Maestro 2</td>
                                     <td>Usuario 2</td>
                                     <td>Password_2</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -131,7 +151,7 @@
         </div>
     </div>
 </div>
-<!-- ADMIN INVITADOS -->
+<!-- ADMIN MAESTROS  -->
 <!-- --------------- -->
 
 

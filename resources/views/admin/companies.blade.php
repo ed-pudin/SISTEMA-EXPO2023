@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 <!-- --------------- -->
-<!-- ADMIN INVITADOS -->
-<div class="col-sm p-3 min-vh-100 backgroundImg tab-pane">
+<!-- ADMIN COMPAÑÍAS -->
+<div class="col p-3 min-vh-100 w-50 backgroundImg tab-pane">
     <div class="container-fluid">
         <div class="row">
             <ul class="nav nav-tabs" id="tabAdminCompany" role="admin-company">
@@ -40,20 +40,50 @@
                         <table class="table" style="text-align-last:center;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nombre de la Empresa</th>
+                                    <th class="w-priority">Nombre de la Empresa</th>
+                                    <th>Editar</th>
+                                    <th>Borrar</th>
+                                    <th>Info</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Empresa Agrícola Sustentable del Mundo</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td>Componentes electrónicos SA de CV</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td>Happy Company</td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -86,7 +116,7 @@
         </div>
     </div>
 </div>
-<!-- ADMIN INVITADOS -->
+<!-- ADMIN COMPAÑÍAS -->
 <!-- --------------- -->
 
 
