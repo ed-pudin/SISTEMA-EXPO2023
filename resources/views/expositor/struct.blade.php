@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 </head>
-<body style="background-image: url('images/back6.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
+<body style="background-image: url('images/backgroundimg.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
     <nav class="navbar navbar-expand-lg bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"> <img class="logo-img" src="{{ asset('images/LOGO.png') }}" height="30"> </a>

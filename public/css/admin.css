@@ -21,7 +21,7 @@
 }
 
 div.backgroundImg {
-    background-image: url('../images/back6.png');
+    background-image: url('../images/backgroundimg.png');
     background-color: #020202;
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,7 +34,7 @@ p,label,h1,h4,h5,h2 {
 }
 
 h1,h5 {
-    text-shadow: 0 0 10px #e23a87;
+    text-shadow: 0 0 10px #ffffff;
 }
 
 .nav-tabs {
