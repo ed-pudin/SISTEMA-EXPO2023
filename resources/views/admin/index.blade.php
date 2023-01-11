@@ -13,7 +13,10 @@
 
         <div class="card dashboard-t my-3">
             <div class="card-body">
-                <h2 class="text-center"> <b>TOTAL DE ASISTIDOS: </b> 9999</h2>
+                <div class="col-12 justify-content-center">
+                        <h2 class="text-center" style="font-size:8em; font-weight:bold;"> 9999 </h2>
+                        <h1 class="text-center" style="text-shadow:unset; font-size:1.5em;"> <b> TOTAL DE ASISTIDOS </b> </h1> 
+                </div>
             </div>
         </div>
 
@@ -21,23 +24,31 @@
 
             <div class="card dashboard-t col-12 col-md-5 my-3">
                 <div class="card-body d-flex center-text-v flex-fill">
-                    <h2 class="text-center"> <b> ALUMNOS: </b> <br> 9999</h2>
+                    <div class="col-md-4 col-sm-12 justify-content-center">
+                        <h2 class="text-center" style="font-size:6em; font-weight:bold;"> 12 </h2>
+                        <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> ALUMNOS </b> </h1> 
+                    </div>
                 </div>
             </div>
 
             <div class="card dashboard-t col-12 col-md-5 my-3">
                 <div class="card-body flex-fill">
-                    <h2 class="text-center p-1"> <b> EXTERNOS:</b> <br> 9999</h2>
+                    
+                    <div class="col-12 justify-content-center">
+                        <h2 class="text-center" style="font-size:6em; font-weight:bold;"> 9999 </h2>
+                        <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> EXTERNOS </b> </h1> 
+                    </div>
 
                     <div class="container col-12 d-md-flex mt-4">
-                        <div class="col-12 col-md-6 text-center text-white">
-                            <h3 class="text-center"> <b>FEMENINO: </b> <br> 9999</h3>
+                        <div class="col-12 col-md-6 justify-content-center">
+                            <h2 class="text-center" style="font-size:3em; font-weight:bold;"> 9999 </h2>
+                            <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> FEMENINO </b> </h1> 
                         </div>
 
-                        <div class="col-12 col-md-6 text-center text-white">
-                            <h3 class="text-center"> <b> MASCULINO:</b> <br> 9999</h3>
+                        <div class="col-12 col-md-6 justify-content-center">
+                            <h2 class="text-center" style="font-size:3em; font-weight:bold;"> 9999 </h2>
+                            <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> MASCULINO </b> </h1> 
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -47,17 +58,17 @@
         <div class="mt-3 card dashboard-t text-center text-white">
             <div class="row my-5">
                 <div class="col-md-4 col-sm-12 justify-content-center">
-                    <h2 style="font-size:7em; font-weight:bold;"> 12 </h2>
+                    <h2 style="font-size:5em; font-weight:bold;"> 12 </h2>
                     <h1 style="text-shadow:unset; font-size:2.0em;"> Cantidad eventos </h1> 
                 </div>
 
                 <div class="col-md-4 col-sm-12 justify-content-center">
-                    <h2 style="font-size:7em; font-weight:bold;"> 48 </h2>      
+                    <h2 style="font-size:5em; font-weight:bold;"> 48 </h2>      
                     <h1 style="text-shadow:unset; font-size:2.0em;"> Cantidad expositores </h1>       
                 </div>
 
                 <div class="col-md-4 col-sm-12 justify-content-center">
-                    <h2 style="font-size:7em; font-weight:bold;"> 48 </h2>
+                    <h2 style="font-size:5em; font-weight:bold;"> 48 </h2>
                     <h1 style="text-shadow:unset; font-size:1.8em;"> Cantidad empresas </h1> 
                 </div>
             </div>

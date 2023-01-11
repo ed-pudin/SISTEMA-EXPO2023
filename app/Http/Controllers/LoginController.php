@@ -15,6 +15,9 @@ class LoginController extends Controller
      */
     public function index()
     {
+        if(session()->get('id')){
+            session()->flush();
+        }
         return view('login');
     }
 
@@ -105,7 +108,6 @@ class LoginController extends Controller
 
     public function logOut(){
 
-        session()->flush();
         return redirect('/');
     }
 }
