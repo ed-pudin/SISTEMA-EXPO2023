@@ -84,7 +84,6 @@
                 responsive: true,
                 legend: {
                     labels: {
-                        display: true,
                         generateLabels: function(chart) {
                             var data = chart.data;
                             if (data.labels.length && data.datasets.length) {
@@ -109,17 +108,17 @@
                                         text: label + " : " + value,
                                         fillStyle: fill,
                                         strokeStyle: stroke,
-                                        lineWidth: bw,
+                                        lineWidth: 0,
                                         hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
-                                        fontColor: fill,
                                         index: i
                                     };
                                 });
                             } else {
                                 return [];
                             }
-                        }
-                    }
+                        },
+                        fontColor:'rgba(255,0,0,1)'
+                    },
                 }
             }
         });

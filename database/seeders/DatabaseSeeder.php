@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {   
         //Usuario adminsitrador
-        //\App\Models\User::factory()->create();
+        \App\Models\User::factory()->create();
 
         //Roles
         /*Role::create(['name' => 'admin']);
