@@ -62,7 +62,7 @@
 
                 <ul class="nav navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('cerrarSesion') }}">
                             <p class="m-0 nav-txt"> Salir </p>
                         </a>
                     </li>

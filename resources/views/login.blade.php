@@ -49,18 +49,26 @@
                                 <img class="logo-img col-10 col-md-4" src="{{ asset('images/LOGO.png') }}">
                             </div>
 
-                            <div class="col-md-12 my-4 mx-3">
-                                <div class="" syle="transform-origin: unset;">
-                                    <input type="text" class="form-control text-center" name="key" id="key" placeholder="Clave de inicio de sesión" required>
-                                </div>
-                            </div>
-                        
-
-                            <div class="col-md-12 my-4 mx-3">
+                            <div class="d-flex justify-content-center">
+                                
+                                <div class="col-md-10 my-4 mx-3">
                                     <div class="" syle="transform-origin: unset;">
-                                        <input type="password" class="form-control text-center" name="pas" id="pas" placeholder="Contraseña" required>
+                                        <input type="text" class="form-control text-center" name="key" id="key" placeholder="Clave de inicio de sesión" required>
                                     </div>
+                                </div>
+
                             </div>
+
+                            <div class="d-flex justify-content-center">
+
+                                <div class="col-md-10 my-4 mx-3">
+                                        <div class="" syle="transform-origin: unset;">
+                                            <input type="password" class="form-control text-center" name="pas" id="pas" placeholder="Contraseña" required>
+                                        </div>
+                                </div>
+
+                            </div>
+    
 
                             <div class="d-flex justify-content-center my-4">
                                 <button type="submit" class="btn btn-primary col-md-6">Iniciar sesión</button>

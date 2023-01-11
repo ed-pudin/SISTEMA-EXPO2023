@@ -15,7 +15,6 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //session()->flush();
         return view('login');
     }
 
@@ -39,9 +38,10 @@ class LoginController extends Controller
     {   
         $user = new User();
         $user = User::where('key', '=', $request->key, 'and')->where('password', '=', $request->pas)->first();
+
         if($user != null){
+
             $request->session()->put('id', $user->id);
-            //$user->assignRole($user->rol);
 
             if($user->rol == 'admin'){
                 return redirect()->route('adminInicio.index');
@@ -101,5 +101,11 @@ class LoginController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function logOut(){
+
+        session()->flush();
+        return redirect('/');
     }
 }

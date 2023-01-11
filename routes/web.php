@@ -39,6 +39,11 @@ Route::resource('/inicioSesion', LoginController::class, [
     'store' => 'inicioSesion.store'
 ]);
 
+//Solo los de sesion
+
+Route::get('cerrarSesion', [LoginController::class, 'logOut']
+)->name('cerrarSesion')->middleware('LogOut');
+
 Route::group(['middleware' => 'isAdmin'], function () {
 
     // Acceso SOLO ADMIN
@@ -91,6 +96,7 @@ Route::group(['middleware' => 'isStaffOrAdmin'], function () {
         'show' => 'staffEvento.show'
     ]);
 
+
 });
 
 Route::group(['middleware' => 'isTeacherOrAdmin'], function () {
@@ -103,12 +109,13 @@ Route::group(['middleware' => 'isTeacherOrAdmin'], function () {
 });
 
 
-Route::group(['middleware' => 'isExpositorOrAdmin'], function () {
+Route::group(['middleware' => 'isExpositor'], function () {
 
     //Acceso solo expositores y admin
     Route::resource('expositorQR', ExpositorQRController::class, [
         'index' => 'expositorQR.index'
     ]);
+
 });
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class isStaffOrAdmin
 {
@@ -18,7 +19,9 @@ class isStaffOrAdmin
     {
         if($request->session()->get('id')){
 
-            $user = User::find($request->session()->get('id'))->first();
+            $id = $request->session()->get('id');
+
+            $user = User::where('id', $id)->first();
 
             if($user->rol == 'admin'){
                 return $next($request);
@@ -35,7 +38,7 @@ class isStaffOrAdmin
             }
         
         }else{
-            return redirect()->route('/');
+            return redirect('/');
         }
     }
 }

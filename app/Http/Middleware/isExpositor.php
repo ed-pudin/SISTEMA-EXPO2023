@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class isExpositorOrAdmin
+class isExpositor
 {
     /**
      * Handle an incoming request.
@@ -18,24 +19,25 @@ class isExpositorOrAdmin
     {
         if($request->session()->get('id')){
 
-            $user = User::find($request->session()->get('id'))->first();
+            $id = $request->session()->get('id');
 
-            if($user->rol == 'admin'){
+            $user = User::where('id', $id)->first();
+
+            if($user->rol == 'expositor'){
                 return $next($request);
                 //dd("Es admin");
             }else if ($user->rol == 'staff'){
                 return back();
                 //dd("Es staff");
-            }else if ($user->rol == 'expositor'){
-                return $next($request);
+            }else if ($user->rol == 'admin'){
+                return back();
                 //dd("Es expositor");
             }else if($user->rol == 'teacher'){
                 return back();
                 //dd("Es maestro");
             }
-        
         }else{
-            return redirect()->route('/');
+            return redirect('/');
         }
     }
 }

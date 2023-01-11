@@ -74,7 +74,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                        <a href="{{ route('cerrarSesion') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                             <i class="bi bi-x-circle-fill fs-3">
                                 <p class="d-none d-sm-block nav-txt">Salir</p>
                             </i>

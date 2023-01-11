@@ -11,4 +11,9 @@ class student extends Model
     use HasFactory, SoftDeletes;
 
     protected $primaryKey = 'enrollment';
+
+    protected $fillable = [
+        'enrollment',
+        'fullName'
+    ];
 }
