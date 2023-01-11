@@ -62,9 +62,9 @@
                 </div>
             </div>
 
-            <div class="mt-3 mb-5 text-center text-white">
-                <div id="legend-container"></div>
-                <div class="col-sm-6 col-xs-12 mx-auto">
+            <div class="row mt-3 mb-5 text-center text-white">
+                <div id="legend-container" class="container-fluid col-sm-6 col-xs-12"></div>
+                <div class="col-sm-6 col-xs-12">
                 <canvas id="pieChart"></canvas>
             </div>
 
@@ -93,12 +93,10 @@
 
         const getOrCreateLegendList = (chart, id) => {
             const legendContainer = document.getElementById(id);
-            let listContainer = legendContainer.querySelector('ul');
+            let listContainer = legendContainer.querySelector('div');
 
             if (!listContainer) {
-                listContainer = document.createElement('ul');
-                listContainer.style.display = 'flex';
-                listContainer.style.flexDirection = 'row';
+                listContainer = document.createElement('div');
                 listContainer.style.margin = 0;
                 listContainer.style.padding = 0;
 
@@ -122,7 +120,7 @@
                 const items = chart.options.legend.labels.generateLabels(chart);
 
                 items.forEach(item => {
-                    const li = document.createElement('li');
+                    const li = document.createElement('div');
                     li.style.alignItems = 'center';
                     li.style.cursor = 'pointer';
                     li.style.display = 'flex';
@@ -182,16 +180,15 @@
             type: 'pie',
             data: data,
             options: {
+                legend: {
+                    display: false,
+                },
+
                 plugins: {
                     htmlLegend: {
                         // ID of the container to put the legend in
                         containerID: 'legend-container',
                     },
-                    legend: {
-                        labels: {
-                            display: false
-                        }
-                    }
                 }
             },
 
