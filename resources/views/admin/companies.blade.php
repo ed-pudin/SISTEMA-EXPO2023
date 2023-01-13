@@ -1,21 +1,40 @@
 @extends('admin.struct')
 
 @section('Content')
-<script>
+    @if(session()->has('status'))
+        
+        <script type="text/javascript">
+            @if(session()->get('status') == "Empresa registrada")
+            document.addEventListener("DOMContentLoaded", function(){
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#30a702',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+                })
+            
+            });
+            @endif
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+            @if(session()->get('status') == "Hubo un problema en el registro")
+            document.addEventListener("DOMContentLoaded", function(){
+                Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'#a70202',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+                })
+            
+            });
+            @endif
+        </script>
+    @endif
 
-            reader.onload = function (e) {
-                $('#regEventImg').attr('src', e.target.result).width(300).height(200);
-            };
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-</script>
 
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
@@ -47,44 +66,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Empresa Agrícola Sustentable del Mundo</td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
-                                    </td>
-                                </tr>
 
-                                <tr>
-                                    <td>Componentes electrónicos SA de CV</td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Happy Company</td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach ($companies as $company)                                
+                                    <tr>
+                                        <td>{{$company['nameCompany']}}</td>
+                                        <td>
+                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                        </td>
+                                        <td>
+                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                        </td>
+                                        <td>
+                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -92,13 +88,14 @@
 
                 <div class="tab-pane fade show" id="register-company" aria-labelledby="register-company-tab">
 
-                    <form class="row align-items-center p-5">
+                    <form class="row align-items-center p-5" id="registroEmpresa" action="{{route('adminRegistroEmpresas.store')}}" method="post">
+                    @csrf
                         <h1 class="mb-5" style="text-align: center;"> Registrando Empresa </h1>
 
                         <div class="col-md-3"></div>
                         <div class=" col-md-6 col-sm-12 my-5">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="regCompanyName" placeholder="Nombre de la Empresa">
+                                <input type="text" class="form-control" name="regCompanyName" id="regCompanyName" placeholder="Nombre de la Empresa" required>
                                 <label for="regCompanyName">Nombre de la Empresa</label>
                             </div>
                         </div>

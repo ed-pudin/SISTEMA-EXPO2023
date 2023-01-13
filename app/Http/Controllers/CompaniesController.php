@@ -13,7 +13,12 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        return view('admin.companies');
+        //Obtener empresas
+
+        $companies = \App\Models\company::all();
+
+        return view('admin.companies', compact('companies'));
+
     }
 
     /**
@@ -34,7 +39,16 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Crear empresa
+        $company = new \App\Models\company();
+        $company->nameCompany = $request->regCompanyName;
+
+        if($company->save()){
+            session()->flash("status","Empresa registrada");
+        }else{
+            session()->flash("status","Hubo un problema en el registro");
+        }
+        return redirect()->back();
     }
 
     /**

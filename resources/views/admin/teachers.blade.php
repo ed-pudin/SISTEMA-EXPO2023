@@ -3,17 +3,7 @@
 @section('Content')
 <script>
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#regEventImg').attr('src', e.target.result).width(300).height(200);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
 
     function generatePassword() {
         var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%_-&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -24,8 +14,6 @@
             var randomNumber = Math.floor(Math.random() * chars.length);
             password += chars.substring(randomNumber, randomNumber +1);
         }
-
-        document.getElementById("regTeacherPassword").value = password;
 
     }
 
@@ -55,15 +43,18 @@
                             <thead>
                                 <tr>
                                     <th class="w-priority">Nombre</th>
+                                    <th class="w-priority">Correo</th>
                                     <th class="w-priority">Usuario</th>
                                     <th class="w-priority">Contraseña</th>
                                     <th>Editar</th>
                                     <th>Borrar</th>
+                                    <th>Enviar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Maestro 0</td>
+                                    <td>Correo</td>
                                     <td>Usuario 0</td>
                                     <td>Password_0</td>
                                     <td>
@@ -72,31 +63,12 @@
                                     <td>
                                         <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
                                     </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Maestro 1</td>
-                                    <td>Usuario 1</td>
-                                    <td>Password_1</td>
                                     <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-send"></i></a>
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <td>Maestro 2</td>
-                                    <td>Usuario 2</td>
-                                    <td>Password_2</td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -104,41 +76,29 @@
 
                 <div class="tab-pane fade show" id="register-teacher" aria-labelledby="register-teacher-tab">
 
-                    <form class="row align-items-center p-5">
+                    <form class="row align-items-center p-5" id="registroMaestro" action="{{route('adminRegistroEmpresas.store')}}" method="post">
+                    @csrf
                         <h1 style="text-align: center;"> Registrando Maestro </h1>
 
                         <div class="col-md-3"></div>
-                        <div class=" col-md-6 col-sm-12 my-5">
+                            <div class=" col-md-6 col-sm-12 my-5">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="regTeacherName" placeholder="Nombre del Maestro" required>
+                                    <label for="regTeacherName">Nombre del Maestro</label>
+                                </div>
+                            </div>
+                        <div class="col-md-3"></div>
+
+                        <div class="col-md-3"></div>
+
+                        <div class=" col-md-6 col-sm-12 mt-3">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="regTeacherName" placeholder="Nombre del Maestro">
-                                <label for="regTeacherName">Nombre del Maestro</label>
+                                <input type="email" class="form-control" id="regTeacherCorreo" placeholder="Correo del Maestro" required onkeypress=generatePassword();>
+                                <label for="regTeacherCorreo">Correo del Maestro</label>
                             </div>
                         </div>
-                        <div class="col-md-3"></div>
-
-                        <h4 class="mb-2" style="text-align: center;"> Generar Usuario </h4>
 
                         <div class="col-md-3"></div>
-                        <div class=" col-md-6 col-sm-12 mb-2">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="regTeacherUsername" placeholder="Usuario">
-                                <label for="regTeacherUsername">Usuario</label>
-                            </div>
-                        </div>
-                        <div class="col-md-3"></div>
-
-                        <div class="col-md-3"></div>
-                        <div class=" col-md-4 col-sm-12 mb-2">
-                            <div class="form-floating">
-                                <input autocomplete="off" type="text" class="form-control" id="regTeacherPassword" placeholder="Contraseña">
-                                <label for="regTeacherPassword">Contraseña</label>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-12 mb-2 align-items-center">
-                            <a type="button" id="autoPassword" class="btn btn-primary" onclick="generatePassword()">Generar Contraseña</a>
-                        </div>
-                        <div class="col-md-3"></div>
-
 
                         <div class="col-12 my-5" style="text-align:center;">
                             <button id="regTeacher" type="submit" class="col-md-4 col-sm-12 btn btn-primary">REGISTRAR</button>
