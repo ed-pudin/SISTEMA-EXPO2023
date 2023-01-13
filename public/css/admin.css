@@ -86,17 +86,39 @@ div.input-group-text {
     border-bottom: 2px solid #e23a87;
 }
 
-.btn-primary {
+.swal2-styled.swal2-confirm:focus {
+    box-shadow: 0 0 5px 2px #861dc2;
+}
+
+.btn-primary, .swal2-styled.swal2-confirm {
     color: snow;
     background-color: #c53aff;
     border: none;
     border-radius: 15px;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, 
+.swal2-confirm:hover {
     color: snow;
     background-color: #861dc2;
     box-shadow: 0 0 5px 2px #861dc2;
+    border: none;
+}
+
+.btn-secondary, .swal2-styled.swal2-cancel {
+    color: black;
+    background-color: #39f6e4;
+    border: none;
+    border-radius: 15px;
+}
+
+.btn-secondary:focus .swal2-styled.swal2-cancel:focus {
+    box-shadow: 0 0 5px 2px #21decb;
+}
+
+.btn-secondary:hover, .swal2-styled.swal2-cancel:hover {
+    background-color: #21decb;
+    box-shadow: 0 0 5px 2px #21decb;
     border: none;
 }
 
@@ -144,7 +166,7 @@ a>i.bi, .nav-txt, .navbar-brand {
     color: red;
 }
 
-.btn-primary{
+.btn-primary, .btn-secondary{
     font-style:bold;
 }
 
@@ -243,11 +265,15 @@ a.btn-table {
     height: fit-content;
 }
 
-.btn-table {
+a.btn-table.btn-secondary > i.bi {
+    color:black;
+}
+
+.btn-table+:not(.btn-secondary) {
     background-color: #861dc2;
 }
 
-.btn-table:hover {
+.btn-table:hover+:not(.btn-secondary) {
     background-color: #c53aff;
 }
 

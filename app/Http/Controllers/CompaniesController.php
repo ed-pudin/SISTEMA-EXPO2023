@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Models\company;
 
 class CompaniesController extends Controller
 {
@@ -82,7 +83,15 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company = company::find($id);
+        $company->nameCompany = $request->editCompanyName;
+
+        if($company->save()){
+            session()->flash("update","Edición en empresa exitosa");
+        }else{
+            session()->flash("update","Hubo un error, intente de nuevo");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -93,6 +102,14 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = company::find($id);
+
+        if($company->delete()){
+            session()->flash("delete","Se ha eliminado correctamente $company->nameCompany");
+        }else{
+            session()->flash("delete","Algo salió mal");
+        }
+
+        return redirect()->back();
     }
 }

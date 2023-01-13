@@ -52,8 +52,10 @@ Route::group(['middleware' => 'isAdmin'], function () {
     ]);
 
     Route::resource('adminRegistroEmpresas', CompaniesController::class ,[
-        'index' => 'adminRegistroEmpresas.index',
-        'store' => 'adminRegistroEmpresas.store'
+        'index'     =>  'adminRegistroEmpresas.index',
+        'store'     =>  'adminRegistroEmpresas.store',
+        'update'    =>  'adminRegistroEmpresas.update',
+        'destroy'   =>  'adminRegistroEmpresas.destroy'
     ]);
     
     Route::resource('adminRegistroEventos', EventsController::class ,[
