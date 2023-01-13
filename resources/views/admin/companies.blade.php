@@ -69,7 +69,7 @@
 
                                 @foreach ($companies as $company)                                
                                     <tr>
-                                        <td>{{$company['nameCompany']}}</td>
+                                        <td>{{$company->nameCompany}}</td>
                                         <td>
                                             <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                         </td>

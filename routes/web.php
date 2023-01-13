@@ -61,11 +61,13 @@ Route::group(['middleware' => 'isAdmin'], function () {
     ]);
     
     Route::resource('adminRegistroInvitados', GuestsController::class ,[
-        'index' => 'adminRegistroInvitados.index' 
+        'index' => 'adminRegistroInvitados.index',
+        'store' => 'adminRegistroInvitados.store'
     ]);
     
     Route::resource('adminRegistroMaestros', TeachersController::class ,[
-        'index' => 'adminRegistroMaestros.index' 
+        'index' => 'adminRegistroMaestros.index',
+        'store' => 'adminRegistroMaestros.store' 
     ]);
 
 });

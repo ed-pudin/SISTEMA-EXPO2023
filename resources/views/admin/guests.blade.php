@@ -1,22 +1,38 @@
 @extends('admin.struct')
 
 @section('Content')
-<script>
+  @if(session()->has('status'))
+        
+        <script type="text/javascript">
+            @if(session()->get('status') == "Invitado registrado")
+            document.addEventListener("DOMContentLoaded", function(){
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#30a702',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+                })
+            
+            });
+            @endif
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#regEventImg').attr('src', e.target.result).width(300).height(200);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-</script>
-
+            @if(session()->get('status') == "Hubo un problema en el registro")
+            document.addEventListener("DOMContentLoaded", function(){
+                Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'#a70202',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+                })
+            
+            });
+            @endif
+        </script>
+@endif
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 <!-- --------------- -->
@@ -47,20 +63,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Invitado 0</td>
-                                    <td>Empresa 0</td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach ($guests as $guest)                                
 
                                 <tr>
-                                    <td>Invitado 1</td>
-                                    <td>Empresa 1</td>
+                                    <td>{{$guest->fullName}}</td>
+                                    @if($guest->company()->first() != null)
+                                        <td>{{$guest->company()->first()->nameCompany}}</td>
+                                    @else
+                                        <td class="text-secondary">Sin empresa</td>
+                                    @endif
                                     <td>
                                         <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
                                     </td>
@@ -68,17 +79,7 @@
                                         <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <td>Invitado 2</td>
-                                    <td>Empresa 3</td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -86,13 +87,14 @@
 
                 <div class="tab-pane fade show" id="register-guests" aria-labelledby="register-guests-tab">
 
-                    <form class="row align-items-center p-5">
+                    <form class="row align-items-center p-5" id="registroInvitados"action="{{route('adminRegistroInvitados.store')}}" method="post">
+                        @csrf
                         <h1 style="text-align: center;"> Registrando un Invitado </h1>
 
                         <div class="col-md-3"></div>
                         <div class=" col-md-6 col-sm-12 my-5">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="regGuestName" placeholder="Nombre del Evento">
+                                <input type="text" class="form-control" name="regGuestName" id="regGuestName" placeholder="Nombre del Evento" required>
                                 <label for="regGuestName">Nombre del Invitado</label>
                             </div>
                         </div>
@@ -101,12 +103,13 @@
                         <div class="col-md-3"></div>
                         <div class="col-md-6 col-sm-12 my-5">
                             <div class="form-floating">
-                                <select class="form-select" id="regGuestEntreprise">
-                                    <option value="1">Ninguna</option>
-                                    <option value="2">Empresa 1</option>
-                                    <option value="3">Empresa 2</option>
+                                <select class="form-select" id="regGuestCmpany" name="regGuestCmpany">
+                                    <option value="0">Ninguna</option>
+                                    @foreach ($companies as $company) 
+                                        <option value="{{$company->id}}">{{$company->nameCompany}}</option>
+                                    @endforeach
                                 </select>
-                                <label for="regGuestEntreprise">Empresa</label>
+                                <label for="regGuestCmpany">Empresa</label>
                             </div>
                         </div>
                         <div class="col-md-3"></div>
