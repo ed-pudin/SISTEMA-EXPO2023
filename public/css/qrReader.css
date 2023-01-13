@@ -1,0 +1,37 @@
+div > div#reader {
+    font-size: large;
+    color:snow;
+}
+
+#reader__dashboard_section_csr button {
+    width: auto!important;
+    padding-left: 1.0rem;
+    padding-right: 1.0rem;
+    color: snow;
+    background-color: #c53aff;
+    border: none;
+    border-radius: 15px;
+}
+
+#reader__dashboard_section_csr button:hover {
+    color: snow;
+    background-color: #861dc2;
+    box-shadow: 0 0 5px 2px #861dc2;
+    border: none;
+}
+
+div#reader > :first-child {
+    display: none;
+}
+
+#reader__camera_selection {
+    color: snow;
+    background-color: black;
+    border-radius: 0.2rem;
+    border: none;
+    border-bottom: 2px solid #39f6e4;
+}
+
+#reader__camera_selection:focus {
+    border-bottom: 2px solid #e23a87;
+}
