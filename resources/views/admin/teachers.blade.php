@@ -1,25 +1,40 @@
 @extends('admin.struct')
 
 @section('Content')
-<script>
+@if(session()->has('status'))
+        
+        <script type="text/javascript">
+            @if(session()->get('status') == "Maestro registrado")
+            document.addEventListener("DOMContentLoaded", function(){
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#30a702',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+                })
+            
+            });
+            @endif
 
+            @if(session()->get('status') == "Hubo un problema en el registro")
+            document.addEventListener("DOMContentLoaded", function(){
+                Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'#a70202',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+                })
+            
+            });
+            @endif
+        </script>
+    @endif
 
-
-    function generatePassword() {
-        var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%_-&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var passwordLength = 12;
-        var password = "";
-
-        for (var i = 0; i <= passwordLength; i++) {
-            var randomNumber = Math.floor(Math.random() * chars.length);
-            password += chars.substring(randomNumber, randomNumber +1);
-        }
-
-    }
-
-</script>
-
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 <!-- --------------- -->
 <!-- ADMIN MAESTROS  -->
@@ -52,23 +67,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Maestro 0</td>
-                                    <td>Correo</td>
-                                    <td>Usuario 0</td>
-                                    <td>Password_0</td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-send"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach ($teachers as $teacher)                                
 
+                                    <tr>
+                                        <td>{{$teacher->fullName}}</td>
+                                        <td>{{$teacher->email}}</td>
+                                        <td> {{$teacher->user()->first()->key}}</td>
+                                        <td>{{$teacher->user()->first()->password}}</td>
+                                        <td>
+                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                        </td>
+                                        <td>
+                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                        </td>
+                                        <td>
+                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-send"></i></a>
+                                        </td>
+                                    </tr>
 
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -76,14 +93,14 @@
 
                 <div class="tab-pane fade show" id="register-teacher" aria-labelledby="register-teacher-tab">
 
-                    <form class="row align-items-center p-5" id="registroMaestro" action="{{route('adminRegistroEmpresas.store')}}" method="post">
+                    <form class="row align-items-center p-5" id="registroMaestro" action="{{route('adminRegistroMaestros.store')}}" method="post">
                     @csrf
                         <h1 style="text-align: center;"> Registrando Maestro </h1>
 
                         <div class="col-md-3"></div>
                             <div class=" col-md-6 col-sm-12 my-5">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="regTeacherName" placeholder="Nombre del Maestro" required>
+                                    <input type="text" class="form-control" name="regTeacherName"  id="regTeacherName" placeholder="Nombre del Maestro" required>
                                     <label for="regTeacherName">Nombre del Maestro</label>
                                 </div>
                             </div>
@@ -93,7 +110,7 @@
 
                         <div class=" col-md-6 col-sm-12 mt-3">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="regTeacherCorreo" placeholder="Correo del Maestro" required onkeypress=generatePassword();>
+                                <input type="email" class="form-control" name="regTeacherCorreo" id="regTeacherCorreo" placeholder="Correo del Maestro" required>
                                 <label for="regTeacherCorreo">Correo del Maestro</label>
                             </div>
                         </div>

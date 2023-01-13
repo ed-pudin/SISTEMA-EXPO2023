@@ -145,44 +145,46 @@
 
                                 @foreach ($companies as $company)                          
                                     <tr>
-                                        <td hidden>{{$company['id']}}</td>
-                                        <td id="adminDisplayCompanyName_{{$company['id']}}">{{$company['nameCompany']}}</td>
-                                        <td id="adminFormEditCompanyName_{{$company['id']}}" hidden>
-                                            <form action="{{route('adminRegistroEmpresas.update', [$company['id']])}}" method="POST">
+                                        <td hidden>{{$company->id}}</td>
+                                        <td id="adminDisplayCompanyName_{{$company->id}}">{{$company->nameCompany}}</td>
+                                        <td id="adminFormEditCompanyName_{{$company->id}}" hidden>
+                                            <form action="{{route('adminRegistroEmpresas.update', [$company->id])}}" method="POST">
                                             @method('PUT')
                                             @csrf
                                                 <div class="row" style="align-items: center;text-align-last: start;">
                                                     <div class="col-8">
                                                         <div class="form-floating col-12 col-lg-10 m-auto">
-                                                            <input autocomplete="off" name="editCompanyName" id="editCompanyName_{{$company['id']}}" type="text" class="form-control" placeholder="Nombre de la Empresa" value="{{$company['nameCompany']}}" required>
-                                                            <label for="editCompanyName_{{$company['id']}}">Nombre de la Empresa</label>
+                                                            <input autocomplete="off" name="editCompanyName" id="editCompanyName_{{$company->id}}" type="text" class="form-control" placeholder="Nombre de la Empresa" value="{{$company->nameCompany}}" required>
+                                                            <label for="editCompanyName_{{$company->id}}">Nombre de la Empresa</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-2" style="text-align-last: center;">
                                                         <b class="d-none d-md-block" style="color:snow;"> Confirmar </b>
                                                         <hr class="my-1 p-0" style="border-color:rgba(0,0,0,0)">
-                                                        <a onclick="confirmDialog(`formAdminEditBtn_{{$company['id']}}`)" type="submit" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-check-lg"></i></a>
-                                                        <button id="formAdminEditBtn_{{$company['id']}}" type="submit" hidden></button>
+                                                        <a onclick="confirmDialog(`formAdminEditBtn_{{$company->id}}`)" type="submit" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-check-lg"></i></a>
+                                                        <button id="formAdminEditBtn_{{$company->id}}" type="submit" hidden></button>
                                                     </div>
                                                     <div class="col-2" style="text-align-last: center;">
                                                         <b class="d-none d-md-block" style="color:snow;"> Cancelar </b>
                                                         <hr class="my-1 p-0" style="border-color:rgba(0,0,0,0)">
-                                                        <a onclick="swapEdit({{$company['id']}},'{{$company['nameCompany']}}')" class="btn-table btn btn-secondary m-auto"><i class="bi bi-x-lg"></i></a>
+                                                        <a onclick="swapEdit({{$company->id}},'{{$company->nameCompany}}')" class="btn-table btn btn-secondary m-auto"><i class="bi bi-x-lg"></i></a>
                                                     </div>
                                                 </div>
                                             </form>
+                                        <td>
+                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                         </td>
                                         <td>
-                                            <a onclick="swapEdit({{$company['id']}},'{{$company['nameCompany']}}')" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                            <a onclick="swapEdit({{$company->id}},'{{$company->nameCompany}}')" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                         </td>
                                         <td>
-                                            <form action="{{route('adminRegistroEmpresas.destroy', [$company['id']])}}" method="POST" hidden>
+                                            <form action="{{route('adminRegistroEmpresas.destroy', [$company->id])}}" method="POST" hidden>
                                             @method('DELETE')
                                             @csrf
-                                                <button id="formAdminDeleteBtn_{{$company['id']}}" type="submit"> DESTROY </button>
+                                                <button id="formAdminDeleteBtn_{{$company->id}}" type="submit"> DESTROY </button>
                                             </form>
 
-                                            <a onclick="confirmDialog(`formAdminDeleteBtn_{{$company['id']}}`)" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                            <a onclick="confirmDialog(`formAdminDeleteBtn_{{$company->id}}`)" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
                                         </td>
                                         <td>
                                             <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
