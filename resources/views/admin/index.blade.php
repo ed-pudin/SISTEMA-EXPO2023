@@ -20,34 +20,38 @@
             </div>
         </div>
 
-        <div class="col-12 d-md-flex justify-content-around">
-
-            <div class="card dashboard-t col-12 col-md-5 my-3">
-                <div class="card-body d-flex center-text-v flex-fill">
-                    <div class="col-md-4 col-sm-12 justify-content-center">
-                        <h2 class="text-center" style="font-size:6em; font-weight:bold;"> 12 </h2>
-                        <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> ALUMNOS </b> </h1> 
+        <div class="container-fluid justify-content-around">
+            <div class="row">
+                <div class="card dashboard-t col-12 col-md-12 col-lg-5 my-3">
+                    <div class="card-body row d-flex center-text-v flex-fill">
+                        <div class="col-12 justify-content-center">
+                            <h2 class="text-center" style="font-size:6em; font-weight:bold;"> 12 </h2>
+                        </div>
+                        <div class="col-12 justify-content-center">
+                            <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> ALUMNOS </b> </h1> 
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card dashboard-t col-12 col-md-5 my-3">
-                <div class="card-body flex-fill">
-                    
-                    <div class="col-12 justify-content-center">
-                        <h2 class="text-center" style="font-size:6em; font-weight:bold;"> 9999 </h2>
-                        <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> EXTERNOS </b> </h1> 
-                    </div>
+                <div class="col"> </div>
 
-                    <div class="container col-12 d-md-flex mt-4">
-                        <div class="col-12 col-md-6 justify-content-center">
-                            <h2 class="text-center" style="font-size:3em; font-weight:bold;"> 9999 </h2>
-                            <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> FEMENINO </b> </h1> 
+                <div class="card dashboard-t col-12 col-md-12 col-lg-5 my-3">
+                    <div class="card-body flex-fill">
+                        <div class="col-12 justify-content-center">
+                            <h2 class="text-center" style="font-size:6em; font-weight:bold;"> 9999 </h2>
+                            <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> EXTERNOS </b> </h1> 
                         </div>
 
-                        <div class="col-12 col-md-6 justify-content-center">
-                            <h2 class="text-center" style="font-size:3em; font-weight:bold;"> 9999 </h2>
-                            <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> MASCULINO </b> </h1> 
+                        <div class="container col-12 d-md-flex mt-4">
+                            <div class="col-12 col-md-6 justify-content-center">
+                                <h2 class="text-center" style="font-size:3em; font-weight:bold;"> 9999 </h2>
+                                <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> FEMENINO </b> </h1> 
+                            </div>
+
+                            <div class="col-12 col-md-6 justify-content-center">
+                                <h2 class="text-center" style="font-size:3em; font-weight:bold;"> 9999 </h2>
+                                <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> MASCULINO </b> </h1> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,9 +78,10 @@
             </div>
 
             <div class="row mt-3 mb-5 text-center text-white">
-                <div id="legend-container" class="container-fluid col-sm-6 col-xs-12"></div>
-                <div class="col-sm-6 col-xs-12">
-                <canvas id="pieChart"></canvas>
+                <div id="legend-container" class="container-fluid col-12 mb-5"></div>
+                <div class="col-sm-6 col-xs-12 m-auto">
+                    <canvas id="pieChart"></canvas>
+                </div>
             </div>
 
         </div>
@@ -110,6 +115,7 @@
                 listContainer = document.createElement('div');
                 listContainer.style.margin = 0;
                 listContainer.style.padding = 0;
+                listContainer.classList.add("row");
 
                 legendContainer.appendChild(listContainer);
             }
@@ -134,9 +140,11 @@
                     const li = document.createElement('div');
                     li.style.alignItems = 'center';
                     li.style.cursor = 'pointer';
-                    li.style.display = 'flex';
-                    li.style.flexDirection = 'row';
-                    li.style.marginLeft = '10px';
+                    li.classList.add("col-lg-2");
+                    li.classList.add("col-sm-6");
+                    li.classList.add("col-6");
+                    li.style.textAlign = 'center';
+
 
                     li.onclick = () => {
                         const {type} = chart.config;
@@ -160,10 +168,11 @@
                     boxSpan.style.width = '20px';
 
                     // Text
-                    const textContainer = document.createElement('p');
+                    const textContainer = document.createElement('a');
                     textContainer.style.color = item.fontColor;
                     textContainer.style.margin = 0;
                     textContainer.style.padding = 0;
+                    textContainer.style.width = 'fit-content';
                     textContainer.style.textDecoration = item.hidden ? 'line-through' : '';
 
                     const text = document.createTextNode(item.text);
