@@ -172,9 +172,6 @@
                                                 </div>
                                             </form>
                                         <td>
-                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
-                                        </td>
-                                        <td>
                                             <a onclick="swapEdit({{$company->id}},'{{$company->nameCompany}}')" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                         </td>
                                         <td>
