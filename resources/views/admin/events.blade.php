@@ -1,6 +1,41 @@
 @extends('admin.struct')
 
 @section('Content')
+
+@if(session()->has('status'))
+        
+        <script type="text/javascript">
+            @if(session()->get('status') == "Evento registrado")
+            document.addEventListener("DOMContentLoaded", function(){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    iconColor: '#0de4fe',
+                    title: `{{ session()->get('status') }}`,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            
+            });
+            @endif
+
+            @if(session()->get('status') == "Hubo un problema en el registro")
+            document.addEventListener("DOMContentLoaded", function(){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    iconColor:'#a70202',
+                    title: `{{ session()->get('status') }}`,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            
+            });
+            @endif
+
+        </script>
+    @endif
+
 <script>
 
     function readURL(input) {
@@ -52,13 +87,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($events as $event)
                                 <tr>
-                                    <td>Tips para empezar como programador en Amazon</td>
-                                    <td>Jhon Lenon</td>
-                                    <td>Conferencia</td>
-                                    <td>15/12/22</td>
-                                    <td>13:00:00</td>
-                                    <td>15:00:00</td>
+                                    <td>{{$event->eventName}}</td>
+                                    <td>{{$event->guest()->first()->fullName}}</td>
+                                    <td>{{$event->typeEvent}}</td>
+                                    <td>{{substr($event->date, 0, 10)}}</td>
+                                    <td>{{$event->startTime}}</td>
+                                    <td>{{$event->endTime}}</td>
                                     <td>
                                         <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                     </td>
@@ -69,40 +105,7 @@
                                         <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Evento 1</td>
-                                    <td>Jhon Lenon</td>
-                                    <td>Conferencia</td>
-                                    <td>15/12/22</td>
-                                    <td>13:00:00</td>
-                                    <td>15:00:00</td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-eye"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Evento 2</td>
-                                    <td>Jhon Lenon</td>
-                                    <td>Conferencia</td>
-                                    <td>15/12/22</td>
-                                    <td>13:00:00</td>
-                                    <td>15:00:00</td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-eye"></i></a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -110,18 +113,19 @@
 
                 <div class="tab-pane fade show" id="register-event" aria-labelledby="register-event-tab">
 
-                    <form class="row align-items-center py-5 px-lg-5 px-md-3 px-sm-0">
+                    <form class="row align-items-center py-5 px-lg-5 px-md-3 px-sm-0" id="registroEventos" method="POST" enctype="multipart/form-data" action="{{route('adminRegistroEventos.store')}}">
+                        @csrf
                         <h1 style="text-align: center;"> Registrando un Evento </h1>
                         <div class="col-sm-12 my-2">
                             <div>
                                 <div class="mb-4 d-flex justify-content-center">
-                                    <img onclick="document.getElementById('regBtnEventImg').click();" id="regEventImg" src="https://placehold.co/300x200?text=Imagen+del+evento" alt="example placeholder"/>
+                                    <img onclick="document.getElementById('regBtnEventImg').click();" name="regEventImg" id="regEventImg" src="https://placehold.co/300x200?text=Imagen+del+evento" alt="example placeholder"/>
                                     <!--<img onclick="document.getElementById('regBtnEventImg').click();" id="regEventImg" src="https://picsum.photos/300/200" alt="example placeholder"/>-->
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <div class="btn btn-primary btn-rounded" onclick="document.getElementById('regBtnEventImg').click();">
                                         <label class="form-label text-white m-1" for="regBtnEventImg"><i class="bi bi-image-fill"></i></label>
-                                        <input accept="image/*" type="file" class="form-control d-none" id="regBtnEventImg" onchange="readURL(this)"/>
+                                        <input accept="image/*" type="file" class="form-control d-none" name="regBtnEventImg" id="regBtnEventImg" onchange="readURL(this)" required/>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +134,7 @@
 
                         <div class="col-sm-8 my-2">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="regEventName" placeholder="Nombre del Evento">
+                                <input type="text" class="form-control" name="regEventName" id="regEventName" placeholder="Nombre del Evento" required>
                                 <label for="regEventName">Nombre del evento</label>
                             </div>
                         </div>
@@ -139,7 +143,7 @@
                             <label for="regEventDate">Fecha</label>
                             <div class="input-group">
                                 <div class="input-group-text"><i class="bi bi-calendar-day-fill"></i></div>
-                                <input type="date" class="form-control" id="regEventDate">
+                                <input type="date" class="form-control" id="regEventDate" name="regEventDate" >
                             </div>
                         </div>
 
@@ -147,7 +151,7 @@
                             <label for="regEventStartHour">Hora Inicio</label>
                             <div class="input-group">
                                 <div class="input-group-text"><i class="bi bi-alarm-fill"></i></div>
-                                <input type="time" class="form-control" id="regEventStartHour" onchange="document.getElementById('aa').value = this.value">
+                                <input required type="time" class="form-control" name="regEventStartHour" id="regEventStartHour" onchange="document.getElementById('aa').value = this.value">
                                 <input type="text" id="aa" hidden>
                             </div>
                         </div>
@@ -156,17 +160,17 @@
                             <label for="regEventEndHour">Hora Final</label>
                             <div class="input-group">
                                 <div class="input-group-text"><i class="bi bi-alarm-fill"></i></div>
-                                <input type="time" class="form-control" id="regEventEndHour" onchange="document.getElementById('bb').value = this.value">
+                                <input required type="time" class="form-control" name="regEventEndHour" id="regEventEndHour" onchange="document.getElementById('bb').value = this.value">
                                 <input type="text" id="bb" hidden>
                             </div>
                         </div>
 
                         <div class="col-sm-7 my-2">
                             <div class="form-floating">
-                                <select class="form-select" id="regEventGuest">
-                                    <option value="1">Invitado 1</option>
-                                    <option value="2">Invitado 2</option>
-                                    <option value="3">Invitado 3</option>
+                                <select class="form-select" id="regEventGuest" name="regEventGuest">
+                                    @foreach ($guests as $guest) 
+                                        <option value="{{$guest->id}}">{{$guest->fullName}}</option>
+                                    @endforeach
                                 </select>
                                 <label for="regEventGuest">Invitado</label>
                             </div>
@@ -174,10 +178,12 @@
 
                         <div class="col-sm-5 my-2">
                             <div class="form-floating">
-                                <select class="form-select" id="regEventType">
-                                    <option value="1">Conferencia</option>
-                                    <option value="2">Mesa Redonda</option>
-                                    <option value="3">Otro</option>
+                                <select class="form-select" name="regEventType" id="regEventType">
+                                    <option value="Conferencia">Conferencia</option>
+                                    <option value="Mesa Redonda">Mesa Redonda</option>
+                                    <option value="Master Class">Master Class</option>                                 
+                                    <option value="Torneo">Torneo</option>
+                                    <option value="Otro">Otro</option>
                                 </select>
                                 <label for="regEventType">Tipo</label>
                             </div>

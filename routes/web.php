@@ -59,7 +59,8 @@ Route::group(['middleware' => 'isAdmin'], function () {
     ]);
     
     Route::resource('adminRegistroEventos', EventsController::class ,[
-        'index' => 'adminRegistroEventos.index' 
+        'index' => 'adminRegistroEventos.index',
+        'store' => 'adminRegistroEventos.store'
     ]);
     
     Route::resource('adminRegistroInvitados', GuestsController::class ,[

@@ -29,6 +29,7 @@
     ></script>
 
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <script src="{{ asset('js/adminEvents.js') }}"></script>
 
 </head>
 <body>

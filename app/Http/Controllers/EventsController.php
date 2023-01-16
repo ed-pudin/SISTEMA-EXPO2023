@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\event;
+use Illuminate\Support\Facades\Storage;
 
 class EventsController extends Controller
 {
@@ -13,7 +15,12 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('admin.events');
+        //Regresar los invitados
+        $guests = \App\Models\guest::all();
+        //Vista de eventos
+        $events = event::with('guest')->get();
+        
+        return view('admin.events', compact('guests', 'events'));
     }
 
     /**
@@ -34,7 +41,28 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $event = new event();
+
+        //Nombre de archivo
+        $fileName = time().'_'.$request->file('regBtnEventImg')->getClientOriginalName();
+        //Guardar archivo
+        Storage::disk('public')->put($fileName, file_get_contents($request->file('regBtnEventImg')));
+        
+        $event->eventName = $request->regEventName;
+        $event->date =  $request->regEventDate;
+        $event->startTime = $request->regEventStartHour;
+        $event->endTime = $request->regEventEndHour;
+        $event->guest = $request->regEventGuest;
+        $event->typeEvent = $request->regEventType;
+        $event->image = $fileName;
+
+        if($event->save()){
+            session()->flash("status","Evento registrado");
+        }else{
+            session()->flash("status","Hubo un problema en el registro");
+        }
+        return redirect()->back(); 
     }
 
     /**
