@@ -73,7 +73,8 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = event::with('guest')->find($id);
+        return view('admin.edit.showEvent', compact('event'));
     }
 
     /**
@@ -109,4 +110,5 @@ class EventsController extends Controller
     {
         //
     }
+
 }

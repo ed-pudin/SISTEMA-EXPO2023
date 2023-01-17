@@ -30,6 +30,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <script src="{{ asset('js/adminEvents.js') }}"></script>
+    <script src="{{ asset('js/staffAttendanceCompany.js') }}"></script>
 
 </head>
 <body>
