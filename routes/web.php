@@ -65,8 +65,11 @@ Route::group(['middleware' => 'isAdmin'], function () {
     
     Route::resource('adminRegistroInvitados', GuestsController::class ,[
         'index' => 'adminRegistroInvitados.index',
-        'store' => 'adminRegistroInvitados.store'
+        'store' => 'adminRegistroInvitados.store',
+        'update' => 'adminRegistroInvitados.update'
     ]);
+
+    Route::get('editarInvitado/{guestToEdit}', [GuestsController::class, 'editarInvitado'])->name('editarInvitado');
     
     Route::resource('adminRegistroMaestros', TeachersController::class ,[
         'index' => 'adminRegistroMaestros.index',

@@ -161,7 +161,7 @@
                                                     <div class="col-2" style="text-align-last: center;">
                                                         <b class="d-none d-md-block" style="color:snow;"> Confirmar </b>
                                                         <hr class="my-1 p-0" style="border-color:rgba(0,0,0,0)">
-                                                        <a onclick="confirmDialog(`formAdminEditBtn_{{$company->id}}`)" type="submit" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-check-lg"></i></a>
+                                                        <a onclick="confirmDialog(`formAdminEditBtn_{{$company->id}}`)" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-check-lg"></i></a>
                                                         <button id="formAdminEditBtn_{{$company->id}}" type="submit" hidden></button>
                                                     </div>
                                                     <div class="col-2" style="text-align-last: center;">

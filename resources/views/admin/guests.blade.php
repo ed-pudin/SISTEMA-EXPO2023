@@ -73,7 +73,7 @@
                                         <td class="text-secondary">Sin empresa</td>
                                     @endif
                                     <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
+                                        <a href="{{ route('editarInvitado', $guest) }}" class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
                                     </td>
                                     <td>
                                         <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>

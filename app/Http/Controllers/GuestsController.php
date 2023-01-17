@@ -96,4 +96,12 @@ class GuestsController extends Controller
     {
         //
     }
+
+    public function editarInvitado($guestToEdit) {
+        $guest = guest::find($guestToEdit);
+        $companies = \App\Models\company::all();
+
+        return view('admin.edit.guest', compact('guest', 'companies'));
+    }
+
 }
