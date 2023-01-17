@@ -31,9 +31,28 @@
             
             });
             @endif
+
         </script>
 @endif
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
+<script>
+
+    function confirmDialog(triggerBtnId) {
+        Swal.fire({
+            title: '¿Confirmar cambios?',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(triggerBtnId).click();
+            }
+        })
+    }
+
+</script>
 
 <!-- --------------- -->
 <!-- ADMIN INVITADOS -->
@@ -76,7 +95,13 @@
                                         <a href="{{ route('editarInvitado', $guest) }}" class="btn-table btn btn-primary col-12"><i class="bi bi-pencil"></i></a>
                                     </td>
                                     <td>
-                                        <a class="btn-table btn btn-primary col-12"><i class="bi bi-trash"></i></a>
+                                        <form action="{{route('adminRegistroInvitados.destroy', [$guest->id])}}" method="POST" hidden>
+                                        @method('DELETE')
+                                        @csrf
+                                            <button id="deleteGuest_{{$guest->id}}" type="submit"> DESTROY </button>
+                                        </form>
+
+                                        <a onclick="confirmDialog(`deleteGuest_{{$guest->id}}`)" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

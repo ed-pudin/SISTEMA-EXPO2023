@@ -36,6 +36,25 @@
 
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
+
+<script>
+
+    function confirmDialog(triggerBtnId) {
+        Swal.fire({
+            title: '¿Confirmar cambios?',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(triggerBtnId).click();
+            }
+        })
+    }
+
+</script>
+
 <!-- --------------- -->
 <!-- ADMIN MAESTROS  -->
 <div class="col p-3 min-vh-100 w-50 backgroundImg tab-pane">
@@ -72,13 +91,19 @@
                                     <tr>
                                         <td>{{$teacher->fullName}}</td>
                                         <td>{{$teacher->email}}</td>
-                                        <td> {{$teacher->user()->first()->key}}</td>
+                                        <td>{{$teacher->user()->first()->key}}</td>
                                         <td>{{$teacher->user()->first()->password}}</td>
                                         <td>
-                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                            <a href="{{ route('editarMaestro', $teacher->id) }}" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                         </td>
                                         <td>
-                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                            <form action="{{route('adminRegistroMaestros.destroy', [$teacher->id])}}" method="POST" hidden>
+                                            @method('DELETE')
+                                            @csrf
+                                                <button id="deleteTeacher_{{$teacher->id}}" type="submit"> DESTROY </button>
+                                            </form>
+
+                                            <a onclick="confirmDialog(`deleteTeacher_{{$teacher->id}}`)" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
                                         </td>
                                         <td>
                                             <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-send"></i></a>

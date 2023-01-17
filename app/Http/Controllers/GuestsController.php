@@ -83,7 +83,17 @@ class GuestsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $guest = guest::find($id);
+
+        $guest->fullName = $request->editGuestName;
+        $request->editGuestCmpany == 0 ?  $guest->company = null : $guest->company = $request->editGuestCmpany;
+
+        if($guest->save()){
+            session()->flash("update","Edición en invitado exitosa");
+        }else{
+            session()->flash("update","Hubo un error, intente de nuevo");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -94,7 +104,15 @@ class GuestsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $guest = guest::find($id);
+
+        if($guest->delete()){
+            session()->flash("delete","Se ha eliminado correctamente $guest->fullName");
+        }else{
+            session()->flash("delete","Algo salió mal");
+        }
+
+        return redirect()->back();
     }
 
     public function editarInvitado($guestToEdit) {

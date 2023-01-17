@@ -99,7 +99,22 @@ class TeachersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $teacher = teacher::find($id);
+        $user = user::find($teacher->user);
+
+        $teacher->fullName = $request->editTeacherName;
+        $teacher->email = $request->editTeacherEmail;
+
+        $user->key = $request->editTeacherUser;
+        $user->password = $request->editTeacherPassword;
+
+        if($teacher->save() and $user->save()){
+            session()->flash("update","Edición en maestro exitosa");
+        }else{
+            session()->flash("update","Hubo un error, intente de nuevo");
+        }
+        return redirect()->back();
+
     }
 
     /**
@@ -110,6 +125,21 @@ class TeachersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $teacher = teacher::find($id);
+
+        if($teacher->delete()){
+            session()->flash("delete","Se ha eliminado correctamente $teacher->fullName");
+        }else{
+            session()->flash("delete","Algo salió mal");
+        }
+
+        return redirect()->back();
+    }
+
+    public function editarMaestro($teacherToEdit) {
+        $teacher = teacher::find($teacherToEdit);
+        $user = user::find($teacher->user);
+
+        return view('admin.edit.teacher', compact('teacher','user'));
     }
 }
