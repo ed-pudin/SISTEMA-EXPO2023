@@ -64,17 +64,22 @@ Route::group(['middleware' => 'isAdmin'], function () {
     ]);
     
     Route::resource('adminRegistroInvitados', GuestsController::class ,[
-        'index' => 'adminRegistroInvitados.index',
-        'store' => 'adminRegistroInvitados.store',
-        'update' => 'adminRegistroInvitados.update'
+        'index'     => 'adminRegistroInvitados.index',
+        'store'     => 'adminRegistroInvitados.store',
+        'update'    => 'adminRegistroInvitados.update',
+        'destroy'   => 'adminRegistroInvitados.destroy'
     ]);
 
     Route::get('editarInvitado/{guestToEdit}', [GuestsController::class, 'editarInvitado'])->name('editarInvitado');
     
     Route::resource('adminRegistroMaestros', TeachersController::class ,[
-        'index' => 'adminRegistroMaestros.index',
-        'store' => 'adminRegistroMaestros.store' 
+        'index'     => 'adminRegistroMaestros.index',
+        'store'     => 'adminRegistroMaestros.store',
+        'update'    => 'adminRegistroMaestros.update',
+        'destroy'   => 'adminRegistroMaestros.destroy'
     ]);
+
+    Route::get('editarMaestro/{teacherToEdit}', [TeachersController::class, 'editarMaestro'])->name('editarMaestro');
 
 });
 
