@@ -59,10 +59,14 @@ Route::group(['middleware' => 'isAdmin'], function () {
     ]);
     
     Route::resource('adminRegistroEventos', EventsController::class ,[
-        'index' => 'adminRegistroEventos.index',
-        'store' => 'adminRegistroEventos.store',
-        'show' => 'adminRegistroEventos.show'
+        'index'     => 'adminRegistroEventos.index',
+        'store'     => 'adminRegistroEventos.store',
+        'show'      => 'adminRegistroEventos.show',
+        'update'    => 'adminRegistroEventos.update',
+        'destroy'   => 'adminRegistroEventos.destroy'
     ]);
+
+    Route::get('editarEvento/{eventToEdit}', [EventsController::class, 'editarEvento'])->name('editarEvento');
     
     Route::resource('adminRegistroInvitados', GuestsController::class ,[
         'index'     => 'adminRegistroInvitados.index',
