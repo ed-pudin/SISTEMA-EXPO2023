@@ -64,8 +64,9 @@ class AdminPersonCompany extends Controller
     {
         //Mostrar el id de la empresa
         $company = \App\Models\company::find($id);
+        $companyPeople = companyPeople::where('company', '=',$id)->get();
 
-        return view('admin.personCompany', compact('company'));
+        return view('admin.personCompany', compact('company', 'companyPeople'));
     }
 
     /**

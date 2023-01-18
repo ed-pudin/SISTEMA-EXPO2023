@@ -41,7 +41,18 @@
                 <form class="my-4 form-student" id="form-student" action="{{route('adminRegistroPersonaEmpresa.store')}}" method=post>
                 @csrf
                     <div id="dynamicInputs">
-                       
+                        
+                        @foreach($companyPeople as $person)
+                            <div class="d-md-flex justify-content-center align-items-center">
+                                <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="{{$person->id}}" readonly placeholder="Nombre completo" value="{{$person->fullName}}">
+                                        <label for="{{$person->id}}">Nombre completo</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endforeach
                         <!--INPUTS DINAMICOS-->
 
                     </div>
