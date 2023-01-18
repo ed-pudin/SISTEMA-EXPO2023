@@ -9,7 +9,7 @@
                 Swal.fire({
                 position: 'center',
                 icon: 'success',
-                iconColor: '#30a702',
+                iconColor: '#0de4fe',
                 title: `{{ session()->get('status') }}`,
                 showConfirmButton: false,
                 timer: 1500

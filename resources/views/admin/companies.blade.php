@@ -184,7 +184,7 @@
                                             <a onclick="confirmDialog(`formAdminDeleteBtn_{{$company->id}}`)" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
                                         </td>
                                         <td>
-                                            <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
+                                            <a href="{{route('adminRegistroPersonaEmpresa.show', [$company->id])}}" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -8,7 +8,7 @@
             <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Empresa: Accenture</h5>
             <div class="p-3 div-colorfull">
                 <form class="my-4 form-student" id="form-student">
-
+                @csrf
                     <div id="dynamicInputs">
                         <div class="d-md-flex justify-content-center align-items-center">
                             <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
@@ -31,8 +31,11 @@
 
                     </div>
 
+                    <input hidden id="countInputs" name="countInputs">
+
+
                     <div class="d-md-flex justify-content-center align-items-center">
-                        <button type="submit"class="btn btn-primary col-md-3 mt-3">Enviar</button>
+                        <button id="sendPersonCompany" type="submit"class="btn btn-primary col-md-3 mt-3" disabled>Enviar</button>
                     </div>
                 </form>
             </div>
