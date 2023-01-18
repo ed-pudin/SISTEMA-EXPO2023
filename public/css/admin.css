@@ -83,6 +83,11 @@ div.input-group-text {
     border-bottom: 2px solid #39f6e4;
 }
 
+input:disabled, .form-control:disabled, .form-select:disabled {
+    background-color: rgba(1,1,1,0);;
+    border-bottom: 2px solid #333;
+}
+
 .form-control:focus, .form-select:focus {
     border-bottom: 2px solid #e23a87;
 }

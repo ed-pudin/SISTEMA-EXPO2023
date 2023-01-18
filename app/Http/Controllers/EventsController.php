@@ -99,14 +99,17 @@ class EventsController extends Controller
     {
         $event = event::find($id);
 
-        
-        //Nombre de archivo
-        $fileName = time().'_'.$request->file('editBtnEventImg')->getClientOriginalName();
-        //Guardar archivo
+        if($request->file('editBtnEventImg') != null) {
+            //Nombre de archivo
+            $fileName = time().'_'.$request->file('editBtnEventImg')->getClientOriginalName();
+            //Guardar archivo
 
-        Storage::disk('public')->delete('/'.$event->image);
+            Storage::disk('public')->delete('/'.$event->image);
 
-        Storage::disk('public')->put($fileName, file_get_contents($request->file('editBtnEventImg')));
+            Storage::disk('public')->put($fileName, file_get_contents($request->file('editBtnEventImg')));
+        } else {
+            $fileName = $request->originalImage;
+        }
 
         $event->eventName = $request->editEventName;
         $event->date = $request->editEventDate;
@@ -133,7 +136,15 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = event::find($id);
+
+        if($event->delete()){
+            session()->flash("delete","Se ha eliminado correctamente $event->eventName");
+        }else{
+            session()->flash("delete","Algo salió mal");
+        }
+
+        return redirect()->back();
     }
 
     public function editarEvento($eventToEdit) {

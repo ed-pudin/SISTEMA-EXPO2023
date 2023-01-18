@@ -50,6 +50,20 @@
         }
     }
 
+    function confirmDialog(triggerBtnId) {
+        Swal.fire({
+            title: '¿Confirmar cambios?',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(triggerBtnId).click();
+            }
+        })
+    }
+
 </script>
 
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
@@ -99,7 +113,13 @@
                                         <a href="{{route('editarEvento', [$event->id])}}" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                     </td>
                                     <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                        <form action="{{route('adminRegistroEventos.destroy', [$event->id])}}" method="POST" hidden>
+                                        @method('DELETE')
+                                        @csrf
+                                            <button id="deleteEvent_{{$event->id}}" type="submit"> DESTROY </button>
+                                        </form>
+
+                                        <a onclick="confirmDialog(`deleteEvent_{{$event->id}}`)" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
                                     </td>
                                     <td>
                                         <a href="{{route('adminRegistroEventos.show', [$event->id])}}" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-eye"></i></a>

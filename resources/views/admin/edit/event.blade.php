@@ -50,6 +50,20 @@
         }
     }
 
+    function confirmDialog(triggerBtnId) {
+        Swal.fire({
+            title: '¿Confirmar cambios?',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(triggerBtnId).click();
+            }
+        })
+    }
+
 </script>
 
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
@@ -72,7 +86,8 @@
                         <div class="d-flex justify-content-center">
                             <div class="btn btn-primary btn-rounded" onclick="document.getElementById('editBtnEventImg').click();">
                                 <label class="form-label text-white m-1" for="editBtnEventImg"><i class="bi bi-image-fill"></i></label>
-                                <input value="{{$event->image}}" accept="image/*" type="file" class="form-control d-none" name="editBtnEventImg" id="editBtnEventImg" onchange="readURL(this)" required/>
+                                <input accept="image/*" type="file" class="form-control d-none" name="editBtnEventImg" id="editBtnEventImg" onchange="readURL(this)"/>
+                                <input name="originalImage" id="originalImage" type="text" value="{{$event->image}}" hidden></input>
                             </div>
                         </div>
                     </div>
@@ -81,7 +96,7 @@
 
                 <div class="col-sm-8 my-2">
                     <div class="form-floating">
-                        <input value="{{$event->eventName}}" type="text" class="form-control" name="editEventName" id="editEventName" placeholder="Nombre del Evento" required>
+                        <input autocomplete="off" value="{{$event->eventName}}" type="text" class="form-control" name="editEventName" id="editEventName" placeholder="Nombre del Evento" required>
                         <label for="editEventName">Nombre del evento</label>
                     </div>
                 </div>
