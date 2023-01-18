@@ -27,18 +27,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($companies as $company)
                         <tr>
-                            <td>Evento 0</td>
-                            <td> <a href="{{route('staffEmpresa.show', 1)}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
+                            <td>{{$company->nameCompany}}</td>
+                            <td> <a href="{{route('staffEmpresa.show', [$company->id])}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
                         </tr>
-                        <tr>
-                            <td>Evento 1</td>
-                            <td> <a href="{{route('staffEmpresa.show', 2)}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
-                        </tr>
-                        <tr>
-                            <td>Evento 2</td>
-                            <td> <a href="{{route('staffEmpresa.show', 3)}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

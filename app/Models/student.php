@@ -16,4 +16,8 @@ class student extends Model
         'enrollment',
         'fullName'
     ];
+
+    public function getFullName(){
+        return strtoupper($this->fullName);
+    }
 }

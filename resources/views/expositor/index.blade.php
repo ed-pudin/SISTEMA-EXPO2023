@@ -19,8 +19,8 @@
                                 </p>
                             </div>
                             <div class="container" style="display: flex;">
-                                <h4 style="flex-grow: 1">Edna Alexandra Lecea Contreras</h4>
-                                <h4>1853806</h4>
+                                <h4 style="flex-grow: 1">{{$student->getFullName()}}</h4>
+                                <h4>{{$student->enrollment}}</h4>
                             </div>
                         </div>
                         <div class="col-12 d-md-flex justify-content-center align-items-center" style="margin-bottom:20px">
@@ -36,7 +36,7 @@
                             </svg>-->
                             <img id='barcode'
                                 width="30%" height="30%"
-                                src="https://api.qrserver.com/v1/create-qr-code/?data=1853806" 
+                                src="https://api.qrserver.com/v1/create-qr-code/?data={{$student->enrollment}}" 
                                 alt=""/>
                         </div>
 

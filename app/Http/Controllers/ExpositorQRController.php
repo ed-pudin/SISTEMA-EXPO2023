@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\student;
 
 class ExpositorQRController extends Controller
 {
@@ -14,7 +16,10 @@ class ExpositorQRController extends Controller
     public function index()
     {
         //Mostrar codigo QR - EXPOSITOR
-        return view('expositor.index');
+
+        $user = User::where('id', session()->get('id'))->first();
+        $student = student::where('enrollment', '=', $user->key)->first();
+        return view('expositor.index', compact('student'));
     }
 
     /**

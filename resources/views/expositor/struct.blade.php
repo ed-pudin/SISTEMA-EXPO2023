@@ -25,7 +25,7 @@
 
                 <ul class="nav navbar-nav navbar-left">
                     <li>
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="{{route('expositorQR.index')}}">
                             <p class="m-0 nav-txt"> QR Expositor </p>
                         </a>
                     </li>

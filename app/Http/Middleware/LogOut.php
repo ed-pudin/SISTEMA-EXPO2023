@@ -16,7 +16,8 @@ class LogOut
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->get('id')){
+        if(session()->has('id')){
+            session()->flush();
             return $next($request);
         }else{
             return redirect('/');

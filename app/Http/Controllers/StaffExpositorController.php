@@ -35,7 +35,7 @@ class StaffExpositorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

@@ -3,29 +3,32 @@
 @section('Content')
 <div class="col-sm p-3 test">
     <div class="container-fluid" >
-        <!--ID : {{$id}}-->
         <div class="row">
-            <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Empresa: Accenture</h5>
+            <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Empresa: {{$company->nameCompany}}</h5>
             <div class="p-3 div-colorfull">
                 <form class="my-4 form-student" id="form-student">
                 @csrf
                     <div id="dynamicInputs">
-                        <div class="d-md-flex justify-content-center align-items-center">
-                            <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="name0" readonly placeholder="Nombre completo" value="Briam Alan Gonzalez Flores">
-                                    <label for="name0">Nombre completo</label>
+
+                          @foreach($companyPeople as $person)
+                            <div class="d-md-flex justify-content-center align-items-center">
+                                <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="{{$person->id}}" readonly placeholder="Nombre completo" value="{{$person->fullName}}">
+                                        <label for="{{$person->id}}">Nombre completo</label>
+                                    </div>
+
                                 </div>
-
-                            </div>
-
-                            <div class="form-check">
+                                <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="attendance0" >
                                 <label class="form-check-label text-light" for="attendance0">
                                     Asistió
                                 </label>
                             </div>
                         </div>
+                        @endforeach
+
+                           
 
                         <!--INPUTS DINAMICOS-->
 
@@ -35,7 +38,7 @@
 
 
                     <div class="d-md-flex justify-content-center align-items-center">
-                        <button id="sendPersonCompany" type="submit"class="btn btn-primary col-md-3 mt-3" disabled>Enviar</button>
+                        <button id="sendPersonCompany" type="submit"class="btn btn-primary col-md-3 mt-3">Enviar</button>
                     </div>
                 </form>
             </div>

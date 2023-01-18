@@ -15,7 +15,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        if(session()->get('id')){
+        if(session()->exists('id')){
             session()->flush();
         }
         return view('login');
@@ -45,7 +45,7 @@ class LoginController extends Controller
         if($user != null){
 
             $request->session()->put('id', $user->id);
-
+            session()->save();
             if($user->rol == 'admin'){
                 return redirect()->route('adminInicio.index');
             }else if ($user->rol == 'staff'){

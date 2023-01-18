@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\companyPeople;
 
 class StaffCompanyController extends Controller
 {
@@ -13,7 +14,9 @@ class StaffCompanyController extends Controller
      */
     public function index()
     {
-        return view('staff.companies');
+        $companies = \App\Models\company::all();
+
+        return view('staff.companies', compact('companies'));
     }
 
     /**
@@ -44,8 +47,12 @@ class StaffCompanyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        return view('staff.attendanceCompany', compact("id"));
+    {   
+        //id
+        $company = \App\Models\company::find($id);
+        $companyPeople = companyPeople::where('company', '=',$id)->get();
+
+        return view('staff.attendanceCompany', compact('company', 'companyPeople'));
     }
 
     /**

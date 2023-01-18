@@ -111,6 +111,8 @@ Route::group(['middleware' => 'isStaffOrAdmin'], function () {
     Route::resource('staffExpositor', StaffExpositorController::class, [
         //1. Mostrar para leer el qr
         'index' => 'staffExpositor.index',
+        //2. Leer qr
+        'store' => 'staffExpositor.store'
     ]);
     
     //EVENTO
