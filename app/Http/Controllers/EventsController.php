@@ -97,7 +97,32 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event = event::find($id);
+
+        
+        //Nombre de archivo
+        $fileName = time().'_'.$request->file('editBtnEventImg')->getClientOriginalName();
+        //Guardar archivo
+
+        Storage::disk('public')->delete('/'.$event->image);
+
+        Storage::disk('public')->put($fileName, file_get_contents($request->file('editBtnEventImg')));
+
+        $event->eventName = $request->editEventName;
+        $event->date = $request->editEventDate;
+        $event->startTime = $request->editEventStartHour;
+        $event->endTime = $request->editEventEndHour;
+        $event->guest = $request->editEventGuest;
+        $event->typeEvent = $request->editEventType;
+
+        $event->image = $fileName;
+
+        if($event->save()) {
+            session()->flash("update","Edición en evento exitosa");
+        }else{
+            session()->flash("update","Hubo un error, intente de nuevo");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -109,6 +134,13 @@ class EventsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function editarEvento($eventToEdit) {
+        $guests = \App\Models\guest::all();
+        $event = event::with('guest')->find($eventToEdit);
+
+        return view('admin.edit.event', compact('event', 'guests'));
     }
 
 }

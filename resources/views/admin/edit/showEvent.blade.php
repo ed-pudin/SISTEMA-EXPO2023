@@ -21,7 +21,7 @@
                                 <h5 class="text-center text-white col-12" style="text-shadow:unset" >Tipo de evento: {{$event->typeEvent}}</h5>
                                 <h5 class="text-center text-white col-12" style="text-shadow:unset" >Invitado: {{$event->guest()->first()->fullName}}</h5>
                                 <h5 class="text-center text-white col-12" style="text-shadow:unset" >Tipo de evento: {{$event->typeEvent}}</h5>
-                                <h5 class="text-center text-white col-12" style="text-shadow:unset" >Fecha: {{substr($event->date, 0, 10)}}</h5>
+                                <h5 class="text-center text-white col-12" style="text-shadow:unset" >Fecha: {{$event->date}}</h5>
                                 <h5 class="text-center text-white col-12" style="text-shadow:unset" >Hora inicio: {{$event->startTime}}</h5>
                                 <h5 class="text-center text-white col-12" style="text-shadow:unset" >Hora fin: {{$event->endTime}}</h5>
                             </div>

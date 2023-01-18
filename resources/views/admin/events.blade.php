@@ -2,16 +2,16 @@
 
 @section('Content')
 
-@if(session()->has('status'))
+@if(session()->has('update'))
         
         <script type="text/javascript">
-            @if(session()->get('status') == "Evento registrado")
+            @if(session()->get('update') == "Evento registrado")
             document.addEventListener("DOMContentLoaded", function(){
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
                     iconColor: '#0de4fe',
-                    title: `{{ session()->get('status') }}`,
+                    title: `{{ session()->get('update') }}`,
                     showConfirmButton: false,
                     timer: 1500
                 })
@@ -19,13 +19,13 @@
             });
             @endif
 
-            @if(session()->get('status') == "Hubo un problema en el registro")
+            @if(session()->get('update') == "Hubo un error, intente de nuevo")
             document.addEventListener("DOMContentLoaded", function(){
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
                     iconColor:'#a70202',
-                    title: `{{ session()->get('status') }}`,
+                    title: `{{ session()->get('update') }}`,
                     showConfirmButton: false,
                     timer: 1500
                 })
@@ -92,11 +92,11 @@
                                     <td>{{$event->eventName}}</td>
                                     <td>{{$event->guest()->first()->fullName}}</td>
                                     <td>{{$event->typeEvent}}</td>
-                                    <td>{{substr($event->date, 0, 10)}}</td>
+                                    <td>{{$event->date}}</td>
                                     <td>{{$event->startTime}}</td>
                                     <td>{{$event->endTime}}</td>
                                     <td>
-                                        <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                        <a href="{{route('editarEvento', [$event->id])}}" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                     </td>
                                     <td>
                                         <a class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
