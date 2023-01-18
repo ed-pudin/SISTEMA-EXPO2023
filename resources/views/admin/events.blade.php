@@ -128,6 +128,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @if(count($events) == 0)
+                            <h6 style="text-align: center;"> No hay eventos registrados </h6>
+                        @endif
                     </div>
                 </div>
 

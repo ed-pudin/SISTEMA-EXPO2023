@@ -56,6 +56,7 @@
 
 <!-- --------------- -->
 <!-- ADMIN INVITADOS -->
+
 <div class="col p-3 min-vh-100 w-50 backgroundImg tab-pane">
     <div class="container-fluid">
         <div class="row">
@@ -68,6 +69,7 @@
                 </li>
             </ul>
         </div>
+        
         <div class="row" >
             <div class="tab-content p-0">
                 <div class="tab-pane fade show active" id="visualize-guests" role="tabpanel" aria-labelledby="visualize-guests-tab">
@@ -107,9 +109,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @if(count($guests) == 0)
+                            <h6 style="text-align: center;"> No hay invitados registrados </h6>
+                        @endif
                     </div>
                 </div>
-
+                
                 <div class="tab-pane fade show" id="register-guests" aria-labelledby="register-guests-tab">
 
                     <form class="row align-items-center p-5" id="registroInvitados"action="{{route('adminRegistroInvitados.store')}}" method="post">

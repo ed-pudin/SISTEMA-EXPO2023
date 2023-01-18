@@ -87,7 +87,6 @@
                             </thead>
                             <tbody>
                                 @foreach ($teachers as $teacher)                                
-
                                     <tr>
                                         <td>{{$teacher->fullName}}</td>
                                         <td>{{$teacher->email}}</td>
@@ -111,11 +110,15 @@
                                     </tr>
 
                                 @endforeach
+                                
                             </tbody>
                         </table>
+                        @if(count($teachers) == 0)
+                            <h6 style="text-align: center;"> No hay maestros registrados </h6>
+                        @endif
                     </div>
                 </div>
-
+                
                 <div class="tab-pane fade show" id="register-teacher" aria-labelledby="register-teacher-tab">
 
                     <form class="row align-items-center p-5" id="registroMaestro" action="{{route('adminRegistroMaestros.store')}}" method="post">
@@ -148,7 +151,7 @@
                     </form>
 
                 </div>
-
+               
             </div>
         </div>
     </div>
