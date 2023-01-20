@@ -56,6 +56,8 @@ function addPersonCompanyAttendance(){
     //Obtengo el form
     //Añado el input con el valor
 
+    let newInputs = 0;
+
     let valCountInputs = parseInt($("#countInputs").val());
 
     if (validatePerson()){
@@ -75,11 +77,13 @@ function addPersonCompanyAttendance(){
         '<label for="name'+valCountInputs+'">Nombre completo</label>' +
         '</div></div>'+
         '<div class="form-check">'+
-        '<input class="form-check-input" type="checkbox" id="attendance'+valCountInputs+ '">'+
+        '<input class="form-check-input" type="checkbox" id="attendance'+valCountInputs+ '" name="attendance'+valCountInputs+'" >'+
         '<label class="form-check-label text-light" for="attendance'+valCountInputs+'">Asistió' +
         '</label></div></div>';
         valCountInputs++;
-        $("#countInputs").val(valCountInputs) ;
+        newInputs++;
+        $("#countInputsNew").val(newInputs);
+        $("#countInputs").val(valCountInputs);
         $("#addPerson").val("");
 
     }else{
