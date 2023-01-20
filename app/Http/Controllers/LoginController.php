@@ -108,6 +108,9 @@ class LoginController extends Controller
     }
 
     public function logOut(){
+        if(session()->exists('id')){
+            session()->flush();
+        }
 
         return redirect('/');
     }

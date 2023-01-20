@@ -104,7 +104,9 @@ Route::group(['middleware' => 'isStaffOrAdmin'], function () {
             //1. Mostrar en staff las empresas
         'index' => 'staffEmpresa.index',
             //2. Mostrar en staff 1 empresa
-        'show' => 'staffEmpresa.show'
+        'show' => 'staffEmpresa.show',
+        //3. Asistencia de empresa persona
+        'update' => 'staffEmpresa.update'
     ]);
 
     //EXPOSITOR
