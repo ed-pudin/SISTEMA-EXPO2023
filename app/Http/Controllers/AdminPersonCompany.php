@@ -41,6 +41,7 @@ class AdminPersonCompany extends Controller
 
             $person->fullName = $request->{'name'.$i};
             $person->company = $request->idCompany;
+            $person->attended = false;
 
             if(!($person->save())){
                 session()->flash("status","Hubo un problema. Verifique el nombre: ". $person->fullName);
