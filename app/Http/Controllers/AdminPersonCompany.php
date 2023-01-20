@@ -36,16 +36,18 @@ class AdminPersonCompany extends Controller
     public function store(Request $request)
     {
         for($i = 0; $i < $request->countInputs; $i++){
+            
+            if(!(is_null($request->{'name'.$i}))) {
+                $person = new companyPeople();
 
-            $person = new companyPeople();
+                $person->fullName = $request->{'name'.$i};
+                $person->company = $request->idCompany;
+                $person->attended = false;
 
-            $person->fullName = $request->{'name'.$i};
-            $person->company = $request->idCompany;
-            $person->attended = false;
-
-            if(!($person->save())){
-                session()->flash("status","Hubo un problema. Verifique el nombre: ". $person->fullName);
-                return redirect()->back();
+                if(!($person->save())){
+                    session()->flash("status","Hubo un problema. Verifique el nombre: ". $person->fullName);
+                    return redirect()->back();
+                }
             }
         }
 
@@ -78,7 +80,7 @@ class AdminPersonCompany extends Controller
      */
     public function edit($id)
     {
-        //
+        dd();
     }
 
     /**

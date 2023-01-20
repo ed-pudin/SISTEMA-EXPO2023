@@ -75,7 +75,61 @@ class StaffCompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //MARCAR ASISTENCIA 
+        //Obtener el id de la company_people con el where de company
+       
+        $companyPeople = companyPeople::where('company', '=',$id)->get();
+        //lista
+
+        for($i= 0; $i < $request->countInputsOld; $i++)
+        {
+            $companyPeople[$i]->fullName = $request->{'name'.$i};
+            $companyPeople[$i]->company = $request->idCompany;
+
+            if($request->has('attendance'.$i))
+            {
+                //checkbox active 
+                $companyPeople[$i]->attended = true;
+                if(!($companyPeople[$i]->save())){
+                    session()->flash("status","Hubo un problema.");
+                    return redirect()->back();
+                }
+            }else{
+                $companyPeople[$i]->attended = false;
+                if(!($companyPeople[$i]->save())){
+                    session()->flash("status","Hubo un problema.");
+                    return redirect()->back();
+                }
+            }
+            
+        }
+
+        if($request->countInputsNew > 0){
+            for($j= $request->countInputsOld; $j <= $request->countInputsOld- $request->newInputs; $j++)
+            {
+                $companyPeople = new companyPeople();
+    
+                $companyPeople->fullName = $request->{'name'.$j};
+                $companyPeople->company = $request->idCompany;
+                $companyPeople->attended = false;
+    
+                if($request->has('attendance'.$j))
+                {
+                    //checkbox active 
+                    $companyPeople->attended = true;
+                    if(!($companyPeople->save())){
+                        session()->flash("status","Hubo un problema.");
+                        return redirect()->back();
+                    }
+                }else{
+                    $companyPeople->attended = false;
+                    if(!($companyPeople->save())){
+                        session()->flash("status","Hubo un problema.");
+                        return redirect()->back();
+                    }
+                }
+            }
+        }        
     }
 
     /**

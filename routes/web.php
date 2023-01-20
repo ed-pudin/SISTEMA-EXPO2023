@@ -53,8 +53,9 @@ Route::group(['middleware' => 'isAdmin'], function () {
     ]);
 
     Route::resource('adminRegistroPersonaEmpresa', AdminPersonCompany::class ,[
-        'show' => 'adminRegistroPersonaEmpresa.show',
-        'store' => 'adminRegistroPersonaEmpresa.store' 
+        'show'  => 'adminRegistroPersonaEmpresa.show',
+        'store' => 'adminRegistroPersonaEmpresa.store',
+        'edit'  => 'adminRegistroPersonaEmpresa.edit'
     ]);
 
     Route::resource('adminRegistroEmpresas', CompaniesController::class ,[
@@ -104,7 +105,9 @@ Route::group(['middleware' => 'isStaffOrAdmin'], function () {
             //1. Mostrar en staff las empresas
         'index' => 'staffEmpresa.index',
             //2. Mostrar en staff 1 empresa
-        'show' => 'staffEmpresa.show'
+        'show' => 'staffEmpresa.show',
+        //3. Asistencia de empresa persona
+        'update' => 'staffEmpresa.update'
     ]);
 
     //EXPOSITOR

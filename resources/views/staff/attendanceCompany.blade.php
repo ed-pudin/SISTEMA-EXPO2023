@@ -6,20 +6,21 @@
         <div class="row">
             <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Empresa: {{$company->nameCompany}}</h5>
             <div class="p-3 div-colorfull">
-                <form class="my-4 form-student" id="form-student" >
-                @csrf
+                <form class="my-4 form-student" id="form-student" action="{{route('staffEmpresa.update', [$company->id] )}}" method="post">
+                    @method('put')
+                    @csrf
                     <div id="dynamicInputs">
 
                           @for ($i = 0; $i < count($companyPeople); $i++)
                             <div class="d-md-flex justify-content-center align-items-center">
                                 <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name{{$i}}" readonly placeholder="Nombre completo" value="{{$companyPeople[$i]->fullName}}">
+                                        <input type="text" class="form-control" name="name{{{$i}}}" id="name{{$i}}" readonly placeholder="Nombre completo" value="{{$companyPeople[$i]->fullName}}">
                                         <label for="name{{$i}}">Nombre completo</label>
                                     </div>
                                 </div>
                                 <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="attendance{{$i}}" >
+                                <input class="form-check-input" type="checkbox" id="attendance{{$i}}" name="attendance{{$i}}" @if($companyPeople[$i]->attended == 1) checked @endif>
                                 <label class="form-check-label text-light" for="attendance{{$i}}">
                                     Asistió
                                 </label>
@@ -31,9 +32,10 @@
                         <!--INPUTS DINAMICOS-->
 
                     </div>
-
+                    <input hidden id="idCompany" name="idCompany" value="{{$company->id}}">
                     <input hidden id="countInputs" name="countInputs" value="{{count($companyPeople)}}">
-
+                    <input hidden id="countInputsNew" name="countInputsNew" value="">
+                    <input hidden id="countInputsOld" name="countInputsOld" value="{{count($companyPeople)}}">
 
                     <div class="d-md-flex justify-content-center align-items-center">
                         <button id="sendPersonCompany" type="submit"class="btn btn-primary col-md-3 mt-3">Enviar</button>
