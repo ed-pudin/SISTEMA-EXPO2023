@@ -142,7 +142,7 @@
                         <div class="col-sm-12 my-2">
                             <div>
                                 <div class="mb-4 d-flex justify-content-center">
-                                    <img onclick="document.getElementById('regBtnEventImg').click();" name="regEventImg" id="regEventImg" src="https://placehold.co/300x200?text=Imagen+del+evento" alt="example placeholder"/>
+                                    <img onclick="document.getElementById('regBtnEventImg').click();" name="regEventImg" id="regEventImg" src="https://placehold.co/300x200?text=Imagen+del+evento&font=roboto" alt="example placeholder"/>
                                     <!--<img onclick="document.getElementById('regBtnEventImg').click();" id="regEventImg" src="https://picsum.photos/300/200" alt="example placeholder"/>-->
                                 </div>
                                 <div class="d-flex justify-content-center">
