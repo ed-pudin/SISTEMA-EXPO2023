@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('company_people', function (Blueprint $table) {
             $table->id();
             $table->string('fullName', 100); //Not null
+            $table->boolean('attended')->defaut(0);
             $table->unsignedBigInteger('company'); //Not nullable
             $table->foreign('company')->references('id')->on('companies');
             $table->timestamps();

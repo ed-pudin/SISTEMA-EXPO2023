@@ -6,35 +6,33 @@
         <div class="row">
             <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Empresa: {{$company->nameCompany}}</h5>
             <div class="p-3 div-colorfull">
-                <form class="my-4 form-student" id="form-student">
+                <form class="my-4 form-student" id="form-student" >
                 @csrf
                     <div id="dynamicInputs">
 
-                          @foreach($companyPeople as $person)
+                          @for ($i = 0; $i < count($companyPeople); $i++)
                             <div class="d-md-flex justify-content-center align-items-center">
                                 <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="{{$person->id}}" readonly placeholder="Nombre completo" value="{{$person->fullName}}">
-                                        <label for="{{$person->id}}">Nombre completo</label>
+                                        <input type="text" class="form-control" id="name{{$i}}" readonly placeholder="Nombre completo" value="{{$companyPeople[$i]->fullName}}">
+                                        <label for="name{{$i}}">Nombre completo</label>
                                     </div>
-
                                 </div>
                                 <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="attendance0" >
-                                <label class="form-check-label text-light" for="attendance0">
+                                <input class="form-check-input" type="checkbox" id="attendance{{$i}}" >
+                                <label class="form-check-label text-light" for="attendance{{$i}}">
                                     Asistió
                                 </label>
                             </div>
                         </div>
-                        @endforeach
-
+                        @endfor
                            
 
                         <!--INPUTS DINAMICOS-->
 
                     </div>
 
-                    <input hidden id="countInputs" name="countInputs">
+                    <input hidden id="countInputs" name="countInputs" value="{{count($companyPeople)}}">
 
 
                     <div class="d-md-flex justify-content-center align-items-center">
@@ -50,7 +48,7 @@
                             <label for="addPerson">Nombre completo</label>
                         </div>
                     </div>
-                    <button type="button" onclick=addPersonCompany() class="btn btn-primary col-md-3 mt-3">Añadir</button>
+                    <button type="button" onclick=addPersonCompanyAttendance() class="btn btn-primary col-md-3 mt-3">Añadir</button>
                     <div class="my-3" id="validatePerson" style="display: none; color: #39f6e4">
                         Llena el campo correspondiente.
                     </div>
