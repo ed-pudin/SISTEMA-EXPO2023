@@ -42,9 +42,11 @@
             src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
         ></script>
 
+        <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg bg-black sticky-top">
+    <nav class="navbar navbar-expand-lg bg-dark sticky-top">
         <div class="container-fluid">
             <div class="col-md-0">
                 <a class="m-0 navbar-brand align: center" href="/"> <img class="logo-img" src="{{ asset('images/LOGO.png') }}" height="30"> </a>
@@ -58,22 +60,22 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('staffEvento.index')}}">
-                            <p class="m-0 btn btn-outline-light"> Registrar Expositores </p>
+                            <p class="m-0 nav-txt"> Registrar Expositores </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="{{route('staffEmpresa.index')}}">
-                            <p class="m-0 btn btn-outline-light"> QR Expositor </p>
+                            <p class="m-0 nav-txt"> QR Expositor </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="{{route('staffExpositor.index')}}">
-                            <p class="m-0 btn btn-outline-light"> Marcar Asistencia </p>
+                            <p class="m-0 nav-txt"> Marcar Asistencia </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="{{route('staffExpositor.index')}}">
-                            <p class="m-0 btn btn-outline-light"> Administrar </p>
+                            <p class="m-0 nav-txt"> Administrar </p>
                         </a>
                     </li>
                 </ul>
@@ -81,7 +83,7 @@
                 <ul class="nav navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('inicioSesion.index')}}">
-                            <p class="m-0 btn btn-outline-light"> INICIAR SESION </p>
+                            <p class="m-0 nav-txt"> INICIAR SESION </p>
                         </a>
                     </li>
                 </ul>
@@ -98,21 +100,21 @@
                     <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">    
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="..." class="d-block w-100" style="text-align: center;" alt="...">
+                                <img src="https://placehold.co/300x100?text=Invitado+1" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h2 style="text-align: center;">First slide label</h2>
                                     <p style="text-align: center;">Some representative placeholder content for the first slide.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="..." class="d-block w-100" style="text-align: center;" alt="...">
+                                <img src="https://placehold.co/300x100?text=Invitado+2" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 style="text-align: center;">Second slide label</h5>
                                     <p style="text-align: center;">Some representative placeholder content for the second slide.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="..." class="d-block w-100" style="text-align: center;" alt="...">
+                                <img src="https://placehold.co/300x100?text=Invitado+3" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 style="text-align: center;">Third slide label</h5>
                                     <p style="text-align: center;">Some representative placeholder content for the third slide.</p>
@@ -136,46 +138,46 @@
                 <div class="col-md-3"></div>
             </div>
             <div class="row align-items-center p-5">
-                <h1 style="text-align: center;"> M e s a  R e d o n d a </h1>
+                <h1 style="text-align: center;">E v e n t o s</h1>
             </div>
             <div class="row align-items-center">
                 <div class="col-md-2 col-sm-12 my-5"></div>
-                    <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">    
+                    <div id="carouselExampleCaptions2" class="carousel slide col-md-8" data-bs-ride="carousel">    
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="..." class="d-block w-100" style="text-align: center;" alt="...">
+                                <img src="https://placehold.co/300x100?text=Mesa+redonda+1" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h2 style="text-align: center;">First slide label</h2>
                                     <p style="text-align: center;">Some representative placeholder content for the first slide.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="..." class="d-block w-100" style="text-align: center;" alt="...">
+                                <img src="https://placehold.co/300x100?text=Mesa+redonda+2" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 style="text-align: center;">Second slide label</h5>
                                     <p style="text-align: center;">Some representative placeholder content for the second slide.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="..." class="d-block w-100" style="text-align: center;" alt="...">
+                                <img src="https://placehold.co/300x100?text=Mesa+redonda+3" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 style="text-align: center;">Third slide label</h5>
                                     <p style="text-align: center;">Some representative placeholder content for the third slide.</p>
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
                     </div>
                 <div class="col-md-3"></div>
@@ -185,16 +187,16 @@
             </div>
             <div class="row align-items-center">
                 <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                    <img src="{{ asset('images/camera.png') }}" class="rounded-circle shadow p-3 mb-5" alt="..." height="200">
+                    <img src="https://placehold.co/200x200?text=Empresa+1" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
                 </div>
                 <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                    <img src="{{ asset('images/camera.png') }}" class="rounded-circle shadow p-3 mb-5" alt="..." height="200">
+                    <img src="https://placehold.co/200x200?text=Empresa+2" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
                 </div>
                 <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                    <img src="{{ asset('images/camera.png') }}" class="rounded-circle shadow p-3 mb-5" alt="..." height="200">
+                    <img src="https://placehold.co/200x200?text=Empresa+3" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
                 </div>
                 <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                    <img src="{{ asset('images/camera.png') }}" class="rounded-circle shadow p-3 mb-5" alt="..." height="200">
+                    <img src="https://placehold.co/200x200?text=Empresa+4" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
                 </div>
             </div>
         </div>

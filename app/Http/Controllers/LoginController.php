@@ -57,6 +57,7 @@ class LoginController extends Controller
             }
         }
         else{
+            session()->flash("userStatus","Contraseña o clave incorrecta");
             return redirect()->route('inicioSesion.index');
         }
     }
