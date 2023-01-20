@@ -53,8 +53,9 @@ Route::group(['middleware' => 'isAdmin'], function () {
     ]);
 
     Route::resource('adminRegistroPersonaEmpresa', AdminPersonCompany::class ,[
-        'show' => 'adminRegistroPersonaEmpresa.show',
-        'store' => 'adminRegistroPersonaEmpresa.store' 
+        'show'  => 'adminRegistroPersonaEmpresa.show',
+        'store' => 'adminRegistroPersonaEmpresa.store',
+        'edit'  => 'adminRegistroPersonaEmpresa.edit'
     ]);
 
     Route::resource('adminRegistroEmpresas', CompaniesController::class ,[

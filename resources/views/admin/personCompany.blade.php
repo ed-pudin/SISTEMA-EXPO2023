@@ -43,14 +43,22 @@
                     <div id="dynamicInputs">
                         
                         @foreach($companyPeople as $person)
-                            <div class="d-md-flex justify-content-center align-items-center">
-                                <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
-                                    <div class="form-floating">
+                            <div class="row mx-md-5 mx-2">
+                                <div class="col-md-2 col-0"></div>
+                                <div class="col-md-6 col-10 my-2">
+                                    <div class="form-floating" id="viewCompanyPeople_{{$person->id}}">
                                         <input type="text" class="form-control" id="{{$person->id}}" readonly placeholder="Nombre completo" value="{{$person->fullName}}">
                                         <label for="{{$person->id}}">Nombre completo</label>
                                     </div>
-
+                                    <div class="form-floating" id="editCompanyPeople_{{$person->id}}" hidden>
+                                        <input type="text" class="form-control" name="editNameCompanyPeople_{{$person->id}}" id="editNameCompanyPeople_{{$person->id}}" placeholder="Nombre completo" value="{{$person->fullName}}">
+                                        <label for="editNameCompanyPeople_{{$person->id}}">Nombre completo</label>
+                                    </div>
                                 </div>
+                                <div class="col-md-2 col-2" style="align-self: center;text-align-last: left;">
+                                    <a name="editCompanyPersonButton" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                </div>
+                                <div class="col-md-2 col-0"></div>
                             </div>
                         @endforeach
                         <!--INPUTS DINAMICOS-->
