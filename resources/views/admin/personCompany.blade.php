@@ -33,12 +33,80 @@
         </script>
 @endif
 
+<script>
+
+    function personCompanySwap(id=0) {
+        var form = document.getElementById("form-personCompany");
+        var thisButton = document.getElementById("editCompanyPersonButton_"+id);
+        var editCompanyPeople = document.getElementById("editCompanyPeople_"+id);
+        var viewCompanyPeople = document.getElementById("viewCompanyPeople_"+id);
+        var editNameCompanyPeople = document.getElementById("editNameCompanyPeople_"+id);
+        var thisIcon = document.getElementById("editCompanyPersonButton_"+id).firstChild;
+        var sendButton = document.getElementById("sendPersonCompany");
+        var addPersonBtn = document.getElementById("addPersonBtn");
+        var addPersonInput = document.getElementById("addPerson");
+        
+        var editButtons = document.getElementsByName("editCompanyPersonButton");
+
+        if(form.action == "{{route('adminRegistroPersonaEmpresa.store')}}") {
+            // Si está en modo "Agregar persona", cámbialo a "Editar persona singular"
+            
+                // Cambiar la ruta
+            var url = "{{route('adminRegistroPersonaEmpresa.update', [':id'])}}";
+                // -- Esto se hace para poder agregar la variable id
+            url = url.replace(':id', id);
+            form.action = url;
+
+                // Desactivamos botones y activamos el de enviar
+            addPersonBtn.setAttribute("disabled","");
+            addPerson.setAttribute("disabled","");
+            editButtons.forEach(btn => {
+                btn.setAttribute("disabled","");
+            });
+
+            thisButton.removeAttribute("disabled");
+            sendButton.removeAttribute("disabled");
+
+            sendButton.innerHTML = "Confirmar Edición";
+
+
+                // Cambiamos el ícono
+            thisIcon.classList.remove("bi-pencil");
+            thisIcon.classList.add("bi-x-lg");
+
+                // Y mostramos el form a editar
+            editCompanyPeople.removeAttribute("hidden");
+            viewCompanyPeople.setAttribute("hidden","");
+
+                // Quitamos todos los nuevos nombres, por si acaso
+            for(var i = 0; i < count; i++) {
+                var section = document.getElementById("viewNewCompanyPeople_"+i);
+                if(section != null) {
+                    section.remove();
+                }
+            }
+            form.innerHTML += ` @method('patch') `;
+
+        } else {
+            // En vez de cancelar, se refresca la página, para evitar errores
+            location.reload();
+        }
+
+    }
+
+    function focusandselect(element) {
+        element.focus();
+        element.select();
+    }
+
+</script>
+
 <div class="col p-3 min-vh-100 w-50 backgroundImg tab-pane">
     <div class="container-fluid" >
         <div class="row">
-            <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">Empresa: {{$company->nameCompany}}</h5>
+            <h5 class="text-center" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:snow">Empresa: {{$company->nameCompany}}</h5>
             <div class="p-3 div-colorfull">
-                <form class="my-4 form-student" id="form-student" action="{{route('adminRegistroPersonaEmpresa.store')}}" method=post>
+                <form class="my-4" id="form-personCompany" action="{{route('adminRegistroPersonaEmpresa.store')}}" method=post>
                 @csrf
                     <div id="dynamicInputs">
                         
@@ -56,7 +124,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-2" style="align-self: center;text-align-last: left;">
-                                    <a name="editCompanyPersonButton" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                    <a onclick="if(!this.hasAttribute('disabled')) { personCompanySwap('{{$person->id}}'); focusandselect(document.getElementById('editNameCompanyPeople_{{$person->id}}')); }" name="editCompanyPersonButton" id="editCompanyPersonButton_{{$person->id}}" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                 </div>
                                 <div class="col-md-2 col-0"></div>
                             </div>
@@ -80,7 +148,7 @@
                             <label for="addPerson">Nombre completo</label>
                         </div>
                     </div>
-                    <button type="button" onclick=addPersonCompany() class="btn btn-primary col-md-3 mt-3">Añadir</button>
+                    <button id="addPersonBtn" type="button" onclick=addPersonCompany() class="btn btn-primary col-md-3 mt-3">Añadir</button>
                     <div class="my-3" id="validatePerson" style="display: none; color: #39f6e4">
                         Llena el campo correspondiente.
                     </div>

@@ -291,6 +291,19 @@ a.btn-table.btn-secondary > i.bi {
     background-color: #c53aff;
 }
 
+a.btn-table[disabled] {
+    background-color: #c53aff80;
+    cursor: default;
+}
+
+a.btn-table[disabled]:active {
+    background-color: #c53aff80;
+}
+
+a.btn-table[disabled]:hover {
+    box-shadow: 0 0 0 0;
+}
+
 th.w-priority{
     min-width:20rem;
 }
