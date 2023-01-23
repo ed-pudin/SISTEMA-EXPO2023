@@ -15,6 +15,7 @@ use App\Http\Controllers\StaffEventController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminPersonCompany;
+use App\Http\Controllers\StaffEventAttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ use App\Http\Controllers\AdminPersonCompany;
 
 Route::get('/', function () {
     return view('welcome');
-}); 
+});
 
 
 //Acceso todos inicio sesion
@@ -49,7 +50,7 @@ Route::group(['middleware' => 'isAdmin'], function () {
 
     // Acceso SOLO ADMIN
     Route::resource('adminInicio', AdminHomeController::class ,[
-        'index' => 'adminInicio.index' 
+        'index' => 'adminInicio.index'
     ]);
 
     Route::resource('adminRegistroPersonaEmpresa', AdminPersonCompany::class ,[
@@ -64,7 +65,7 @@ Route::group(['middleware' => 'isAdmin'], function () {
         'update'    =>  'adminRegistroEmpresas.update',
         'destroy'   =>  'adminRegistroEmpresas.destroy'
     ]);
-    
+
     Route::resource('adminRegistroEventos', EventsController::class ,[
         'index'     => 'adminRegistroEventos.index',
         'store'     => 'adminRegistroEventos.store',
@@ -74,7 +75,7 @@ Route::group(['middleware' => 'isAdmin'], function () {
     ]);
 
     Route::get('editarEvento/{eventToEdit}', [EventsController::class, 'editarEvento'])->name('editarEvento');
-    
+
     Route::resource('adminRegistroInvitados', GuestsController::class ,[
         'index'     => 'adminRegistroInvitados.index',
         'store'     => 'adminRegistroInvitados.store',
@@ -83,7 +84,7 @@ Route::group(['middleware' => 'isAdmin'], function () {
     ]);
 
     Route::get('editarInvitado/{guestToEdit}', [GuestsController::class, 'editarInvitado'])->name('editarInvitado');
-    
+
     Route::resource('adminRegistroMaestros', TeachersController::class ,[
         'index'     => 'adminRegistroMaestros.index',
         'store'     => 'adminRegistroMaestros.store',
@@ -99,7 +100,7 @@ Route::group(['middleware' => 'isAdmin'], function () {
 Route::group(['middleware' => 'isStaffOrAdmin'], function () {
 
     //Acceso staff y admin
-    
+
     //EMPRESAS
     Route::resource('staffEmpresa', StaffCompanyController::class, [
             //1. Mostrar en staff las empresas
@@ -117,20 +118,31 @@ Route::group(['middleware' => 'isStaffOrAdmin'], function () {
         //2. Leer qr
         'store' => 'staffExpositor.store'
     ]);
-    
+
     //EVENTO
     Route::resource('staffEvento', StaffEventController::class, [
         //1. Mostrar en staff los eventos
         'index' => 'staffEvento.index',
         //2. Mostrar en staff 1 evento
-        'show' => 'staffEvento.show'
+        'show' => 'staffEvento.show',
+        //3. Attendance
+        'update' => 'staffEvento.update'
     ]);
+
+    //Evento
+    // Route::resource('staffEventoAttendance', StaffEventAttendanceController::class, [
+    //     //1. Mostrar en staff los eventos
+    //     'index' => 'staffEvento.index',
+    //     //2. Mostrar en staff 1 evento
+    //     'show' => 'staffEvento.show',
+    // ]);
+
 
 
 });
 
 Route::group(['middleware' => 'isTeacherOrAdmin'], function () {
-    
+
     //Acceso solo maestros y admin
     Route::resource('teacherRegistroExpositor', TeacherCreatesExpositorController::class, [
         'index' => 'teacherRegistroExpositor.index'

@@ -28,17 +28,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($events as $events)
                         <tr>
-                            <td>Evento 0</td>
-                            <td>Jhon Lenon</td>
-                            <td> <a href="{{route('staffEvento.show', 1)}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
+                            <td>{{$events->eventName}}</td>
+                            <td>{{$events->guest()->first()->fullName}}</td>
+                            <td> <a href="{{route('staffEvento.show', [$events->id ])}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
                         </tr>
-                        <tr>
-                            <td>Evento 1</td>
-                            <td>Jhon Lenon</td>
-                            <td><a href="{{route('staffEvento.show', 2)}}"><button type="button" class="btn btn-primary">Asistencia</button></td><a>
-                        </tr>
-                       
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\event;
 
-class StaffEventController extends Controller
+class StaffEventAttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,7 @@ class StaffEventController extends Controller
      */
     public function index()
     {
-        //Mostrar todos los eventos
-        $events = event::with('guest')->get();
-
-        return view('staff.events', compact('events'));
+        //
     }
 
     /**
@@ -49,9 +45,7 @@ class StaffEventController extends Controller
      */
     public function show($id)
     {
-        //Mostrar 1 evento
-        $events = event::where('id', $id)->first();
-        return view('staff.attendanceEvent', compact('events') );
+        //
     }
 
     /**
@@ -74,7 +68,7 @@ class StaffEventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd('update');
+        //
     }
 
     /**

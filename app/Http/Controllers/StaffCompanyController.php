@@ -47,7 +47,7 @@ class StaffCompanyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
+    {
         //id
         $company = \App\Models\company::find($id);
         $companyPeople = companyPeople::where('company', '=',$id)->get();
@@ -75,9 +75,9 @@ class StaffCompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //MARCAR ASISTENCIA 
+        //MARCAR ASISTENCIA
         //Obtener el id de la company_people con el where de company
-       
+
         $companyPeople = companyPeople::where('company', '=',$id)->get();
         //lista
 
@@ -88,7 +88,7 @@ class StaffCompanyController extends Controller
 
             if($request->has('attendance'.$i))
             {
-                //checkbox active 
+                //checkbox active
                 $companyPeople[$i]->attended = true;
                 if(!($companyPeople[$i]->save())){
                     session()->flash("status","Hubo un problema.");
@@ -101,21 +101,21 @@ class StaffCompanyController extends Controller
                     return redirect()->back();
                 }
             }
-            
+
         }
 
         if($request->countInputsNew > 0){
             for($j= $request->countInputsOld; $j <= $request->countInputsOld- $request->newInputs; $j++)
             {
                 $companyPeople = new companyPeople();
-    
+
                 $companyPeople->fullName = $request->{'name'.$j};
                 $companyPeople->company = $request->idCompany;
                 $companyPeople->attended = false;
-    
+
                 if($request->has('attendance'.$j))
                 {
-                    //checkbox active 
+                    //checkbox active
                     $companyPeople->attended = true;
                     if(!($companyPeople->save())){
                         session()->flash("status","Hubo un problema.");
@@ -129,7 +129,11 @@ class StaffCompanyController extends Controller
                     }
                 }
             }
-        }        
+        }
+
+        session()->flash("status","Asistencia registrada.");
+        return redirect()->route('staffEmpresa.index');
+
     }
 
     /**

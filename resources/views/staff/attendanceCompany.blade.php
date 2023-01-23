@@ -1,6 +1,7 @@
 @extends('staff.struct')
 
 @section('Content')
+
 <div class="col-sm p-3 test">
     <div class="container-fluid" >
         <div class="row">
@@ -27,7 +28,7 @@
                             </div>
                         </div>
                         @endfor
-                           
+
 
                         <!--INPUTS DINAMICOS-->
 
