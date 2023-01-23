@@ -80,7 +80,8 @@ class AdminPersonCompany extends Controller
      */
     public function edit($id)
     {
-        dd();
+        //
+        echo("Edit"); 
     }
 
     /**
@@ -92,7 +93,16 @@ class AdminPersonCompany extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $person = companyPeople::find($id);
+
+        $person->fullName = $request->{'editNameCompanyPeople_'.$id};
+        
+        if($person->save()){
+            session()->flash("update","Edición del nombre de la persona exitosa");
+        }else{
+            session()->flash("update","Hubo un error, intente de nuevo");
+        }
+        return redirect()->back();
     }
 
     /**
