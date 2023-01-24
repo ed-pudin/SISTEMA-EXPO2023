@@ -145,7 +145,8 @@ Route::group(['middleware' => 'isTeacherOrAdmin'], function () {
 
     //Acceso solo maestros y admin
     Route::resource('teacherRegistroExpositor', TeacherCreatesExpositorController::class, [
-        'index' => 'teacherRegistroExpositor.index'
+        'index' =>  'teacherRegistroExpositor.index',
+        'store' =>  'teacherRegistroExpositor.store'
     ]);
 
 });

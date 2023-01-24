@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\User;
+use App\Models\student;
+use App\Models\project;
+use App\Models\projectStudent;
 
 class TeacherCreatesExpositorController extends Controller
 {
@@ -24,7 +29,7 @@ class TeacherCreatesExpositorController extends Controller
      */
     public function create()
     {
-        //Guardar el expositor creado - TEACHER
+        //
     }
 
     /**
@@ -35,7 +40,52 @@ class TeacherCreatesExpositorController extends Controller
      */
     public function store(Request $request)
     {
-        //Guardar expositor
+        $numStudents = $request->inputCount;
+        $semester = $request->semester;
+        $ua = $request->UA;
+        $projectName = $request->nameProject;
+
+        $project = new project();
+        $project->semester = $semester;
+        $project->subject = $ua;
+        $project->nameProject = $projectName;
+
+        $project->save();
+
+        for($i = 0; $i < $numStudents; $i++) {
+
+            $fullName = $request->{"name".$i};
+            $arrayName = explode(" ",$fullName);
+            $enrollment = $request->{"enrollment".$i};
+
+            $firstName = $arrayName[0];
+            $lastName = $arrayName[1]." ".$arrayName[2];
+
+            $user = new User(['key'=> $enrollment,
+                'password' => (strtolower(str_replace(' ', '', $lastName))."_".$enrollment),
+                'rol' => 'expositor', 
+                'permanent'=> false
+            ]);
+
+            if($user->save()) {
+                $student = new student();
+
+                $student->enrollment = $enrollment;
+                $student->fullName = $fullName;
+
+                $student->save();
+
+                $projectStudent = new projectStudent();
+                $projectStudent->project = $project->id;
+                $projectStudent->student = $enrollment;
+                $projectStudent->attended = false;
+                                
+                $projectStudent->save();
+            }
+
+        }
+
+        return redirect()->back();
     }
 
     /**

@@ -39,16 +39,18 @@
             </div>
 
             <div class="p-3 my-4 div-colorfull" style="">
-                <form class="my-4 form-student" id="form-student">
+                <form class="my-4 form-student" id="form-student" action="{{route('teacherRegistroExpositor.store')}}" method=post>
 
+                @csrf
                     <!--HIDDEN INPUTS-->
 
-                    <input type="text" value="1" id="semester" hidden>
-                    <input type="text" value="Programacion web capa intermedia" id="UA" hidden>
+                    <input type="text" value="1" name="semester" id="semester" hidden>
+                    <input type="text" value="Programacion web capa intermedia" name="UA" id="UA" hidden>
+                    <input type="text" id="inputCount" name="inputCount" value=1 hidden>
 
                     <div class="d-flex justify-content-center flex-wrap">
                         <div class="col-12 col-md-6 col-lg-6 m-2 form-floating">
-                            <input type="text" class="form-control" id="nameProject" placeholder="Nombre del proyecto" required>
+                            <input type="text" class="form-control" name="nameProject" id="nameProject" placeholder="Nombre del proyecto" required>
                             <label for="nameProject">Nombre del proyecto</label>
                         </div>
 
@@ -75,14 +77,15 @@
                     </div>
 
                     <div class="d-flex justify-content-center flex-wrap m-t3">
+
                         <div class="col-12 col-md-2 my-2 mx-3 mx-xl-5">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="enrollment0" placeholder="Matricula" value="" required>
+                                <input required onchange="checkNum(this)" type="number" class="form-control" name="enrollment0" id="enrollment0" placeholder="Matricula" value="" required>
                                 <label for="enrollment0">Matricula</label>
                             </div>
 
                             <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" id="attendance0" >
+                                <input class="form-check-input" type="checkbox" name="attendance0" id="attendance0" >
                                 <label class="form-check-label text-light" for="attendance0">
                                     Comprobar
                                 </label>
@@ -91,7 +94,7 @@
                         </div>
                         <div class="col-12 col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name0" readonly placeholder="Nombre completo" value="Briam Alan Gonzalez Flores">
+                                <input onclick="this.value = generateName()" type="text" class="form-control" name="name0" id="name0" readonly placeholder="Nombre completo">
                                 <label for="name0">Nombre completo</label>
                             </div>
                         </div>
@@ -100,15 +103,20 @@
                     <div class="mt-3" id="dynamicInputs">
 
 
-
-
                         <!--INPUTS DINAMICOS-->
 
                     </div>
-
+                    
+                    <!--                       key      |      password         -->
+                    <!-- User Student ->    matrícula   | apellidos_matrícula   -->
 
                     <div class="col-12 my-2" style="text-align:center;">
-                        <button id="regGuest" type="submit" class="col-md-4 col-sm-12 btn btn-primary">Registrar equipo</button>
+                        <a onclick="checkDuplicated()" class="col-md-4 col-sm-12 btn btn-primary">Registrar equipo</a>
+                        <button id="regGuest" type="submit" class="col-md-4 col-sm-12 btn btn-primary" hidden>Registrar equipo</button>
+                    </div>
+
+                    <div id="duplicatedAlert" class="col-12 my-2" style="text-align:center;" hidden>
+                        <h5 style="color: #39f6e4; text-shadow:0px 0px 20px grey; font-weight:normal;"> Comprueba que no se repitan matrículas </h5>
                     </div>
 
                 </form>

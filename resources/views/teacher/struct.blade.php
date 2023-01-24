@@ -28,28 +28,28 @@
 <body style="background-image: url('images/backgroundimg.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
     <nav class="navbar navbar-expand-lg bg-dark sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">LOGO EXPO</a>
+            <a class="navbar-brand" href="/"> <img class="logo-img" src="{{ asset('images/LOGO.png') }}" height="30"> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link active" href="{{route('teacherRegistroExpositor.index')}}">
-                        <p class="m-0"> Registrar expositor </p> </a>
+                            <p class="m-0 nav-txt"> Registrar Expositores </p>
+                        </a>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cerrarSesion') }}">
-                            <p class="m-0"> Salir </p>
+                    <li>
+                        <a class="nav-link active" href="{{ route('cerrarSesion') }}">
+                            <p class="m-0 nav-txt"> Salir </p>
                         </a>
                     </li>
                 </ul>
             </div>
-
         </div>
     </nav>
     @yield('Content')
