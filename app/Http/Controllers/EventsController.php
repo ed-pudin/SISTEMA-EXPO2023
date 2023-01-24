@@ -122,6 +122,7 @@ class EventsController extends Controller
 
         if($event->save()) {
             session()->flash("update","Edición en evento exitosa");
+            return redirect()->route('adminRegistroEventos.index');
         }else{
             session()->flash("update","Hubo un error, intente de nuevo");
         }

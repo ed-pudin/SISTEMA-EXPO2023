@@ -88,6 +88,7 @@ class CompaniesController extends Controller
 
         if($company->save()){
             session()->flash("update","Edición en empresa exitosa");
+            return redirect()->route('adminRegistroEmpresas.index');
         }else{
             session()->flash("update","Hubo un error, intente de nuevo");
         }

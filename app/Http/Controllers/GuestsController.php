@@ -90,6 +90,7 @@ class GuestsController extends Controller
 
         if($guest->save()){
             session()->flash("update","Edición en invitado exitosa");
+            return redirect()->route('adminRegistroInvitados.index');
         }else{
             session()->flash("update","Hubo un error, intente de nuevo");
         }
