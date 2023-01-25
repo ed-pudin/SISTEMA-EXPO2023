@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\event;
+use App\Models\student;
+use App\Models\externalPeople;
+use App\Models\eventStudent;
+use App\Models\externalPeopleEvent;
 
 class StaffEventController extends Controller
 {
@@ -74,7 +78,57 @@ class StaffEventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd('update');
+        if($request->has('enrollmentStudentEvent')){
+            //REGISTRAR ENTRADA ESTUDIANTE
+
+            $student = new student();
+            $student->enrollment = $request->enrollmentStudentEvent;
+            $student->fullName = $request->fullNameStudentEvent;
+
+            if($student->save()){
+                $eventStudent = new eventStudent();
+                $eventStudent->event = $id;
+                $eventStudent->student = $request->enrollmentStudentEvent;
+                $eventStudent->attended = true;
+
+                if($eventStudent->save()){
+                    session()->flash("status","Asistencia registrada");
+                }else{
+                    session()->flash("status","Hubo un problema en la asistencia");
+                }
+
+                return redirect()->route('staffEvento.index');
+
+            }else{
+                session()->flash("status","Hubo un problema en la asistencia");
+            }
+
+        }else{
+            //REGISTRAR ENTRADA EXTERNO
+
+            $externalPeople = new externalPeople();
+            $externalPeople->fullName = $request->regEventExternal;
+            $externalPeople->genre = $request->genre;
+
+            if($externalPeople->save()){
+                $externalPeopleEvent = new externalPeopleEvent();
+                $externalPeopleEvent->externalPeople = $externalPeople->id;
+                $externalPeopleEvent->event = $id;
+                $externalPeopleEvent->attended = true;
+
+                if($externalPeopleEvent->save()){
+                    session()->flash("status","Asistencia registrada");
+                }else{
+                    session()->flash("status","Hubo un problema en la asistencia");
+                }
+
+                return redirect()->route('staffEvento.index');
+
+            }else{
+                session()->flash("status","Hubo un problema en la asistencia");
+            }
+        }
+
     }
 
     /**

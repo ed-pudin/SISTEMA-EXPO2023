@@ -16,7 +16,7 @@ class LoginController extends Controller
     public function index()
     {
         if(session()->exists('id')){
-            session()->flush();
+            session()->forget('id');
         }
         return view('login');
     }
@@ -38,7 +38,7 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $user = new User();
         $user = User::where('key', '=', $request->key, 'and')->where('password', '=', $request->pas)->first();
 
@@ -49,7 +49,7 @@ class LoginController extends Controller
             if($user->rol == 'admin'){
                 return redirect()->route('adminInicio.index');
             }else if ($user->rol == 'staff'){
-                return redirect()->route('staffEmpresa.index');
+                return redirect()->route('staffEvento.index');
             }else if ($user->rol == 'expositor'){
                 return redirect()->route('expositorQR.index');
             }else if($user->rol == 'teacher'){
@@ -109,7 +109,7 @@ class LoginController extends Controller
 
     public function logOut(){
         if(session()->exists('id')){
-            session()->flush();
+            session()->forget('id');
         }
 
         return redirect('/');
