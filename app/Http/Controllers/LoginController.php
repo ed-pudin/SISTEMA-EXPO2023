@@ -44,8 +44,7 @@ class LoginController extends Controller
 
         if($user != null){
 
-            $request->session()->put('id', $user->id);
-            session()->save();
+            session()->put('id', $user->id);
             if($user->rol == 'admin'){
                 return redirect()->route('adminInicio.index');
             }else if ($user->rol == 'staff'){

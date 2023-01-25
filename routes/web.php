@@ -15,7 +15,7 @@ use App\Http\Controllers\StaffEventController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminPersonCompany;
-use App\Http\Controllers\StaffEventAttendanceController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +28,7 @@ use App\Http\Controllers\StaffEventAttendanceController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index']);
 
 
 //Acceso todos inicio sesion
@@ -128,14 +126,6 @@ Route::group(['middleware' => 'isStaffOrAdmin'], function () {
         //3. Attendance
         'update' => 'staffEvento.update'
     ]);
-
-    //Evento
-    // Route::resource('staffEventoAttendance', StaffEventAttendanceController::class, [
-    //     //1. Mostrar en staff los eventos
-    //     'index' => 'staffEvento.index',
-    //     //2. Mostrar en staff 1 evento
-    //     'show' => 'staffEvento.show',
-    // ]);
 
 
 

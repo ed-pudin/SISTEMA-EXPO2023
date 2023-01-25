@@ -49,7 +49,7 @@
     <nav class="navbar navbar-expand-lg bg-dark sticky-top">
         <div class="container-fluid">
             <div class="col-md-0">
-                <a class="m-0 navbar-brand align: center" href="/"> <img class="logo-img" src="{{ asset('images/LOGO.png') }}" height="30"> </a>
+                <a class="navbar-brand " href="/"> <img class="logo-img" src="{{ asset('images/LOGO.png') }}" height="30"> </a>
             </div>
             <button class="m-0 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -58,145 +58,272 @@
             <div class="collapse navbar-collapse" id="navbarNav">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{route('staffEvento.index')}}">
-                            <p class="m-0 nav-txt"> Registrar Expositores </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{route('staffEmpresa.index')}}">
-                            <p class="m-0 nav-txt"> QR Expositor </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{route('staffExpositor.index')}}">
-                            <p class="m-0 nav-txt"> Marcar Asistencia </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{route('staffExpositor.index')}}">
-                            <p class="m-0 nav-txt"> Administrar </p>
-                        </a>
-                    </li>
-                </ul>
+                    @if (session()->has('id'))
+                        @if ($rol == 'teacher')
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{route('staffEvento.index')}}">
+                                <p class="m-0 nav-txt"> Registrar Expositores </p>
+                            </a>
+                        </li>
+                        @endif
 
-                <ul class="nav navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('inicioSesion.index')}}">
-                            <p class="m-0 nav-txt"> INICIAR SESION </p>
-                        </a>
-                    </li>
+                        @if ($rol == 'expositor')
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{route('expositorQR.index')}}">
+                                    <p class="m-0 nav-txt"> QR Expositor </p>
+                                </a>
+                            </li>
+                        @endif
+
+                        @if ($rol == 'staff' || $rol == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{route('staffEvento.index')}}">
+                                    <p class="m-0 nav-txt"> Marcar Asistencia </p>
+                                </a>
+                            </li>
+                        @endif
+
+                        @if ($rol == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{route('adminInicio.index')}}">
+                                    <p class="m-0 nav-txt"> Administrar </p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
                 </ul>
+                @if (!(session()->has('id')))
+                    <ul class="nav navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('inicioSesion.index')}}">
+                                <p class="m-0 nav-txt"> INICIAR SESION </p>
+                            </a>
+                        </li>
+                    </ul>
+                @endif
+
             </div>
 
         </div>
     </nav>
         <div class="container-fluid min-vh-100 backgroundImg">
-            <div class="row align-items-center p-5">
-                <h1 style="text-align: center;"> I n v i t a d o s </h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-md-2 col-sm-12 my-5"></div>
-                    <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">    
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="https://placehold.co/300x100?text=Invitado+1" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h2 style="text-align: center;">First slide label</h2>
-                                    <p style="text-align: center;">Some representative placeholder content for the first slide.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://placehold.co/300x100?text=Invitado+2" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 style="text-align: center;">Second slide label</h5>
-                                    <p style="text-align: center;">Some representative placeholder content for the second slide.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://placehold.co/300x100?text=Invitado+3" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 style="text-align: center;">Third slide label</h5>
-                                    <p style="text-align: center;">Some representative placeholder content for the third slide.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
+            <div class="slider1">
+                @if(count($conferencias) > 0)
+                    <div class="row align-items-center p-5">
+                        <h1 style="text-align: center;"> C o n f e r e n c i a s </h1>
                     </div>
-                <div class="col-md-3"></div>
-            </div>
-            <div class="row align-items-center p-5">
-                <h1 style="text-align: center;">E v e n t o s</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-md-2 col-sm-12 my-5"></div>
-                    <div id="carouselExampleCaptions2" class="carousel slide col-md-8" data-bs-ride="carousel">    
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="https://placehold.co/300x100?text=Mesa+redonda+1" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h2 style="text-align: center;">First slide label</h2>
-                                    <p style="text-align: center;">Some representative placeholder content for the first slide.</p>
-                                </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-md-2 col-sm-12 my-5"></div>
+                                <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach ( $conferencias as $conferencia)
+                                            <div class="carousel-item {{$loop->first ? 'active': ''}}">
+
+                                                <img src="{{ asset('storage/eventImages/'.$conferencia->image) }}" class="img-fluid d-block w-100" style="text-align: center; width: 100px; height:300px; object-fit: cover;">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h3 style="text-align: center; text-shadow: 0 0 10px #000;">{{$conferencia->eventName}}</h3>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
+                                    <div class="carousel-indicators">
+                                        @foreach ( $conferencias as $conferencia)
+                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 1"></button>
+                                        @endforeach
+                                    </div>
+
                             </div>
-                            <div class="carousel-item">
-                                <img src="https://placehold.co/300x100?text=Mesa+redonda+2" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 style="text-align: center;">Second slide label</h5>
-                                    <p style="text-align: center;">Some representative placeholder content for the second slide.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://placehold.co/300x100?text=Mesa+redonda+3" class="img-fluid d-block w-100" style="text-align: center;" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 style="text-align: center;">Third slide label</h5>
-                                    <p style="text-align: center;">Some representative placeholder content for the third slide.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
+                        <div class="col-md-3"></div>
                     </div>
-                <div class="col-md-3"></div>
+                @endif
             </div>
-            <div class="row align-items-center p-5">
-                <h1 style="text-align: center;"> E m p r e s a s </h1>
+
+            <div class="slider2">
+                @if(count($mesasRedondas) > 0)
+                    <div class="row align-items-center p-5">
+                        <h1 style="text-align: center;"> M e s a  R e d o n d a </h1>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-md-2 col-sm-12 my-5"></div>
+                                <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach ( $mesasRedondas as $mesaRedonda)
+                                            <div class="carousel-item {{$loop->first ? 'active': ''}}">
+                                                <img src="{{ asset('storage/eventImages/'.$mesaRedonda->image) }}" class="img-fluid d-block w-100" style="text-align: center; width: 100px; height:300px; object-fit: cover;">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h3 style="text-align: center;text-shadow: 0 0 10px #000;">{{$mesaRedonda->eventName}}</h3>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
+                                    <div class="carousel-indicators">
+                                        @foreach ( $mesasRedondas as $mesaRedonda)
+                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 1"></button>
+                                        @endforeach
+                                    </div>
+
+                            </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                @endif
             </div>
-            <div class="row align-items-center">
-                <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                    <img src="https://placehold.co/200x200?text=Empresa+1" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
+
+            <div class="slider3">
+                @if(count($masterClasses) > 0)
+                    <div class="row align-items-center p-5">
+                        <h1 style="text-align: center;"> M e s a  R e d o n d a </h1>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-md-2 col-sm-12 my-5"></div>
+                                <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach ( $masterClasses as $masterClass)
+                                            <div class="carousel-item {{$loop->first ? 'active': ''}}">
+                                                <img src="{{ asset('storage/eventImages/'.$masterClass->image) }}" class="img-fluid d-block w-100" style="text-align: center; width: 100px; height:300px; object-fit: cover;">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h3 style="text-align: center;text-shadow: 0 0 10px #000;">{{$masterClass->eventName}}</h3>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
+                                    <div class="carousel-indicators">
+                                        @foreach ( $masterClasses as $masterClass)
+                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 1"></button>
+                                        @endforeach
+                                    </div>
+
+                            </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="slider4">
+                @if(count($torneos) > 0)
+                    <div class="row align-items-center p-5">
+                        <h1 style="text-align: center;"> T o r n e o s </h1>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-md-2 col-sm-12 my-5"></div>
+                                <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach ( $torneos as $torneo)
+                                            <div class="carousel-item {{$loop->first ? 'active': ''}}">
+                                                <img src="{{ asset('storage/eventImages/'.$torneo->image) }}" class="img-fluid d-block w-100" style="text-align: center; width: 100px; height:300px; object-fit: cover;">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h3 style="text-align: center;text-shadow: 0 0 10px #000;">{{$torneo->eventName}}</h3>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
+                                    <div class="carousel-indicators">
+                                        @foreach ( $torneos as $torneo)
+                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 1"></button>
+                                        @endforeach
+                                    </div>
+
+                            </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="slider5">
+                @if(count($otros) > 0)
+                    <div class="row align-items-center p-5">
+                        <h1 style="text-align: center;"> D e m á s  e v e n t o s </h1>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-md-2 col-sm-12 my-5"></div>
+                                <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach ( $otros as $otro)
+                                            <div class="carousel-item {{$loop->first ? 'active': ''}}">
+                                                <img src="{{ asset('storage/eventImages/'.$otro->image) }}" class="img-fluid d-block w-100" style="text-align: center; width: 100px; height:300px; object-fit: cover;">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h3 style="text-align: center;text-shadow: 0 0 10px #000;">{{$otro->eventName}}</h3>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" >
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
+                                    <div class="carousel-indicators">
+                                        @foreach ( $otros as $otro)
+                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 1"></button>
+                                        @endforeach
+                                    </div>
+
+                            </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="empresas">
+                <div class="row align-items-center p-5">
+                    <h1 style="text-align: center;"> E m p r e s a s </h1>
                 </div>
-                <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                    <img src="https://placehold.co/200x200?text=Empresa+2" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
-                </div>
-                <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                    <img src="https://placehold.co/200x200?text=Empresa+3" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
-                </div>
-                <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                    <img src="https://placehold.co/200x200?text=Empresa+4" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
+
+                <div class="row d-flex justify-content-center">
+                @foreach ($companies as $company )
+                    <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
+                        <img src="https://placehold.co/200x200?text={{$company->nameCompany}}" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
+                    </div>
+                @endforeach
                 </div>
             </div>
         </div>
