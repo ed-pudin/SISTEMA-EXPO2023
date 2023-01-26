@@ -35,3 +35,16 @@ div#reader > :first-child {
 #reader__camera_selection:focus {
     border-bottom: 2px solid #e23a87;
 }
+
+#reader__scan_region:has(video) {
+    background-image: none;
+}
+
+#reader__dashboard_section_swaplink {
+    display: none!important;
+}
+
+/* video {
+    width: 100%!important;
+    height: 100%;
+} */
