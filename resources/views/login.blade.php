@@ -38,7 +38,7 @@
                     showConfirmButton: false,
                     timer: 1500
                 })
-            
+
             });
         }
     </script>
@@ -60,7 +60,7 @@
                 <div class="container vh-80 div-colorfull">
 
                     <div class="container py-5">
-                        
+
                         <form class="my-4 form-login" id="login" action="{{route('inicioSesion.store')}}" method="post">
                             @csrf
                             <div class="col-12 d-flex justify-content-center my-5">
@@ -68,7 +68,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                
+
                                 <div class="col-md-10 my-4 mx-3">
                                     <div class="" syle="transform-origin: unset;">
                                         <input type="text" class="form-control text-center" name="key" id="key" placeholder="Clave de inicio de sesión" required>
@@ -86,15 +86,15 @@
                                 </div>
 
                             </div>
-    
+
 
                             <div class="d-flex justify-content-center my-4">
                                 <button type="submit" class="btn btn-primary col-md-6">Iniciar sesión</button>
                             </div>
                         </form>
 
-                    
-                        
+
+
                     </div>
 
                 </div>
