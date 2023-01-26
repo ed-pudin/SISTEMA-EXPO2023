@@ -33,6 +33,7 @@
       src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
     ></script>
 
+    @livewireStyles
 </head>
 <body style="background-image: url('../images/backgroundimg.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
     <nav class="navbar navbar-expand-lg bg-dark sticky-top">
@@ -75,5 +76,6 @@
         </div>
     </nav>
     @yield('Content')
+    @livewireScripts
 </body>
 </html>
