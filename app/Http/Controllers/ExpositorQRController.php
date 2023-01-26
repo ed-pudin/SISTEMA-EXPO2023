@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\project;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\student;
+use App\Models\projectStudent;
 
 class ExpositorQRController extends Controller
 {
@@ -19,7 +21,10 @@ class ExpositorQRController extends Controller
 
         $user = User::where('id', session()->get('id'))->first();
         $student = student::where('enrollment', '=', $user->key)->first();
-        return view('expositor.index', compact('student'));
+
+        $projects = projectStudent::where('student', '=', $student->enrollment)->get();
+
+        return view('expositor.index', compact('student', 'projects'));
     }
 
     /**

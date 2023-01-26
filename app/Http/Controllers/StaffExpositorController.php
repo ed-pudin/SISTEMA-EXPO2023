@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\projectStudent;
 
 class StaffExpositorController extends Controller
 {
@@ -35,7 +36,14 @@ class StaffExpositorController extends Controller
      */
     public function store(Request $request)
     {
+        $projects = projectStudent::where('student', '=', $request->matricula)->get();
         
+        foreach ($projects as $projectStudent) {
+            $projectStudent->attended = true;
+            $projectStudent->save();
+        }
+
+        return redirect()->back();
     }
 
     /**

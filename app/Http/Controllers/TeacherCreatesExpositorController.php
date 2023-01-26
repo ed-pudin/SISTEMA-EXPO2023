@@ -61,27 +61,35 @@ class TeacherCreatesExpositorController extends Controller
             $firstName = $arrayName[0];
             $lastName = $arrayName[1]." ".$arrayName[2];
 
-            $user = new User(['key'=> $enrollment,
-                'password' => (strtolower(str_replace(' ', '', $lastName))."_".$enrollment),
-                'rol' => 'expositor', 
-                'permanent'=> false
-            ]);
+            $thisUser = student::find($enrollment);
 
-            if($user->save()) {
-                $student = new student();
+            # Crea un usuario y un estudiante si NO existe
 
-                $student->enrollment = $enrollment;
-                $student->fullName = $fullName;
+            if(is_null($thisUser)) {
 
-                $student->save();
+                $user = new User(['key'=> $enrollment,
+                    'password' => (strtolower(str_replace(' ', '', $lastName))."_".$enrollment),
+                    'rol' => 'expositor', 
+                    'permanent'=> false
+                ]);
 
-                $projectStudent = new projectStudent();
-                $projectStudent->project = $project->id;
-                $projectStudent->student = $enrollment;
-                $projectStudent->attended = false;
-                                
-                $projectStudent->save();
+                if($user->save()) {
+                    $student = new student();
+
+                    $student->enrollment = $enrollment;
+                    $student->fullName = $fullName;
+
+                    $student->save();
+
+                }
             }
+
+            $projectStudent = new projectStudent();
+            $projectStudent->project = $project->id;
+            $projectStudent->student = $enrollment;
+            $projectStudent->attended = false;
+                            
+            $projectStudent->save();
 
         }
 
