@@ -24,9 +24,7 @@
                 <div id="reader"></div>
             </div>
             <div class="col-12" style="padding: 30px">
-                <h4>Scan Result </h4>
                 <div id="result">
-                Result goes here
                 </div>
             </div>
         </div>
@@ -87,6 +85,12 @@
     function onScanSuccess(qrCodeMessage) {
         document.getElementById("result").innerHTML =
             '<span class="result">' + qrCodeMessage + "</span>";
+
+        document.getElementById('result').innerHTML = `<hr> <h1> Alumno ${qrCodeMessage} registrado </h1> <hr>`;
+        document.getElementById("matricula").value = qrCodeMessage;
+        document.querySelector('form').submit();
+        scanner.clear();
+        document.getElementById('reader').remove();
     }
 
     // When scan is unsuccessful fucntion will produce error message
