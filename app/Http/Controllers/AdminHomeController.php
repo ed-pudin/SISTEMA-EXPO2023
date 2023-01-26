@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\companyPeople;
+use App\Models\eventStudent;
+use App\Models\externalPeopleEvent;
+use App\Models\projectStudent;
+use App\Models\company;
+use App\Models\event;
 
 class AdminHomeController extends Controller
 {
@@ -13,7 +19,53 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+
+        $finalCount = companyPeople::where('attended', '=', true)->get()->count();
+        $finalCount += eventStudent::where('attended', '=', true)->get()->count();
+        $finalCount += externalPeopleEvent::where('attended', '=', true)->get()->count();
+        $finalCount += projectStudent::where('attended', '=', true)->get()->count();
+
+        $studentsCount = eventStudent::where('attended', '=', true)->get()->count();
+        $studentsCount += projectStudent::where('attended', '=', true)->get()->count();
+
+        $externalCount = externalPeopleEvent::where('attended', '=', true)->get()->count();
+
+        $femaleExternalCount = externalPeopleEvent::with('externalPeople')
+            ->whereHas('externalPeople', function ($query) {
+                $query->where('genre', '=', 'female');
+            })->get()->count();
+
+        $maleExternalCount = externalPeopleEvent::with('externalPeople')
+        ->whereHas('externalPeople', function ($query) {
+            $query->where('genre', '=', 'male');
+        })->get()->count();
+
+        $eventCount = event::all()->count();
+
+        $companyCount = company::all()->count();
+
+        $expositorCount = projectStudent::distinct('student')->count();
+
+        $events = event::select('eventName')->get();
+
+        $eventsName = [];
+
+        foreach($events as $event){
+            array_push($eventsName, $event->eventName);
+        }
+
+        $eventsCount = event::all()->groupBy('id')->count();
+
+        dd($eventsCount);
+
+        $eventsTotalCount= [];
+
+        foreach($eventsCount as $eventsCount){
+            array_push($eventsTotalCount, $event);
+        }
+        dd($eventsTotalCount);
+
+        return view('admin.index', compact('finalCount', 'studentsCount', 'externalCount', 'femaleExternalCount', 'maleExternalCount', 'eventCount', 'companyCount', 'expositorCount', 'eventsName', 'eventsTotalCount'));
     }
 
     /**

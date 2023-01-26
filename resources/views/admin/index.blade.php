@@ -14,8 +14,8 @@
         <div class="card dashboard-t my-3">
             <div class="card-body">
                 <div class="col-12 justify-content-center">
-                        <h2 class="text-center" style="font-size:8em; font-weight:bold;"> 9999 </h2>
-                        <h1 class="text-center" style="text-shadow:unset; font-size:1.5em;"> <b> TOTAL DE ASISTIDOS </b> </h1> 
+                        <h2 class="text-center" style="font-size:8em; font-weight:bold;"> @if ($finalCount <= 0) — @else{{$finalCount}}@endif </h2>
+                        <h1 class="text-center" style="text-shadow:unset; font-size:1.5em;"> <b> TOTAL DE ASISTIDOS </b> </h1>
                 </div>
             </div>
         </div>
@@ -25,10 +25,10 @@
                 <div class="card dashboard-t col-12 col-md-12 col-lg-5 my-3">
                     <div class="card-body row d-flex center-text-v flex-fill">
                         <div class="col-12 justify-content-center">
-                            <h2 class="text-center" style="font-size:6em; font-weight:bold;"> 12 </h2>
+                            <h2 class="text-center" style="font-size:6em; font-weight:bold;"> @if ($studentsCount <= 0) — @else{{$studentsCount}}@endif  </h2>
                         </div>
                         <div class="col-12 justify-content-center">
-                            <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> ALUMNOS </b> </h1> 
+                            <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> ALUMNOS </b> </h1>
                         </div>
                     </div>
                 </div>
@@ -38,42 +38,42 @@
                 <div class="card dashboard-t col-12 col-md-12 col-lg-5 my-3">
                     <div class="card-body flex-fill">
                         <div class="col-12 justify-content-center">
-                            <h2 class="text-center" style="font-size:6em; font-weight:bold;"> 9999 </h2>
-                            <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> EXTERNOS </b> </h1> 
+                            <h2 class="text-center" style="font-size:6em; font-weight:bold;"> @if ($externalCount <= 0) — @else{{$externalCount}}@endif </h2>
+                            <h1 class="text-center" style="text-shadow:unset; font-size:1.8em;"> <b> EXTERNOS </b> </h1>
                         </div>
 
                         <div class="container col-12 d-md-flex mt-4">
                             <div class="col-12 col-md-6 justify-content-center">
-                                <h2 class="text-center" style="font-size:3em; font-weight:bold;"> 9999 </h2>
-                                <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> FEMENINO </b> </h1> 
+                                <h2 class="text-center" style="font-size:3em; font-weight:bold;"> @if ($femaleExternalCount <= 0) — @else{{$femaleExternalCount}}@endif </h2>
+                                <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> FEMENINO </b> </h1>
                             </div>
 
                             <div class="col-12 col-md-6 justify-content-center">
-                                <h2 class="text-center" style="font-size:3em; font-weight:bold;"> 9999 </h2>
-                                <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> MASCULINO </b> </h1> 
+                                <h2 class="text-center" style="font-size:3em; font-weight:bold;"> @if ($maleExternalCount <= 0) — @else{{$maleExternalCount}}@endif </h2>
+                                <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> MASCULINO </b> </h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="mt-3 card dashboard-t text-center text-white">
             <div class="row my-5">
                 <div class="col-md-4 col-sm-12 justify-content-center">
-                    <h2 style="font-size:5em; font-weight:bold;"> 12 </h2>
-                    <h1 style="text-shadow:unset; font-size:2.0em;"> Cantidad eventos </h1> 
+                    <h2 style="font-size:5em; font-weight:bold;"> @if ($eventCount <= 0) — @else{{$eventCount}}@endif </h2>
+                    <h1 style="text-shadow:unset; font-size:2.0em;"> Cantidad eventos </h1>
                 </div>
 
                 <div class="col-md-4 col-sm-12 justify-content-center">
-                    <h2 style="font-size:5em; font-weight:bold;"> 48 </h2>      
-                    <h1 style="text-shadow:unset; font-size:2.0em;"> Cantidad expositores </h1>       
+                    <h2 style="font-size:5em; font-weight:bold;">@if ($expositorCount <= 0) — @else{{$expositorCount}}@endif   </h2>
+                    <h1 style="text-shadow:unset; font-size:2.0em;"> Cantidad expositores </h1>
                 </div>
 
                 <div class="col-md-4 col-sm-12 justify-content-center">
-                    <h2 style="font-size:5em; font-weight:bold;"> 48 </h2>
-                    <h1 style="text-shadow:unset; font-size:1.8em;"> Cantidad empresas </h1> 
+                    <h2 style="font-size:5em; font-weight:bold;"> @if ($companyCount <= 0) — @else{{$companyCount}}@endif </h2>
+                    <h1 style="text-shadow:unset; font-size:1.8em;"> Cantidad empresas </h1>
                 </div>
             </div>
 
@@ -186,11 +186,11 @@
         };
 
         var data = {
-            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+            labels: {!!json_encode($eventsName)!!},
             datasets: [{
-                data: [300, 50, 100, 40, 120],
-                backgroundColor: [chooseColor(), chooseColor(), chooseColor(), chooseColor(), chooseColor()],
-                hoverBackgroundColor: [chooseColor(), chooseColor(), chooseColor(), chooseColor(), chooseColor()],
+                data: {!!json_encode($eventsTotalCount)!!},
+                backgroundColor: [chooseColor(), chooseColor(), chooseColor()],
+                hoverBackgroundColor: [chooseColor(), chooseColor(), chooseColor()],
                 borderWidth: 0,
             }]
         };
