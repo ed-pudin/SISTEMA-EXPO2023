@@ -13,7 +13,7 @@ class eventStudent extends Model
     use HasFactory, SoftDeletes;
 
     public function event(){
-        return $this->hasMany(event::class, 'event', 'id');
+        return $this->belongsTo(event::class, 'event', 'id');
     }
 
     public function student(){
