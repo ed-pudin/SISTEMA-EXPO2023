@@ -12,7 +12,9 @@ class TableEventStaff extends Component
 
     public function render()
     {
-        return view('livewire.table-event-staff');
+        $pageSize = 10;
+
+        return view('livewire.table-event-staff', compact('pageSize'));
     }
 
     public function search(){

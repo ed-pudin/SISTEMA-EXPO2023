@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table" style="text-align-last:center;">
+                <table id="event-staff-table" class="table" style="text-align-last:center;">
                     <thead>
                         <tr>
                             <th class="w-priority">Nombre</th>
@@ -25,15 +25,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($events as $event)
+                        @for ($i = 0; $i < count($events); $i++)
+                            
                         <tr>
-                            <td>{{$event->eventName}}</td>
-                            <td>{{$event->guest()->first()->fullName}}</td>
-                            <td> <a href="{{route('staffEvento.show', [$event->id ])}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
+                            <td class="page-{{intdiv($i+$pageSize,$pageSize)}}">{{$events[$i]->eventName}}</td>
+                            <td class="page-{{intdiv($i+$pageSize,$pageSize)}}">{{$events[$i]->guest()->first()->fullName}}</td>
+                            <td class="page-{{intdiv($i+$pageSize,$pageSize)}}"> <a href="{{route('staffEvento.show', [$events[$i]->id ])}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
                         </tr>
-                        @endforeach
+                            
+                        @endfor
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        @for ($i = 0; $i < count($events)/$pageSize; $i++)
+                            <li class="page-item"><a onclick="changeActivePage(this)" class="page-link btn btn-primary @if($i==0) active @endif" href="#">{{$i+1}}</a></li>
+                        @endfor
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

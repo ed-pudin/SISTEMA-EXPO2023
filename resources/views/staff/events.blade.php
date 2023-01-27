@@ -1,6 +1,7 @@
 @extends('staff.struct')
 
 @section('Content')
+<script src="{{ asset('js/staffEvent.js') }}"></script>
 @if(session()->has('status'))
 
 <script type="text/javascript">
@@ -67,6 +68,7 @@
     @endif
 
 </script>
+
 @endif
 
 <livewire:table-event-staff :events="$events"/>
