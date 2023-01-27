@@ -54,16 +54,22 @@ class AdminHomeController extends Controller
             array_push($eventsName, $event->eventName);
         }
 
-        $eventsCount = event::all()->groupBy('id')->count();
-
-        dd($eventsCount);
-
         $eventsTotalCount= [];
 
-        foreach($eventsCount as $eventsCount){
-            array_push($eventsTotalCount, $event);
+        foreach($events as $event){
+
+            $tempCount = externalPeopleEvent::with('event')->whereHas('event', function ($query) use($event) {
+                $query->where('eventName', '=', $event->eventName);
+            })->where('attended', '=', true)->count();
+
+            $tempCount += eventStudent::with('event')->whereHas('event', function ($query) use($event) {
+                $query->where('eventName', '=', $event->eventName);
+            })->where('attended', '=', true)->count();
+
+            array_push($eventsTotalCount, $tempCount);
+            $tempCount = 0;
+
         }
-        dd($eventsTotalCount);
 
         return view('admin.index', compact('finalCount', 'studentsCount', 'externalCount', 'femaleExternalCount', 'maleExternalCount', 'eventCount', 'companyCount', 'expositorCount', 'eventsName', 'eventsTotalCount'));
     }
