@@ -16,7 +16,7 @@ class CompaniesController extends Controller
     {
         //Obtener empresas
 
-        $companies = \App\Models\company::all();
+        $companies = \App\Models\company::orderby('nameCompany', 'asc')->get();
 
         return view('admin.companies', compact('companies'));
 
@@ -49,7 +49,7 @@ class CompaniesController extends Controller
         }else{
             session()->flash("status","Hubo un problema en el registro");
         }
-        return redirect()->back();
+        return redirect()->route('adminRegistroEmpresas.index');
     }
 
     /**

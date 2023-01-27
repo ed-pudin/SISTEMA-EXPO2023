@@ -3,7 +3,7 @@
 @section('Content')
 
 @if(session()->has('update'))
-        
+
         <script type="text/javascript">
             @if(session()->get('update') == "Evento registrado")
             document.addEventListener("DOMContentLoaded", function(){
@@ -15,7 +15,7 @@
                     showConfirmButton: false,
                     timer: 1500
                 })
-            
+
             });
             @endif
 
@@ -29,12 +29,56 @@
                     showConfirmButton: false,
                     timer: 1500
                 })
-            
+
             });
             @endif
 
         </script>
+        @php
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        @endphp
     @endif
+
+    @if(session()->has('status'))
+
+    <script type="text/javascript">
+        @if(session()->get('status') == "Evento registrado")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#0de4fe',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
+        @if(session()->get('status') == "Hubo un error, intente de nuevo")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'#a70202',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
+    </script>
+    @php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    @endphp
+@endif
 
 <script>
 
@@ -191,7 +235,7 @@
                         <div class="col-sm-7 my-2">
                             <div class="form-floating">
                                 <select class="form-select" id="regEventGuest" name="regEventGuest">
-                                    @foreach ($guests as $guest) 
+                                    @foreach ($guests as $guest)
                                         <option value="{{$guest->id}}">{{$guest->fullName}}</option>
                                     @endforeach
                                 </select>
@@ -204,7 +248,7 @@
                                 <select class="form-select" name="regEventType" id="regEventType">
                                     <option value="Conferencia">Conferencia</option>
                                     <option value="Mesa Redonda">Mesa Redonda</option>
-                                    <option value="Master Class">Master Class</option>                                 
+                                    <option value="Master Class">Master Class</option>
                                     <option value="Torneo">Torneo</option>
                                     <option value="Otro">Otro</option>
                                 </select>

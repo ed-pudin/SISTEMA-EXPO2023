@@ -9,11 +9,11 @@
             <div class="row">
                 <div class="card dashboard-t my-3 p-md-5 p-0">
                     <div class="row">
-                        
+
                         <div class="col-lg-6 m-auto text-center">
                             <img class="img-fluid rounded " src="{{ asset('storage/eventImages/'.$event->image) }}">
                         </div>
-                        
+
                         <div class="col-lg-6 m-auto">
                             <h5 class="text-center co-12" style="font-size: 2rem; margin-bottom:20px; margin-top:20px; color:white">{{$event->eventName}}</h5>
                             <hr class="colorfull">
@@ -56,7 +56,18 @@
                                         <input disabled value="{{$event->endTime}}" required type="time" class="form-control" name="viewEventEndHour" id="viewEventEndHour">
                                     </div>
                                 </div>
+
+                                <div class="col-xl-10 col-md-11 col-12 mx-auto my-5">
+                                    <label for="viewEventDate">Cantidad total</label>
+                                    <div class="input-group">
+                                        <div class="input-group-text"><i class="bi bi-people-fill" style="color:#e23a87"></i></div>
+                                        <input disabled value="{{$count}}" required type="text" class="form-control" >
+                                    </div>
+                                </div>
+
                             </div>
+
+
                         </div>
 
                     </div>

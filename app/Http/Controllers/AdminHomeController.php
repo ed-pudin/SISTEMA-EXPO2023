@@ -71,6 +71,8 @@ class AdminHomeController extends Controller
 
         }
 
+
+
         return view('admin.index', compact('finalCount', 'studentsCount', 'externalCount', 'femaleExternalCount', 'maleExternalCount', 'eventCount', 'companyCount', 'expositorCount', 'eventsName', 'eventsTotalCount'));
     }
 

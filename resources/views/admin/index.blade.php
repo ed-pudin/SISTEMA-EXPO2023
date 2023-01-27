@@ -185,12 +185,19 @@
             }
         };
 
+        var array = [];
+
+        for(let i = 0; i < {{count($eventsTotalCount)}}; i++){
+            array.push(chooseColor());
+        }
+        console.log(array);
+
         var data = {
             labels: {!!json_encode($eventsName)!!},
             datasets: [{
                 data: {!!json_encode($eventsTotalCount)!!},
-                backgroundColor: [chooseColor(), chooseColor(), chooseColor()],
-                hoverBackgroundColor: [chooseColor(), chooseColor(), chooseColor()],
+                backgroundColor: array,
+                hoverBackgroundColor: array,
                 borderWidth: 0,
             }]
         };

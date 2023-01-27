@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\event;
+use App\Models\eventStudent;
+use App\Models\externalPeopleEvent;
 use Illuminate\Support\Facades\Storage;
 
 class EventsController extends Controller
@@ -18,8 +20,8 @@ class EventsController extends Controller
         //Regresar los invitados
         $guests = \App\Models\guest::all();
         //Vista de eventos
-        $events = event::with('guest')->get();
-        
+        $events = event::with('guest')->orderby('eventName', 'asc')->get();
+
         return view('admin.events', compact('guests', 'events'));
     }
 
@@ -48,7 +50,7 @@ class EventsController extends Controller
         $fileName = time().'_'.$request->file('regBtnEventImg')->getClientOriginalName();
         //Guardar archivo
         Storage::disk('public')->put($fileName, file_get_contents($request->file('regBtnEventImg')));
-        
+
         $event->eventName = $request->regEventName;
         $event->date =  $request->regEventDate;
         $event->startTime = $request->regEventStartHour;
@@ -62,7 +64,7 @@ class EventsController extends Controller
         }else{
             session()->flash("status","Hubo un problema en el registro");
         }
-        return redirect()->back(); 
+        return redirect()->route('adminRegistroEventos.index');
     }
 
     /**
@@ -74,7 +76,16 @@ class EventsController extends Controller
     public function show($id)
     {
         $event = event::with('guest')->find($id);
-        return view('admin.edit.showEvent', compact('event'));
+
+        $count = externalPeopleEvent::with('event')->whereHas('event', function ($query) use($id) {
+            $query->where('id', '=', $id);
+        })->where('attended', '=', true)->count();
+
+        $count += eventStudent::with('event')->whereHas('event', function ($query) use($id) {
+            $query->where('id', '=', $id);
+        })->where('attended', '=', true)->count();
+
+        return view('admin.edit.showEvent', compact('event', 'count'));
     }
 
     /**

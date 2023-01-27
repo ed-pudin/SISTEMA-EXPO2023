@@ -2,19 +2,19 @@
 
 @section('Content')
 @if(session()->has('status'))
-        
+
         <script type="text/javascript">
             @if(session()->get('status') == "Maestro registrado")
             document.addEventListener("DOMContentLoaded", function(){
                 Swal.fire({
                 position: 'center',
                 icon: 'success',
-                iconColor: '#30a702',
+                iconColor: '#0de4fe',
                 title: `{{ session()->get('status') }}`,
                 showConfirmButton: false,
                 timer: 1500
                 })
-            
+
             });
             @endif
 
@@ -28,11 +28,17 @@
                 showConfirmButton: false,
                 timer: 1500
                 })
-            
+
             });
             @endif
         </script>
-    @endif
+
+    @php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    @endphp
+@endif
 
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
@@ -86,7 +92,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($teachers as $teacher)                                
+                                @foreach ($teachers as $teacher)
                                     <tr>
                                         <td>{{$teacher->fullName}}</td>
                                         <td>{{$teacher->email}}</td>
@@ -123,13 +129,13 @@
                                                         );
                                                     }
                                                 </script>
-                                                
+
                                             @endif
                                         </td>
                                     </tr>
 
                                 @endforeach
-                                
+
                             </tbody>
                         </table>
                         @if(count($teachers) == 0)
@@ -137,7 +143,7 @@
                         @endif
                     </div>
                 </div>
-                
+
                 <div class="tab-pane fade show" id="register-teacher" aria-labelledby="register-teacher-tab">
 
                     <form class="row align-items-center p-5" id="registroMaestro" action="{{route('adminRegistroMaestros.store')}}" method="post">
@@ -170,7 +176,7 @@
                     </form>
 
                 </div>
-               
+
             </div>
         </div>
     </div>
