@@ -72,6 +72,50 @@
             @endif
 
         </script>
+        @php
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        @endphp
+    @endif
+
+
+    @if(session()->has('delete'))
+
+        <script type="text/javascript">
+
+        @if(session()->get('delete') == "Hubo un error, intente de nuevo")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'#a70202',
+                title: `{{ session()->get('delete') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @else
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#0de4fe',
+                title: `{{ session()->get('delete') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
+        </script>
+    @php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    @endphp
     @endif
 
     <script>

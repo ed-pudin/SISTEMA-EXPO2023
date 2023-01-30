@@ -109,11 +109,10 @@ class TeachersController extends Controller
 
         if($teacher->save() and $user->save()){
             session()->flash("update","Edición en maestro exitosa");
-            return redirect()->route('adminRegistroMaestros.index');
         }else{
             session()->flash("update","Hubo un error, intente de nuevo");
         }
-        return redirect()->back();
+        return redirect()->route('adminRegistroMaestros.index');
     }
 
     /**
@@ -132,7 +131,7 @@ class TeachersController extends Controller
             session()->flash("delete","Algo salió mal");
         }
 
-        return redirect()->back();
+        return redirect()->route('adminRegistroMaestros.index');
     }
 
     public function editarMaestro($teacherToEdit) {
