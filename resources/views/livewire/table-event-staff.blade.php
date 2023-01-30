@@ -26,13 +26,11 @@
                     </thead>
                     <tbody>
                         @for ($i = 0; $i < count($events); $i++)
-                            
-                        <tr>
-                            <td class="page-{{intdiv($i+$pageSize,$pageSize)}}">{{$events[$i]->eventName}}</td>
-                            <td class="page-{{intdiv($i+$pageSize,$pageSize)}}">{{$events[$i]->guest()->first()->fullName}}</td>
-                            <td class="page-{{intdiv($i+$pageSize,$pageSize)}}"> <a href="{{route('staffEvento.show', [$events[$i]->id ])}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
-                        </tr>
-                            
+                                <tr>
+                                    <td class="page-{{intdiv($i+$pageSize,$pageSize)}}">{{$events[$i]->eventName}}</td>
+                                    <td class="page-{{intdiv($i+$pageSize,$pageSize)}}">{{$events[$i]->guest()->first()->fullName}}</td>
+                                    <td class="page-{{intdiv($i+$pageSize,$pageSize)}}"> <a href="{{route('staffEvento.show', [$events[$i]->id ])}}"><button type="button" class="btn btn-primary">Asistencia</button></td></a>
+                                </tr>
                         @endfor
                     </tbody>
                 </table>

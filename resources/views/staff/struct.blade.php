@@ -48,6 +48,26 @@
             <div class="collapse navbar-collapse" id="navbarNav">
 
                 <ul class="nav navbar-nav navbar-left">
+
+                    @php
+                    if(session()->has('id')){
+                        $id = session()->get('id');
+                        $user = new App\Models\User();
+                        $user = App\Models\User::where('id', '=', $id)->first();
+                        if($user != null){
+                            $rol = $user->rol;
+                        }
+                    }
+                    @endphp
+
+                    @if ($rol == 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('adminInicio.index')}}">
+                            <p class="m-0 nav-txt"> Administrar </p>
+                        </a>
+                    </li>
+                    @endif
+
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('staffEvento.index')}}">
                             <p class="m-0 nav-txt"> Eventos </p>
