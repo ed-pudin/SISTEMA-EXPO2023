@@ -16,6 +16,10 @@ use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminPersonCompany;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\EmailController;
+use App\Mail\Message;
+use Illuminate\Support\Facades\Mail;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +34,13 @@ use App\Http\Controllers\WelcomeController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
+//Route::get('email/{email}', 'CommentController@edit')->name('email');
+
+Route::get('email/{email}', function () {
+
+   Mail::to('email')->send(new Message("EXPO LMAD"));
+
+});
 
 //Acceso todos inicio sesion
 Route::resource('/inicioSesion', LoginController::class, [
@@ -87,13 +98,16 @@ Route::group(['middleware' => 'isAdmin'], function () {
         'index'     => 'adminRegistroMaestros.index',
         'store'     => 'adminRegistroMaestros.store',
         'update'    => 'adminRegistroMaestros.update',
-        'destroy'   => 'adminRegistroMaestros.destroy'
+        'destroy'   => 'adminRegistroMaestros.destroy',
+        'email'     => 'adminRegistroMaestros.mail'
     ]);
 
     Route::get('editarMaestro/{teacherToEdit}', [TeachersController::class, 'editarMaestro'])->name('editarMaestro');
 
+    Route::get('email/{email}', function(){
+        Mail::to('claudiaitzel09@gmail.com')->send(new Message());
+    })->name('email');
 });
-
 
 Route::group(['middleware' => 'isStaffOrAdmin'], function () {
 

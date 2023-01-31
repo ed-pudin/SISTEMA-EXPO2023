@@ -105,26 +105,8 @@
                                             <a onclick="confirmDialog(`deleteTeacher_{{$teacher->id}}`)" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
                                         </td>
                                         <td>
-                                            <a class="btn-table btn btn-primary col-12 m-auto" name="sendMailBtn"><i class="bi bi-send">
+                                            <a href="{{route('email', [$teacher->email])}}" class="btn-table btn btn-primary col-12 m-auto" name="sendMailBtn"><i class="bi bi-send">
                                             </i></a>
-                                            @if(isset($_POST['sendMailBtn']))
-                                                <script src="https://smtpjs.com/v3/smtp.js">
-                                                    function sendMsg(e){
-                                                        Email.send({
-                                                            Host : "smtp.elasticemail.com",
-                                                            Username : "{{$teacher->fullName}}",
-                                                            Password : "{{$teacher->user()->first()->password}}",
-                                                            To : "{{$teacher->email}}",
-                                                            From : "EXPO@isp.com",
-                                                            Subject : "This is the subject",
-                                                            Body : "And this is the body"
-                                                        }).then(
-                                                        message => alert(message)
-                                                        );
-                                                    }
-                                                </script>
-                                                
-                                            @endif
                                         </td>
                                     </tr>
 
