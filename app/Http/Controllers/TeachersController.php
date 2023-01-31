@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\User; 
-use App\Models\teacher; 
+use App\Models\User;
+use App\Models\teacher;
 
 class TeachersController extends Controller
 {
@@ -16,7 +16,7 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $teachers = teacher::with('user')->get();
+        $teachers = teacher::with('user')->orderby('fullName', 'asc')->get();
 
         return view('admin.teachers', compact('teachers'));
     }
@@ -41,9 +41,9 @@ class TeachersController extends Controller
     {
         $randomKey = random_int(1000000, 9999999);
 
-        $user = new User(['key'=> $randomKey, 
-                    'password' => Str::random(13), 
-                    'rol' => 'teacher', 
+        $user = new User(['key'=> $randomKey,
+                    'password' => Str::random(13),
+                    'rol' => 'teacher',
                     'permanent'=> true]);
 
         if($user->save()){
@@ -51,21 +51,20 @@ class TeachersController extends Controller
             //Crear maestro
             $teacher = new teacher();
             $teacher->fullName = $request->regTeacherName;
-            $teacher->email = $request->regTeacherCorreo;        
+            $teacher->email = $request->regTeacherCorreo;
             $teacher->user = $user->id;
-            
+
             if($teacher->save()){
                 session()->flash("status","Maestro registrado");
             }else{
                 session()->flash("status","Hubo un problema en el registro");
             }
-            return redirect()->back(); 
 
         }else{
             session()->flash("status","Hubo un problema en el registro");
         }
-        return redirect()->back();       
-      
+        return redirect()->route('adminRegistroMaestros.index');
+
     }
 
     /**
@@ -110,11 +109,10 @@ class TeachersController extends Controller
 
         if($teacher->save() and $user->save()){
             session()->flash("update","Edición en maestro exitosa");
-            return redirect()->route('adminRegistroMaestros.index');
         }else{
             session()->flash("update","Hubo un error, intente de nuevo");
         }
-        return redirect()->back();
+        return redirect()->route('adminRegistroMaestros.index');
     }
 
     /**
@@ -133,7 +131,7 @@ class TeachersController extends Controller
             session()->flash("delete","Algo salió mal");
         }
 
-        return redirect()->back();
+        return redirect()->route('adminRegistroMaestros.index');
     }
 
     public function editarMaestro($teacherToEdit) {

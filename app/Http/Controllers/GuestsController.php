@@ -15,7 +15,7 @@ class GuestsController extends Controller
     public function index()
     {
         $companies = \App\Models\company::all();
-        $guests = guest::with('company')->get();
+        $guests = guest::with('company')->orderby('fullName', 'asc')->get();
 
         return view('admin.guests', compact('companies', 'guests'));
     }
@@ -41,14 +41,14 @@ class GuestsController extends Controller
         //Crear invitado
         $guest = new guest();
         $guest->fullName = $request->regGuestName;
-        $request->regGuestCmpany == 0 ?  $guest->company = null : $guest->company = $request->regGuestCmpany; 
+        $request->regGuestCmpany == 0 ?  $guest->company = null : $guest->company = $request->regGuestCmpany;
 
         if($guest->save()){
             session()->flash("status","Invitado registrado");
         }else{
             session()->flash("status","Hubo un problema en el registro");
         }
-        return redirect()->back(); 
+        return redirect()->route('adminRegistroInvitados.index');
 
     }
 

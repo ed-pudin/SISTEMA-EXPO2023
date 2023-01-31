@@ -16,7 +16,7 @@ class CompaniesController extends Controller
     {
         //Obtener empresas
 
-        $companies = \App\Models\company::all();
+        $companies = \App\Models\company::orderby('nameCompany', 'asc')->get();
 
         return view('admin.companies', compact('companies'));
 
@@ -49,7 +49,7 @@ class CompaniesController extends Controller
         }else{
             session()->flash("status","Hubo un problema en el registro");
         }
-        return redirect()->back();
+        return redirect()->route('adminRegistroEmpresas.index');
     }
 
     /**
@@ -88,11 +88,10 @@ class CompaniesController extends Controller
 
         if($company->save()){
             session()->flash("update","Edición en empresa exitosa");
-            return redirect()->route('adminRegistroEmpresas.index');
         }else{
             session()->flash("update","Hubo un error, intente de nuevo");
         }
-        return redirect()->back();
+        return redirect()->route('adminRegistroEmpresas.index');
     }
 
     /**
@@ -111,6 +110,6 @@ class CompaniesController extends Controller
             session()->flash("delete","Algo salió mal");
         }
 
-        return redirect()->back();
+        return redirect()->route('adminRegistroEmpresas.index');
     }
 }

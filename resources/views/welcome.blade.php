@@ -59,9 +59,25 @@
 
                 <ul class="nav navbar-nav navbar-left">
                     @if (session()->has('id'))
-                        @if ($rol == 'teacher')
+                        @if ($rol == 'admin')
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{route('staffEvento.index')}}">
+                            <a class="nav-link " href="{{route('adminInicio.index')}}">
+                                <p class="m-0 nav-txt"> Administrar </p>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if ($rol == 'staff' || $rol == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{route('staffEvento.index')}}">
+                                    <p class="m-0 nav-txt"> Marcar Asistencia </p>
+                                </a>
+                            </li>
+                        @endif
+
+                        @if ($rol == 'teacher' || $rol == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{route('teacherRegistroExpositor.index')}}">
                                 <p class="m-0 nav-txt"> Registrar Expositores </p>
                             </a>
                         </li>
@@ -75,21 +91,9 @@
                             </li>
                         @endif
 
-                        @if ($rol == 'staff' || $rol == 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link " href="{{route('staffEvento.index')}}">
-                                    <p class="m-0 nav-txt"> Marcar Asistencia </p>
-                                </a>
-                            </li>
-                        @endif
 
-                        @if ($rol == 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link " href="{{route('adminInicio.index')}}">
-                                    <p class="m-0 nav-txt"> Administrar </p>
-                                </a>
-                            </li>
-                        @endif
+
+
                     @endif
                 </ul>
                 @if (!(session()->has('id')))

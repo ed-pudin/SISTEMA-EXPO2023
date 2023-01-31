@@ -2,7 +2,7 @@
 
 @section('Content')
   @if(session()->has('status'))
-        
+
         <script type="text/javascript">
             @if(session()->get('status') == "Invitado registrado")
             document.addEventListener("DOMContentLoaded", function(){
@@ -14,7 +14,7 @@
                 showConfirmButton: false,
                 timer: 1500
                 })
-            
+
             });
             @endif
 
@@ -28,11 +28,93 @@
                 showConfirmButton: false,
                 timer: 1500
                 })
-            
+
             });
             @endif
 
         </script>
+        @php
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        @endphp
+  @endif
+
+@if(session()->has('update'))
+
+    <script type="text/javascript">
+        @if(session()->get('update') == "Edición en invitado exitosa")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#0de4fe',
+                title: `{{ session()->get('update') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
+        @if(session()->get('update') == "Hubo un error, intente de nuevo")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'#a70202',
+                title: `{{ session()->get('update') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
+    </script>
+    @php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    @endphp
+@endif
+
+@if(session()->has('delete'))
+
+    <script type="text/javascript">
+
+    @if(session()->get('delete') == "Hubo un error, intente de nuevo")
+    document.addEventListener("DOMContentLoaded", function(){
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            iconColor:'#a70202',
+            title: `{{ session()->get('delete') }}`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+    });
+    @else
+    document.addEventListener("DOMContentLoaded", function(){
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            iconColor: '#0de4fe',
+            title: `{{ session()->get('delete') }}`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+    });
+    @endif
+
+    </script>
+@php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+@endphp
 @endif
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
@@ -69,7 +151,7 @@
                 </li>
             </ul>
         </div>
-        
+
         <div class="row" >
             <div class="tab-content p-0">
                 <div class="tab-pane fade show active" id="visualize-guests" role="tabpanel" aria-labelledby="visualize-guests-tab">
@@ -84,7 +166,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($guests as $guest)                                
+                                @foreach ($guests as $guest)
 
                                 <tr>
                                     <td>{{$guest->fullName}}</td>
@@ -114,7 +196,7 @@
                         @endif
                     </div>
                 </div>
-                
+
                 <div class="tab-pane fade show" id="register-guests" aria-labelledby="register-guests-tab">
 
                     <form class="row align-items-center p-5" id="registroInvitados"action="{{route('adminRegistroInvitados.store')}}" method="post">
@@ -135,7 +217,7 @@
                             <div class="form-floating">
                                 <select class="form-select" id="regGuestCmpany" name="regGuestCmpany">
                                     <option value="0">Ninguna</option>
-                                    @foreach ($companies as $company) 
+                                    @foreach ($companies as $company)
                                         <option value="{{$company->id}}">{{$company->nameCompany}}</option>
                                     @endforeach
                                 </select>

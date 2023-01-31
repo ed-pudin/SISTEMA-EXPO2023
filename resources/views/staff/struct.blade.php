@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @livewireStyles
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +34,7 @@
       src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
     ></script>
 
+
 </head>
 <body style="background-image: url('../images/backgroundimg.png');  background-repeat: no-repeat; background-size: cover; background-position:center; background-attachment: fixed;">
     <nav class="navbar navbar-expand-lg bg-dark sticky-top">
@@ -46,6 +48,26 @@
             <div class="collapse navbar-collapse" id="navbarNav">
 
                 <ul class="nav navbar-nav navbar-left">
+
+                    @php
+                    if(session()->has('id')){
+                        $id = session()->get('id');
+                        $user = new App\Models\User();
+                        $user = App\Models\User::where('id', '=', $id)->first();
+                        if($user != null){
+                            $rol = $user->rol;
+                        }
+                    }
+                    @endphp
+
+                    @if ($rol == 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('adminInicio.index')}}">
+                            <p class="m-0 nav-txt"> Administrar </p>
+                        </a>
+                    </li>
+                    @endif
+
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('staffEvento.index')}}">
                             <p class="m-0 nav-txt"> Eventos </p>
@@ -75,5 +97,6 @@
         </div>
     </nav>
     @yield('Content')
+    @livewireScripts
 </body>
 </html>

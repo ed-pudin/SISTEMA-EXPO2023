@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="max-age=0"/>
     <title>EXPO LMAD 2023</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -35,17 +36,24 @@
 </head>
 <body>
 <div class="container-fluid">
-    
+
     <div class="row">
-        
+
         <div class="col-sm-auto bg-dark sticky-top">
             <div class="d-flex flex-sm-column flex-row flex-nowrap bg-dark align-items-center sticky-top">
-                <a href="{{ route('adminInicio.index') }}" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
                     <!-- AQUI VA EL LOGO!!!!!! -->
                     <img class="logo-img" src="{{ asset('images/LOGO.png') }}" height="30">
                 </a>
 
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+                    <li>
+                        <a href="{{ route('adminInicio.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                            <i class="bi bi-house-fill fs-3"></i>
+                                <p class="d-none d-sm-block nav-txt">Inicio</p>
+                            </i>
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ route('adminRegistroEventos.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                             <i class="bi bi-calendar2-heart-fill fs-5">
@@ -58,7 +66,7 @@
                             <i class="bi bi-people-fill fs-3">
                                 <p class="d-none d-sm-block nav-txt">Invitados</p>
                             </i>
-                            
+
                         </a>
                     </li>
                     <li>
@@ -66,7 +74,7 @@
                             <i class="bi bi-buildings-fill fs-3">
                                 <p class="d-none d-sm-block nav-txt">Empresas</p>
                             </i>
-                            
+
                         </a>
                     </li>
                     <li>
@@ -74,7 +82,7 @@
                             <i class="bi bi-mortarboard-fill fs-3">
                                 <p class="d-none d-sm-block nav-txt">Maestros</p>
                             </i>
-                            
+
                         </a>
                     </li>
                     <li>
@@ -85,13 +93,13 @@
                         </a>
                     </li>
                 </ul>
-                
             </div>
         </div>
         @yield('Navbar')
-        
+
         @yield('Content')
     </div>
 </div>
 </body>
 </html>
+

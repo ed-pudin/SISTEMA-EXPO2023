@@ -2,7 +2,7 @@
 
 @section('Content')
 @if(session()->has('status'))
-        
+
         <script type="text/javascript">
             @if(session()->get('status') == "Registro exitoso")
             document.addEventListener("DOMContentLoaded", function(){
@@ -14,7 +14,7 @@
                 showConfirmButton: false,
                 timer: 1500
                 })
-            
+
             });
             @elseif(session()->get('status') != null)
             document.addEventListener("DOMContentLoaded", function(){
@@ -26,11 +26,16 @@
                 showConfirmButton: false,
                 timer: 1500
                 })
-            
+
             });
             @endif
 
         </script>
+        @php
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        @endphp
 @endif
 
 <script>
@@ -45,12 +50,12 @@
         var sendButton = document.getElementById("sendPersonCompany");
         var addPersonBtn = document.getElementById("addPersonBtn");
         var addPersonInput = document.getElementById("addPerson");
-        
+
         var editButtons = document.getElementsByName("editCompanyPersonButton");
 
         if(form.action == "{{route('adminRegistroPersonaEmpresa.store')}}") {
             // Si está en modo "Agregar persona", cámbialo a "Editar persona singular"
-            
+
                 // Cambiar la ruta
             var url = "{{route('adminRegistroPersonaEmpresa.update', [':id'])}}";
                 // -- Esto se hace para poder agregar la variable id
@@ -109,7 +114,7 @@
                 <form class="my-4" id="form-personCompany" action="{{route('adminRegistroPersonaEmpresa.store')}}" method=post>
                 @csrf
                     <div id="dynamicInputs">
-                        
+
                         @foreach($companyPeople as $person)
                             <div class="row mx-md-5 mx-2">
                                 <div class="col-md-2 col-0"></div>
