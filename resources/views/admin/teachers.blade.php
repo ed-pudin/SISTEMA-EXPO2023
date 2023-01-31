@@ -117,6 +117,44 @@ header("Pragma: no-cache");
 @endphp
 @endif
 
+@if(session()->has('email'))
+
+    <script type="text/javascript">
+
+    @if(session()->get('email') == "Hubo un problema en el envio del correo")
+    document.addEventListener("DOMContentLoaded", function(){
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            iconColor:'#a70202',
+            title: `{{ session()->get('email') }}`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+    });
+    @else
+    document.addEventListener("DOMContentLoaded", function(){
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            iconColor: '#0de4fe',
+            title: `{{ session()->get('email') }}`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+    });
+    @endif
+
+    </script>
+@php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+@endphp
+@endif
+
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 
@@ -188,9 +226,9 @@ header("Pragma: no-cache");
                                             <a onclick="confirmDialog(`deleteTeacher_{{$teacher->id}}`)" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
                                         </td>
                                         <td>
-                                            <a href="{{route('email', [$teacher->email])}}" class="btn-table btn btn-primary col-12 m-auto" name="sendMailBtn"><i class="bi bi-send">
+                                            <a href="{{route('email', [$teacher->id])}}" class="btn-table btn btn-primary col-12 m-auto" name="sendMailBtn"><i class="bi bi-send">
                                             </i></a>
-                                            
+
                                         </td>
                                     </tr>
 

@@ -36,11 +36,6 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 //Route::get('email/{email}', 'CommentController@edit')->name('email');
 
-Route::get('email/{email}', function () {
-
-   Mail::to('email')->send(new Message("EXPO LMAD"));
-
-});
 
 //Acceso todos inicio sesion
 Route::resource('/inicioSesion', LoginController::class, [
@@ -104,9 +99,7 @@ Route::group(['middleware' => 'isAdmin'], function () {
 
     Route::get('editarMaestro/{teacherToEdit}', [TeachersController::class, 'editarMaestro'])->name('editarMaestro');
 
-    Route::get('email/{email}', function(){
-        Mail::to('claudiaitzel09@gmail.com')->send(new Message());
-    })->name('email');
+    Route::get('email/{id}', [EmailController::class, 'email'])->name('email');
 });
 
 Route::group(['middleware' => 'isStaffOrAdmin'], function () {

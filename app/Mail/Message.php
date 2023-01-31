@@ -8,22 +8,26 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\teacher;
+use App\Models\User;
 
 class Message extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $name;
-
+    public $name, $key, $password;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($id)
     {
         //
-       // $this->name = $name;
+        $teacher = teacher::with('user')->where('id', '=', $id)->first();
+        $this->name = $teacher->fullName;
+        $this->key = $teacher->user()->first()->key;
+        $this->password = $teacher->user()->first()->password;
 
     }
 
@@ -35,7 +39,7 @@ class Message extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Message',
+            subject: 'Credenciales para acceso',
         );
     }
 
