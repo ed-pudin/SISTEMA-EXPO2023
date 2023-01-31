@@ -37,13 +37,26 @@ class StaffExpositorController extends Controller
     public function store(Request $request)
     {
         $projects = projectStudent::where('student', '=', $request->matricula)->get();
-        
-        foreach ($projects as $projectStudent) {
-            $projectStudent->attended = true;
-            $projectStudent->save();
-        }
 
-        return redirect()->back();
+        if($projects != null){
+            foreach ($projects as $projectStudent) {
+                if($projectStudent->attended == true){
+                    session()->flash("status","El alumno ya tiene asistencia");
+                }else{
+                    $projectStudent->attended = true;
+                    if($projectStudent->save()){
+                        session()->flash("status","Asistencia alumno ".$request->matricula);
+                    }else{
+                        session()->flash("status", "Hubo un problema en la asistencia");
+                    }
+                }
+
+            }
+
+        }
+        session()->flash("status", "El alumno no es válido");
+
+        return redirect()->route('staffExpositor.index');
     }
 
     /**

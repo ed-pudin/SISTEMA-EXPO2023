@@ -90,11 +90,10 @@ class GuestsController extends Controller
 
         if($guest->save()){
             session()->flash("update","Edición en invitado exitosa");
-            return redirect()->route('adminRegistroInvitados.index');
         }else{
             session()->flash("update","Hubo un error, intente de nuevo");
         }
-        return redirect()->back();
+        return redirect()->route('adminRegistroInvitados.index');
     }
 
     /**
@@ -113,7 +112,7 @@ class GuestsController extends Controller
             session()->flash("delete","Algo salió mal");
         }
 
-        return redirect()->back();
+        return redirect()->route('adminRegistroInvitados.index');
     }
 
     public function editarInvitado($guestToEdit) {

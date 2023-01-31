@@ -1,6 +1,38 @@
 @extends('staff.struct')
 
 @section('Content')
+@if(session()->has('status'))
+
+<script type="text/javascript">
+
+    @if(session()->get('status') == "Hubo un problema en la asistencia" || session()->get('status') == "El alumno ya tiene asistencia" || session()->get('status') =="El alumno no es válido")
+    document.addEventListener("DOMContentLoaded", function(){
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            iconColor:'#a70202',
+            title: `{{ session()->get('status') }}`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+    });
+    @else
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#0de4fe',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+    @endif
+
+</script>
+@endif
 
 <link rel="stylesheet" href="{{ asset('css/qrReader.css') }}">
 
@@ -12,14 +44,14 @@
         <input type="text" name="matricula" id="matricula">
         <button id="btnsend" type="submit"></button>
     </form>
-    <!--<div class="col-12 col-md-8 d-flex justify-content-center p-5 mb-4 flex-wrap div-colorfull">    
+    <!--<div class="col-12 col-md-8 d-flex justify-content-center p-5 mb-4 flex-wrap div-colorfull">
         <div class="container-fluid m-0 p-0">
             <div id="reader"></div>
         </div>
         <div id="result"></div>
     </div>-->
     <div class="div-colorfull p-5">
-        <div class="row">    
+        <div class="row">
             <div class="col-12">
                 <div id="reader"></div>
             </div>
@@ -29,7 +61,7 @@
             </div>
         </div>
     </div>
-    
+
 
 </div>
 
@@ -65,7 +97,7 @@
     }
 
     function error(err) {
-        
+
     }
 
 
@@ -73,20 +105,20 @@
     var cameraPermissionButton = camReader.firstChild.firstChild;
 
     var fileReader = document.getElementById('reader__dashboard_section_swaplink');
-    
+
 
     videocontainer.classList.add("container-fluid");
     cameraPermissionButton.classList.add("col-12");
 
     fileReader.style.display = 'none';
     */
-   
+
    // When scan is successful fucntion will produce data
     function onScanSuccess(qrCodeMessage) {
-        document.getElementById("result").innerHTML =
-            '<span class="result">' + qrCodeMessage + "</span>";
+        //document.getElementById("result").innerHTML =
+       //     '<span class="result">' + qrCodeMessage + "</span>";
 
-        document.getElementById('result').innerHTML = `<hr> <h1> Alumno ${qrCodeMessage} registrado </h1> <hr>`;
+        //document.getElementById('result').innerHTML = `<hr> <h1> Alumno ${qrCodeMessage} registrado </h1> <hr>`;
         document.getElementById("matricula").value = qrCodeMessage;
         document.querySelector('form').submit();
         scanner.clear();

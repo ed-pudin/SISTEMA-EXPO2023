@@ -39,7 +39,7 @@
                     <input hidden id="countInputsOld" name="countInputsOld" value="{{count($companyPeople)}}">
 
                     <div class="d-md-flex justify-content-center align-items-center">
-                        <button id="sendPersonCompany" type="submit"class="btn btn-primary col-md-3 mt-3">Enviar</button>
+                        <button id="sendPersonCompany" type="submit"class="btn btn-primary col-md-3 mt-3"  {{ count($companyPeople) < 1 ? ' disabled' : '' }} >Enviar</button>
                     </div>
                 </form>
             </div>
