@@ -84,7 +84,7 @@
 
         <script type="text/javascript">
 
-        @if(session()->get('delete') == "Hubo un error, intente de nuevo")
+        @if(session()->get('delete') == "Hubo un error, intente de nuevo" || session()->get('delete') == "La empresa pertenece a alguien y no puede ser eliminada")
         document.addEventListener("DOMContentLoaded", function(){
             Swal.fire({
                 position: 'center',
@@ -111,11 +111,11 @@
         @endif
 
         </script>
-    @php
-    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-    header("Cache-Control: post-check=0, pre-check=0", false);
-    header("Pragma: no-cache");
-    @endphp
+        @php
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        @endphp
     @endif
 
     <script>

@@ -149,10 +149,23 @@ class EventsController extends Controller
     {
         $event = event::find($id);
 
-        if($event->delete()){
-            session()->flash("delete","Se ha eliminado correctamente $event->eventName");
+        $externalPeopleEvent = externalPeopleEvent::with('event')->whereHas('event', function ($query) use($id) {
+            $query->where('id', '=', $id);
+        })->count();
+
+        $eventStudent = eventStudent::with('event')->whereHas('event', function ($query) use($id) {
+            $query->where('id', '=', $id);
+        })->count();
+
+        if($externalPeopleEvent > 0 || $eventStudent > 0){
+            //Checar relacion entre guest y events
+            session()->flash("delete","El evento ya esta siendo asistido y no se puede eliminar");
         }else{
-            session()->flash("delete","Algo salió mal");
+            if($event->delete()){
+                session()->flash("delete","Se ha eliminado correctamente $event->eventName");
+            }else{
+                session()->flash("delete","Algo salió mal");
+            }
         }
 
         return redirect()->route('adminRegistroEventos.index');

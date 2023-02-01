@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\guest;
+use  App\Models\event;
 
 class GuestsController extends Controller
 {
@@ -106,10 +107,20 @@ class GuestsController extends Controller
     {
         $guest = guest::find($id);
 
-        if($guest->delete()){
-            session()->flash("delete","Se ha eliminado correctamente $guest->fullName");
+        $events = event::with('guest')
+            ->whereHas('guest', function ($query) use($id) {
+                $query->where('id', '=', $id);
+            })->count();
+
+        if($events > 0){
+            //Checar relacion entre guest y events
+            session()->flash("delete","El invitado pertenece a un evento y no puede ser eliminado");
         }else{
-            session()->flash("delete","Algo salió mal");
+            if($guest->delete()){
+                session()->flash("delete","Se ha eliminado correctamente $guest->fullName");
+            }else{
+                session()->flash("delete","Algo salió mal");
+            }
         }
 
         return redirect()->route('adminRegistroInvitados.index');
