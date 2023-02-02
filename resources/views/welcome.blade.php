@@ -318,18 +318,28 @@
             </div>
 
             <div class="empresas">
-                <div class="row align-items-center p-5">
-                    <h1 style="text-align: center;"> E m p r e s a s </h1>
-                </div>
-
-                <div class="row d-flex justify-content-center">
-                @foreach ($companies as $company )
-                    <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                        <img src="https://placehold.co/200x200?text={{$company->nameCompany}}" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
+                @if(count($companies) > 0)
+                    <div class="row align-items-center p-5">
+                        <h1 style="text-align: center;"> E m p r e s a s </h1>
                     </div>
-                @endforeach
-                </div>
+
+                    <div class="row d-flex justify-content-center">
+                    @foreach ($companies as $company )
+                        <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
+                            <img src="https://placehold.co/200x200?text={{$company->nameCompany}}" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
+                        </div>
+                    @endforeach
+                    </div>
+                @endif
             </div>
+            <div class="empresas">
+                @if(count($companies) == 0 && count($otros) == 0 && count($torneos) == 0 && count($masterClasses) == 0 && count($mesasRedondas) == 0 && count($conferencias) == 0)
+                    <div class="row align-items-center p-5">
+                        <h1 style="text-align: center;"> Sin eventos registrados </h1>
+                    </div>
+                @endif
+            </div>
+
         </div>
     </body>
 </html>
