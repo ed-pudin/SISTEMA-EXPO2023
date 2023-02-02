@@ -71,6 +71,63 @@
                         </div>
 
                     </div>
+
+                    <hr class="colorfull col-11 mx-auto">
+
+                    <div class="row">
+
+                        <div class="col-10 mx-auto my-5">
+                            <div class="table-responsive">
+                                <table class="table" style="text-align-last:center;">
+                                    <h2 style="text-align: center"> Alumnos en este evento </h2>
+                                    <thead>
+                                        <tr>
+                                            <th>Matrícula</th>
+                                            <th class="w-priority">Nombre</th>
+                                            <th>Asistencia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($eventStudents as $eventStudent)
+                                        <tr>
+                                            <td>{{$eventStudent->thisStudent()->first()->enrollment}}</td>
+                                            <td>{{$eventStudent->thisStudent()->first()->fullName}}</td>
+                                            <td>{{$eventStudent->attended}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr class="colorfull col-11 mx-auto">
+
+                        <div class="col-10 mx-auto my-5">
+                            <div class="table-responsive">
+                                <table class="table" style="text-align-last:center;">
+                                    <h2 style="text-align: center"> Externos en este evento </h2>
+                                    <thead>
+                                        <tr>
+                                            <th class="w-priority">Nombre</th>
+                                            <th>Género</th>
+                                            <th>Asistencia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($eventExternals as $eventExternal)
+                                        <tr>
+                                            <td>{{$eventExternal->externalPeople()->first()->fullName}}</td>
+                                            <td>{{$eventExternal->externalPeople()->first()->genre}}</td>
+                                            <td>{{$eventExternal->attended}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr class="colorfull col-11 mx-auto">
                 </div>
             </div>
         </div>

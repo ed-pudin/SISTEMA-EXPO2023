@@ -19,4 +19,8 @@ class eventStudent extends Model
     public function student(){
         return $this->hasMany(student::class, 'student', 'id');
     }
+
+    public function thisStudent(){
+        return $this->belongsTo(student::class, 'student', 'enrollment');
+    }
 }

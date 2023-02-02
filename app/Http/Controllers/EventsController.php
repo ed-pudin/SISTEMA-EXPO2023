@@ -85,7 +85,11 @@ class EventsController extends Controller
             $query->where('id', '=', $id);
         })->where('attended', '=', true)->count();
 
-        return view('admin.edit.showEvent', compact('event', 'count'));
+        $eventStudents = eventStudent::where('event', '=', $id)->get();
+
+        $eventExternals = externalPeopleEvent::where('event', '=', $id)->get();
+
+        return view('admin.edit.showEvent', compact('event', 'count', 'eventStudents', 'eventExternals'));
     }
 
     /**
