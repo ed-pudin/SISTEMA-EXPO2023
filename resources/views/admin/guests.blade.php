@@ -83,7 +83,7 @@
 
     <script type="text/javascript">
 
-    @if(session()->get('delete') == "Hubo un error, intente de nuevo")
+    @if(session()->get('delete') == "Hubo un error, intente de nuevo" ||  session()->get('delete') == "El invitado pertenece a un evento y no puede ser eliminado")
     document.addEventListener("DOMContentLoaded", function(){
         Swal.fire({
             position: 'center',

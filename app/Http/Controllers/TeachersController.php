@@ -132,7 +132,9 @@ class TeachersController extends Controller
     {
         $teacher = teacher::find($id);
 
-        if($teacher->delete()){
+        $user = User::where('id', '=', $teacher->user)->first();
+        if($user->delete()){
+            $teacher->delete();
             session()->flash("delete","Se ha eliminado correctamente $teacher->fullName");
         }else{
             session()->flash("delete","Algo salió mal");

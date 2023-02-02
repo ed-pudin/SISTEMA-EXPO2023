@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\company;
+use \App\Models\guest;
+use \App\Models\companyPeople;
 
 class CompaniesController extends Controller
 {
@@ -104,12 +106,28 @@ class CompaniesController extends Controller
     {
         $company = company::find($id);
 
-        if($company->delete()){
-            session()->flash("delete","Se ha eliminado correctamente $company->nameCompany");
-        }else{
-            session()->flash("delete","Algo salió mal");
-        }
+        $companyPeople = companyPeople::with('company')
+        ->whereHas('company', function ($query) use($id) {
+            $query->where('id', '=', $id);
+        })->count();
 
+        $guest = guest::with('company')
+        ->whereHas('company', function ($query) use($id) {
+            $query->where('id', '=', $id);
+        })->count();
+
+
+        if($companyPeople > 0 || $guest > 0){
+            //Checar relacion entre guest y events
+            session()->flash("delete","La empresa pertenece a alguien y no puede ser eliminada");
+        }else{
+
+            if($company->delete()){
+                session()->flash("delete","Se ha eliminado correctamente $company->nameCompany");
+            }else{
+                session()->flash("delete","Algo salió mal");
+            }
+        }
         return redirect()->route('adminRegistroEmpresas.index');
     }
 }
