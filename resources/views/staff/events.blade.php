@@ -33,6 +33,20 @@
         });
         @endif
 
+        @if(session()->get('status') == "La persona ya asistió")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'info',
+                iconColor:'#0de4fe',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
     </script>
 @endif
 
