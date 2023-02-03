@@ -36,7 +36,7 @@ class AdminPersonCompany extends Controller
     public function store(Request $request)
     {
         for($i = 0; $i < $request->countInputs; $i++){
-            
+
             if(!(is_null($request->{'name'.$i}))) {
                 $person = new companyPeople();
 
@@ -46,7 +46,6 @@ class AdminPersonCompany extends Controller
 
                 if(!($person->save())){
                     session()->flash("status","Hubo un problema. Verifique el nombre: ". $person->fullName);
-                    return redirect()->back();
                 }
             }
         }
@@ -54,7 +53,6 @@ class AdminPersonCompany extends Controller
         session()->flash("status","Registro exitoso");
         return redirect()->back();
 
-        
     }
 
     /**
@@ -81,7 +79,7 @@ class AdminPersonCompany extends Controller
     public function edit($id)
     {
         //
-        echo("Edit"); 
+        echo("Edit");
     }
 
     /**
@@ -96,7 +94,7 @@ class AdminPersonCompany extends Controller
         $person = companyPeople::find($id);
 
         $person->fullName = $request->{'editNameCompanyPeople_'.$id};
-        
+
         if($person->save()){
             session()->flash("update","Edición del nombre de la persona exitosa");
         }else{

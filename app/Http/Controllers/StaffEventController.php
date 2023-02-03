@@ -81,52 +81,84 @@ class StaffEventController extends Controller
         if($request->has('enrollmentStudentEvent')){
             //REGISTRAR ENTRADA ESTUDIANTE
 
-            $student = new student();
-            $student->enrollment = $request->enrollmentStudentEvent;
-            $student->fullName = $request->fullNameStudentEvent;
+            //Preguntar si esta el estudante registrado
+            $tempStudent = student::where('enrollment', '=', $request->enrollmentStudentEvent)->first();
 
-            if($student->save()){
-                $eventStudent = new eventStudent();
-                $eventStudent->event = $id;
-                $eventStudent->student = $request->enrollmentStudentEvent;
-                $eventStudent->attended = true;
+            if($tempStudent == null){
+                //No existe
+                $student = new student();
+                $student->enrollment = $request->enrollmentStudentEvent;
+                $student->fullName = $request->fullNameStudentEvent;
 
-                if($eventStudent->save()){
-                    session()->flash("status","Asistencia registrada");
-                }else{
+                if(!($student->save()))
                     session()->flash("status","Hubo un problema en la asistencia");
+
+            }else{
+                //Existe estudiante
+                $tempEvent = eventStudent::where('student', '=', $request->enrollmentStudentEvent)->where('event', '=', $id)->first();
+
+                if($tempEvent != null){
+                    //Asistencia repetida
+                    session()->flash("status","La persona ya asistió");
+                    return redirect()->route('staffEvento.index');
                 }
+            }
 
-                return redirect()->route('staffEvento.index');
 
+            $eventStudent = new eventStudent();
+            $eventStudent->event = $id;
+            $eventStudent->student = $request->enrollmentStudentEvent;
+            $eventStudent->attended = true;
+
+            if($eventStudent->save()){
+                session()->flash("status","Asistencia registrada");
             }else{
                 session()->flash("status","Hubo un problema en la asistencia");
             }
+
+            return redirect()->route('staffEvento.index');
 
         }else{
             //REGISTRAR ENTRADA EXTERNO
 
-            $externalPeople = new externalPeople();
-            $externalPeople->fullName = $request->regEventExternal;
-            $externalPeople->genre = $request->genre;
+            //Preguntar si esta el externo registrado
+            $tempPeople = externalPeople::where('fullName', '=', $request->regEventExternal)->first();
 
-            if($externalPeople->save()){
-                $externalPeopleEvent = new externalPeopleEvent();
-                $externalPeopleEvent->externalPeople = $externalPeople->id;
-                $externalPeopleEvent->event = $id;
-                $externalPeopleEvent->attended = true;
+            $idPeople;
 
-                if($externalPeopleEvent->save()){
-                    session()->flash("status","Asistencia registrada");
-                }else{
+            if($tempPeople == null){
+                $externalPeople = new externalPeople();
+                $externalPeople->fullName = $request->regEventExternal;
+                $externalPeople->genre = $request->genre;
+
+                if(!($externalPeople->save()))
                     session()->flash("status","Hubo un problema en la asistencia");
-                }
+                $idPeople = $externalPeople->id;
+            }else{
+                $idPeople = $tempPeople->id;
+            }
 
+            $tempEvent = externalPeopleEvent::where('externalPeople', '=', $idPeople)->where('event', '=', $id)->first();
+
+            if($tempEvent != null){
+                //Asistencia repetida
+                session()->flash("status","La persona ya asistió");
                 return redirect()->route('staffEvento.index');
+            }
 
+            $externalPeopleEvent = new externalPeopleEvent();
+            $externalPeopleEvent->externalPeople = $idPeople;
+            $externalPeopleEvent->event = $id;
+            $externalPeopleEvent->attended = true;
+
+            if($externalPeopleEvent->save()){
+                session()->flash("status","Asistencia registrada");
             }else{
                 session()->flash("status","Hubo un problema en la asistencia");
             }
+
+            return redirect()->route('staffEvento.index');
+
         }
 
     }

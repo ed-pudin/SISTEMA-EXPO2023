@@ -53,8 +53,9 @@ class StaffExpositorController extends Controller
 
             }
 
+        }else{
+            session()->flash("status", "El alumno no es válido");
         }
-        session()->flash("status", "El alumno no es válido");
 
         return redirect()->route('staffExpositor.index');
     }
