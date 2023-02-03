@@ -13,6 +13,7 @@ use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\StaffExpositorController;
 use App\Http\Controllers\StaffEventController;
 use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\AdminStaffController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminPersonCompany;
 use App\Http\Controllers\WelcomeController;
@@ -55,6 +56,12 @@ Route::group(['middleware' => 'isAdmin'], function () {
     // Acceso SOLO ADMIN
     Route::resource('adminInicio', AdminHomeController::class ,[
         'index' => 'adminInicio.index'
+    ]);
+
+    Route::resource('adminStaff', AdminStaffController::class ,[
+        'store'     => 'adminStaff.store',
+        'update'    => 'adminStaff.update',
+        'destroy'   => 'adminStaff.destroy'
     ]);
 
     Route::resource('adminRegistroPersonaEmpresa', AdminPersonCompany::class ,[

@@ -2,9 +2,88 @@
 
 @section('Content')
 
+@if(session()->has('status'))
+
+    <script type="text/javascript">
+        @if(session()->get('status') == "Cuenta generada")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            iconColor: '#0de4fe',
+            title: `{{ session()->get('status') }}`,
+            showConfirmButton: false,
+            timer: 1500
+            })
+
+        });
+        @endif
+
+        @if(session()->get('status') == "Hubo un problema en la generación de la cuenta")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            iconColor:'#a70202',
+            title: `{{ session()->get('status') }}`,
+            showConfirmButton: false,
+            timer: 1500
+            })
+
+        });
+        @endif
+
+    </script>
+        @php
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        @endphp
+@endif
+
+@if(session()->has('delete'))
+
+        <script type="text/javascript">
+
+        @if(session()->get('delete') == "Hubo un error, intente de nuevo")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'#a70202',
+                title: `{{ session()->get('delete') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @else
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#0de4fe',
+                title: `{{ session()->get('delete') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
+        </script>
+        @php
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        @endphp
+@endif
+
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
+
+
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 <div class="col-sm p-3 min-vh-100 backgroundImg tab-pane">
@@ -59,7 +138,7 @@
 
         </div>
 
-        <div class="mt-3 card dashboard-t text-center text-white">
+        <div class="my-3 card dashboard-t text-center text-white">
             <div class="row my-5">
                 <div class="col-md-4 col-sm-12 justify-content-center">
                     <h2 style="font-size:5em; font-weight:bold;"> @if ($eventCount <= 0) — @else{{$eventCount}}@endif </h2>
@@ -86,12 +165,74 @@
 
         </div>
 
+        <div class="my-5 card dashboard-t text-center text-white py-2 mb-4">
+            <h2 style="font-weight: bold; text-align:center"> Cuentas de staff</h2>
+
+            <div class="table-responsive">
+                <table class="table" style="text-align-last:center;">
+                    <thead>
+                        <tr>
+                            <th class="w-priority">Clave</th>
+                            <th class="w-priority">Contraseña</th>
+                            <th>Editar</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($accounts as $account )
+                        <tr>
+                            <td>{{$account->key}}</td>
+                            <td>{{$account->password}}</td>
+                            <td>
+                                <a href="#" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                            </td>
+                            <td>
+                                <form action="{{route('adminStaff.destroy', [$account->id])}}" method="POST" hidden>
+                                    @method('DELETE')
+                                    @csrf
+                                        <button id="formAdminDeleteBtn_{{$account->id}}" type="submit"> DESTROY </button>
+                                    </form>
+
+                                <a onclick="confirmDialog(`formAdminDeleteBtn_{{$account->id}}`)"  class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+
+                        @endforeach
+
+                    </tbody>
+                </table>
+
+                <div class="col-12 my-2" style="text-align:right;">
+                    <form action="{{route('adminStaff.store')}}" method="POST">
+                        @csrf
+                        <button id="regEvent" type="submit" class="col-lg-2 col-md-6 col-sm-12 btn btn-primary mx-5 my-2 ">Generar cuenta</button>
+                    </form>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
 
     </div>
 </div>
-
     <script>
 
+        function confirmDialog(triggerBtnId) {
+            Swal.fire({
+                title: '¿Confirmar cambios?',
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: 'Aceptar',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(triggerBtnId).click();
+                }
+            })
+        }
         function chooseColor() {
             const colors = ["#59ffee", "#39f6e4", "#21decb",
                             "#f04f97", "#e23a87", "#c9206c",

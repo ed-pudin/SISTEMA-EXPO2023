@@ -9,6 +9,7 @@ use App\Models\externalPeopleEvent;
 use App\Models\projectStudent;
 use App\Models\company;
 use App\Models\event;
+use App\Models\User;
 
 class AdminHomeController extends Controller
 {
@@ -20,6 +21,7 @@ class AdminHomeController extends Controller
     public function index()
     {
 
+        $accounts = User::where('rol', '=', 'staff')->get();
         $finalCount = companyPeople::where('attended', '=', true)->get()->count();
         $finalCount += eventStudent::where('attended', '=', true)->get()->count();
         $finalCount += externalPeopleEvent::where('attended', '=', true)->get()->count();
@@ -73,7 +75,7 @@ class AdminHomeController extends Controller
 
 
 
-        return view('admin.index', compact('finalCount', 'studentsCount', 'externalCount', 'femaleExternalCount', 'maleExternalCount', 'eventCount', 'companyCount', 'expositorCount', 'eventsName', 'eventsTotalCount'));
+        return view('admin.index', compact('finalCount', 'studentsCount', 'externalCount', 'femaleExternalCount', 'maleExternalCount', 'eventCount', 'companyCount', 'expositorCount', 'eventsName', 'eventsTotalCount', 'accounts'));
     }
 
     /**
