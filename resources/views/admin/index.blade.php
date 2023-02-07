@@ -79,6 +79,44 @@
         @endphp
 @endif
 
+@if(session()->has('update'))
+
+        <script type="text/javascript">
+
+        @if(session()->get('update') == "Hubo un error, intente de nuevo")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'#a70202',
+                title: `{{ session()->get('update') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @else
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#0de4fe',
+                title: `{{ session()->get('update') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
+        </script>
+        @php
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        @endphp
+@endif
+
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
@@ -184,7 +222,7 @@
                             <td>{{$account->key}}</td>
                             <td>{{$account->password}}</td>
                             <td>
-                                <a href="#" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                <a onclick="updateAccount(`{{$account->id}}`, `{{$account->key}}`, `{{$account->password}}` )" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                             </td>
                             <td>
                                 <form action="{{route('adminStaff.destroy', [$account->id])}}" method="POST" hidden>
@@ -205,7 +243,7 @@
                 <div class="col-12 my-2" style="text-align:right;">
                     <form action="{{route('adminStaff.store')}}" method="POST">
                         @csrf
-                        <button id="regEvent" type="submit" class="col-lg-2 col-md-6 col-sm-12 btn btn-primary mx-5 my-2 ">Generar cuenta</button>
+                        <button id="regEvent" type="submit"  class="col-lg-2 col-md-6 col-sm-12 btn btn-primary mx-5 my-2 ">Generar cuenta</button>
                     </form>
                 </div>
 
@@ -219,6 +257,40 @@
     </div>
 </div>
     <script>
+
+        function updateAccount(id, key, pass){
+
+            var url = "{{ route('adminStaff.update', ':id' ) }}";
+            url = url.replace(':id', id);
+
+            Swal.fire({
+                title: 'Editar cuenta',
+                html:
+                `
+                <form action=${url} method="post">
+                    @method('PUT')
+                    @csrf
+                    <div class="form-floating my-2">
+                        <input required type="text" class="form-control" name="staffKey" id="staffKey" placeholder="Clave" value=${key}>
+                        <label for="staffKey">Clave</label>
+                    </div>
+                    <div class="form-floating my-2">
+                        <input required type="text" class="form-control" name="staffPass" id="staffPass" placeholder="Contraseña" value=${pass}>
+                        <label for="staffPass">Contraseña</label>
+                    </div>
+
+                    <button id="confirmUpdate" hidden type="submit">Enviar</button>
+                </form>
+                `,
+                confirmButtonText: "Confirmar",
+                focusConfirm: false,
+                preConfirm: () => {
+                    return[
+                        document.getElementById('confirmUpdate').click()
+                    ]
+                }
+            })
+        }
 
         function confirmDialog(triggerBtnId) {
             Swal.fire({
