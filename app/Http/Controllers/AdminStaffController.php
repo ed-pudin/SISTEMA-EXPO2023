@@ -82,6 +82,18 @@ class AdminStaffController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $user = User::find($id);
+
+        $user->key = $request->staffKey;
+        $user->password = $request->staffPass;
+
+        if($user->save()){
+            session()->flash("update","Edición exitosa");
+        }else{
+            session()->flash("update","Hubo un error, intente de nuevo");
+        }
+        return redirect()->route('adminInicio.index');
     }
 
     /**
