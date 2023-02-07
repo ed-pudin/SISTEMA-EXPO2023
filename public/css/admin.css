@@ -48,7 +48,7 @@ h6{
 
 .nav-tabs {
     align-items: end;
-    border-bottom: 2px solid #000; 
+    border-bottom: 2px solid #000;
 }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
@@ -111,7 +111,7 @@ input:disabled, .form-control:disabled, .form-select:disabled {
     --bs-btn-disabled-bg:#c53aff;
 }
 
-.btn-primary:hover, 
+.btn-primary:hover,
 .swal2-confirm:hover {
     color: snow;
     background-color: #861dc2;
@@ -168,7 +168,7 @@ a>i.bi, .nav-txt, .navbar-brand {
 
 .nav-txt:hover, a:hover>i.bi .nav-txt,a:hover>i.bi , .navbar-brand:hover, .navbar-toggler:hover {
     color: #0de4fe;
-    
+
 }
 
 .bg-dark {
@@ -185,17 +185,17 @@ a>i.bi, .nav-txt, .navbar-brand {
 }
 
 hr.colorfull {
-    height:2px; 
-    border:0px; 
-    background: linear-gradient(to right, #39f6e4, #a7ee54); 
+    height:2px;
+    border:0px;
+    background: linear-gradient(to right, #39f6e4, #a7ee54);
     opacity: 1;
     box-shadow: 0 20px 20px -20px #333;
 }
 
 .div-colorfull{
     border: 2px solid;
-    border-image: linear-gradient(to right, #39f6e4, #a7ee54); 
-    border-image-slice: 1; 
+    border-image: linear-gradient(to right, #39f6e4, #a7ee54);
+    border-image-slice: 1;
     border-radius:50%
 }
 
@@ -255,14 +255,14 @@ input[readonly]{
 }
 
 
-.form-check-input:focus[type=checkbox], .form-check-input[type=checkbox] {
+.form-check-input:focus[type=checkbox], .form-check-input[type=checkbox], input[type=checkbox] {
     background: black;
     border-color: #21decb;
     border-width: 0.15rem;
     box-shadow: 0 0 5px 0px #21decb;
 }
 
-.form-check-input:checked[type=checkbox] {
+.form-check-input:checked[type=checkbox], .ms-drop input:checked[type=checkbox] {
     background: #c53aff;
     border-color: #c53aff;
     box-shadow: 0 0 10px 1px #c53aff;
@@ -328,7 +328,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
     /* Remove default */
     -webkit-appearance: none;
-  
+
     /* Now your own custom styles */
     height: 1rem;
     width: 1rem;
@@ -363,4 +363,8 @@ input[type="search"]::-webkit-search-cancel-button:hover {
 
 .btn:focus {
     box-shadow: none;
+}
+
+.ms-drop{
+    background-color: #000000;
 }

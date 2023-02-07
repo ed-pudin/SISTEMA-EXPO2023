@@ -273,7 +273,7 @@ header("Pragma: no-cache");
 
                         <div class="col-sm-7 my-2">
                             <div class="form-floating">
-                                <select class="form-select" id="regEventGuest" name="regEventGuest">
+                                <select class="form-select multiple-select" id="regEventGuest" name="regEventGuest" multiple="multiple">
                                     @foreach ($guests as $guest)
                                         <option value="{{$guest->id}}">{{$guest->fullName}}</option>
                                     @endforeach
@@ -281,6 +281,7 @@ header("Pragma: no-cache");
                                 <label for="regEventGuest">Invitado</label>
                             </div>
                         </div>
+
 
                         <div class="col-sm-5 my-2">
                             <div class="form-floating">
@@ -295,9 +296,12 @@ header("Pragma: no-cache");
                             </div>
                         </div>
 
+
+
                         <div class="col-12 my-2" style="text-align:center;">
                             <button id="regEvent" type="submit" class="col-md-4 col-sm-12 btn btn-primary">REGISTRAR</button>
                         </div>
+
                     </form>
 
                 </div>
@@ -308,6 +312,9 @@ header("Pragma: no-cache");
 </div>
 <!-- ADMIN EVENTOS -->
 <!-- ------------- -->
-
-
+<script>
+    $(function() {
+      $('.multiple-select').multipleSelect()
+    })
+  </script>
 @endsection
