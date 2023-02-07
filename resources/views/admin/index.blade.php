@@ -203,55 +203,69 @@
 
         </div>
 
-        <div class="my-5 card dashboard-t text-center text-white py-2 mb-4">
-            <h2 style="font-weight: bold; text-align:center"> Cuentas de staff</h2>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button href="table-staff-accounts" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <h2 style="font-weight: bold; text-align:center"> Cuentas de staff </h2>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="text-center text-white py-2 mb-4">
 
-            <div class="table-responsive">
-                <table class="table" style="text-align-last:center;">
-                    <thead>
-                        <tr>
-                            <th class="w-priority">Clave</th>
-                            <th class="w-priority">Contraseña</th>
-                            <th>Editar</th>
-                            <th>Borrar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($accounts as $account )
-                        <tr>
-                            <td>{{$account->key}}</td>
-                            <td>{{$account->password}}</td>
-                            <td>
-                                <a onclick="updateAccount(`{{$account->id}}`, `{{$account->key}}`, `{{$account->password}}` )" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
-                            </td>
-                            <td>
-                                <form action="{{route('adminStaff.destroy', [$account->id])}}" method="POST" hidden>
-                                    @method('DELETE')
+                            <div class="table-responsive col-11 mx-auto" id="table-staff-accounts">
+                                <table class="table" style="text-align-last:center;">
+                                    <thead>
+                                        <tr>
+                                            <th>Clave</th>
+                                            <th>Contraseña</th>
+                                            <th>Editar</th>
+                                            <th>Borrar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($accounts as $account )
+                                        <tr>
+                                            <td>{{$account->key}}</td>
+                                            <td>{{$account->password}}</td>
+                                            <td>
+                                                <a href="#" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                            </td>
+                                            <td>
+                                                <form action="{{route('adminStaff.destroy', [$account->id])}}" method="POST" hidden>
+                                                    @method('DELETE')
+                                                    @csrf
+                                                        <button id="formAdminDeleteBtn_{{$account->id}}" type="submit"> DESTROY </button>
+                                                    </form>
+            
+                                                <a onclick="confirmDialog(`formAdminDeleteBtn_{{$account->id}}`)"  class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
+                                            </td>
+                                        </tr>
+            
+                                        @endforeach
+            
+                                    </tbody>
+                                </table>
+            
+                            </div>
+            
+                            <div class="col-12 my-2">
+                                <form action="{{route('adminStaff.store')}}" method="POST">
                                     @csrf
-                                        <button id="formAdminDeleteBtn_{{$account->id}}" type="submit"> DESTROY </button>
-                                    </form>
-
-                                <a onclick="confirmDialog(`formAdminDeleteBtn_{{$account->id}}`)"  class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
-                            </td>
-                        </tr>
-
-                        @endforeach
-
-                    </tbody>
-                </table>
-
-                <div class="col-12 my-2" style="text-align:right;">
-                    <form action="{{route('adminStaff.store')}}" method="POST">
-                        @csrf
-                        <button id="regEvent" type="submit"  class="col-lg-2 col-md-6 col-sm-12 btn btn-primary mx-5 my-2 ">Generar cuenta</button>
-                    </form>
+                                    <button id="regEvent" type="submit" class="btn btn-primary">Generar cuenta</button>
+                                </form>
+                            </div>
+                
+                        </div>
+                    </div>
                 </div>
 
             </div>
-
-
-
+            
         </div>
+
+        
 
 
     </div>
