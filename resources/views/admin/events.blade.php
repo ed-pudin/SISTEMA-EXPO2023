@@ -273,7 +273,7 @@ header("Pragma: no-cache");
 
                         <div class="col-sm-7 my-2">
                             <div class="form-floating">
-                                <select class="form-select" id="regEventGuest" name="regEventGuest">
+                                <select multiple class="form-select" id="regEventGuest" name="regEventGuest">
                                     @foreach ($guests as $guest)
                                         <option value="{{$guest->id}}">{{$guest->fullName}}</option>
                                     @endforeach
