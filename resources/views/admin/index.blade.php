@@ -230,7 +230,7 @@
                                             <td>{{$account->key}}</td>
                                             <td>{{$account->password}}</td>
                                             <td>
-                                                <a href="#" class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
+                                                <a onclick="updateAccount(`{{$account->id}}`, `{{$account->key}}`, `{{$account->password}}` )"  class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-pencil"></i></a>
                                             </td>
                                             <td>
                                                 <form action="{{route('adminStaff.destroy', [$account->id])}}" method="POST" hidden>
@@ -238,34 +238,34 @@
                                                     @csrf
                                                         <button id="formAdminDeleteBtn_{{$account->id}}" type="submit"> DESTROY </button>
                                                     </form>
-            
+
                                                 <a onclick="confirmDialog(`formAdminDeleteBtn_{{$account->id}}`)"  class="btn-table btn btn-primary col-12 m-auto"><i class="bi bi-trash"></i></a>
                                             </td>
                                         </tr>
-            
+
                                         @endforeach
-            
+
                                     </tbody>
                                 </table>
-            
+
                             </div>
-            
+
                             <div class="col-12 my-2">
                                 <form action="{{route('adminStaff.store')}}" method="POST">
                                     @csrf
                                     <button id="regEvent" type="submit" class="btn btn-primary">Generar cuenta</button>
                                 </form>
                             </div>
-                
+
                         </div>
                     </div>
                 </div>
 
             </div>
-            
+
         </div>
 
-        
+
 
 
     </div>

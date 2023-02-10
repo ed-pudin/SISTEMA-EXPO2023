@@ -100,7 +100,7 @@
                     <ul class="nav navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('inicioSesion.index')}}">
-                                <p class="m-0 nav-txt"> INICIAR SESION </p>
+                                <p class="m-0 nav-txt"> INICIAR SESIÓN </p>
                             </a>
                         </li>
                     </ul>
@@ -326,7 +326,7 @@
                     <div class="row d-flex justify-content-center">
                     @foreach ($companies as $company )
                         <div class="col-md-3 col-sm-12 my-5" style="text-align: center;">
-                            <img src="https://placehold.co/200x200?text={{$company->nameCompany}}" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
+                            <img src="https://placehold.co/200x200/00b2c5/00000?text={{$company->nameCompany}}" class="img-fluid rounded-circle shadow p-3 mb-5" alt="..." height="200">
                         </div>
                     @endforeach
                     </div>
