@@ -117,7 +117,13 @@
                                         @foreach($eventExternals as $eventExternal)
                                         <tr>
                                             <td>{{$eventExternal->externalPeople()->first()->getFullName()}}</td>
-                                            <td>{{$eventExternal->externalPeople()->first()->genre}}</td>
+                                            <td>
+                                                @if($eventExternal->externalPeople()->first()->genre == "female")
+                                                Femenino
+                                                @else
+                                                Masculino
+                                                @endif
+                                            </td>
                                             <td>{{$eventExternal->attended}}</td>
                                         </tr>
                                         @endforeach
