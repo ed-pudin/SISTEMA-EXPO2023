@@ -92,13 +92,13 @@ class StaffCompanyController extends Controller
                 $companyPeople[$i]->attended = true;
                 if(!($companyPeople[$i]->save())){
                     session()->flash("status","Hubo un problema.");
-                    return redirect()->back();
+                    return redirect()->route('staffEmpresa.index');
                 }
             }else{
                 $companyPeople[$i]->attended = false;
                 if(!($companyPeople[$i]->save())){
                     session()->flash("status","Hubo un problema.");
-                    return redirect()->back();
+                    return redirect()->route('staffEmpresa.index');
                 }
             }
 
@@ -119,13 +119,13 @@ class StaffCompanyController extends Controller
                     $companyPeople->attended = true;
                     if(!($companyPeople->save())){
                         session()->flash("status","Hubo un problema.");
-                        return redirect()->back();
+                        return redirect()->route('staffEmpresa.index');
                     }
                 }else{
                     $companyPeople->attended = false;
                     if(!($companyPeople->save())){
                         session()->flash("status","Hubo un problema.");
-                        return redirect()->back();
+                        return redirect()->route('staffEmpresa.index');
                     }
                 }
             }

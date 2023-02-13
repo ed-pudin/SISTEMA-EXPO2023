@@ -260,7 +260,7 @@ table {
     text-align: center;
 }
 
-input[readonly]{
+input[readonly], .readonly{
     border-bottom: 2px solid #0de4fe!important;
     text-shadow: 0 0 4px #ff0000!important;
 }

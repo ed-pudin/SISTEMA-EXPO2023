@@ -1,38 +1,7 @@
 @extends('admin.struct')
 
 @section('Content')
-@if(session()->has('update'))
-        
-        <script type="text/javascript">
-            @if(session()->get('update') == "Edición en maestro exitosa")
-            document.addEventListener("DOMContentLoaded", function(){
-                Swal.fire({
-                position: 'center',
-                icon: 'success',
-                iconColor: '#30a702',
-                title: `{{ session()->get('update') }}`,
-                showConfirmButton: false,
-                timer: 1500
-                })
-            
-            });
-            @endif
 
-            @if(session()->get('update') == "Hubo un error, intente de nuevo")
-            document.addEventListener("DOMContentLoaded", function(){
-                Swal.fire({
-                position: 'center',
-                icon: 'error',
-                iconColor:'#a70202',
-                title: `{{ session()->get('update') }}`,
-                showConfirmButton: false,
-                timer: 1500
-                })
-            
-            });
-            @endif
-        </script>
-    @endif
 
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
