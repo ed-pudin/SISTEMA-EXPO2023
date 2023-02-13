@@ -197,7 +197,7 @@
             <div class="slider3">
                 @if(count($masterClasses) > 0)
                     <div class="row align-items-center p-5">
-                        <h1 style="text-align: center;"> M e s a  R e d o n d a </h1>
+                        <h1 style="text-align: center;"> M a s t e r  C l a s s e s </h1>
                     </div>
 
                     <div class="row align-items-center">
