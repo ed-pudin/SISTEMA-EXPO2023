@@ -84,7 +84,7 @@
                                 <label for="enrollment0">Matricula</label>
                             </div>
 
-                            <div class="form-check mt-2">
+                            <div class="form-check mt-2" hidden>
                                 <input class="form-check-input" type="checkbox" name="attendance0" id="attendance0" >
                                 <label class="form-check-label text-light" for="attendance0">
                                     Comprobar
@@ -94,7 +94,7 @@
                         </div>
                         <div class="col-12 col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
                             <div class="form-floating">
-                                <input onclick="this.value = generateName()" type="text" class="form-control" name="name0" id="name0" readonly placeholder="Nombre completo">
+                                <input type="text" class="form-control" name="name0" id="name0" required onkeyup="cambiaMayuscula()" placeholder="Nombre completo">
                                 <label for="name0">Nombre completo</label>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                         <!--INPUTS DINAMICOS-->
 
                     </div>
-                    
+
                     <!--                       key      |      password         -->
                     <!-- User Student ->    matrícula   | apellidos_matrícula   -->
 
@@ -127,4 +127,9 @@
     </div>
 </div>
 
+    <script>
+        function cambiaMayuscula (){
+            $("#name0").val($("#name0").val().toUpperCase());
+        }
+    </script>
 @endsection

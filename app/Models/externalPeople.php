@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class externalPeople extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function getFullName(){
+        return strtoupper($this->fullName);
+    }
 }

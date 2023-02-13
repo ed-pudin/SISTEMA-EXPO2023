@@ -91,7 +91,7 @@
                                         @foreach($eventStudents as $eventStudent)
                                         <tr>
                                             <td>{{$eventStudent->thisStudent()->first()->enrollment}}</td>
-                                            <td>{{$eventStudent->thisStudent()->first()->fullName}}</td>
+                                            <td>{{$eventStudent->thisStudent()->first()->getFullName()}}</td>
                                             <td>{{$eventStudent->attended}}</td>
                                         </tr>
                                         @endforeach
@@ -116,7 +116,7 @@
                                     <tbody>
                                         @foreach($eventExternals as $eventExternal)
                                         <tr>
-                                            <td>{{$eventExternal->externalPeople()->first()->fullName}}</td>
+                                            <td>{{$eventExternal->externalPeople()->first()->getFullName()}}</td>
                                             <td>{{$eventExternal->externalPeople()->first()->genre}}</td>
                                             <td>{{$eventExternal->attended}}</td>
                                         </tr>
