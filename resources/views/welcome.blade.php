@@ -161,7 +161,7 @@
 
                     <div class="row align-items-center">
                         <div class="col-md-2 col-sm-12 my-5"></div>
-                                <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
+                                <div id="carouselExampleCaptions2" class="carousel slide col-md-8" data-bs-ride="carousel">
                                         <div class="carousel-inner">
                                             @foreach ( $mesasRedondas as $mesaRedonda)
                                             <div class="carousel-item {{$loop->first ? 'active': ''}}">
@@ -173,18 +173,18 @@
                                             @endforeach
                                         </div>
 
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Previous</span>
                                     </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Next</span>
                                     </button>
 
                                     <div class="carousel-indicators">
                                         @foreach ( $mesasRedondas as $mesaRedonda)
-                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 2"></button>
                                         @endforeach
                                     </div>
 
@@ -202,7 +202,7 @@
 
                     <div class="row align-items-center">
                         <div class="col-md-2 col-sm-12 my-5"></div>
-                                <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
+                                <div id="carouselExampleCaptions3" class="carousel slide col-md-8" data-bs-ride="carousel">
                                         <div class="carousel-inner">
                                             @foreach ( $masterClasses as $masterClass)
                                             <div class="carousel-item {{$loop->first ? 'active': ''}}">
@@ -214,18 +214,18 @@
                                             @endforeach
                                         </div>
 
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Previous</span>
                                     </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Next</span>
                                     </button>
 
                                     <div class="carousel-indicators">
                                         @foreach ( $masterClasses as $masterClass)
-                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 3"></button>
                                         @endforeach
                                     </div>
 
@@ -243,7 +243,7 @@
 
                     <div class="row align-items-center">
                         <div class="col-md-2 col-sm-12 my-5"></div>
-                                <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
+                                <div id="carouselExampleCaptions4" class="carousel slide col-md-8" data-bs-ride="carousel">
                                         <div class="carousel-inner">
                                             @foreach ( $torneos as $torneo)
                                             <div class="carousel-item {{$loop->first ? 'active': ''}}">
@@ -255,18 +255,18 @@
                                             @endforeach
                                         </div>
 
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Previous</span>
                                     </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Next</span>
                                     </button>
 
                                     <div class="carousel-indicators">
                                         @foreach ( $torneos as $torneo)
-                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 4"></button>
                                         @endforeach
                                     </div>
 
@@ -284,7 +284,7 @@
 
                     <div class="row align-items-center">
                         <div class="col-md-2 col-sm-12 my-5"></div>
-                                <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
+                                <div id="carouselExampleCaptions5" class="carousel slide col-md-8" data-bs-ride="carousel">
                                         <div class="carousel-inner">
                                             @foreach ( $otros as $otro)
                                             <div class="carousel-item {{$loop->first ? 'active': ''}}">
@@ -296,18 +296,18 @@
                                             @endforeach
                                         </div>
 
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" >
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions5" data-bs-slide="prev" >
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Previous</span>
                                     </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions5" data-bs-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Next</span>
                                     </button>
 
                                     <div class="carousel-indicators">
                                         @foreach ( $otros as $otro)
-                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions5" data-bs-slide-to="{{$loop->index}}" class="{{$loop->first ? 'active': ''}}" aria-current="true" aria-label="Slide 5"></button>
                                         @endforeach
                                     </div>
 
