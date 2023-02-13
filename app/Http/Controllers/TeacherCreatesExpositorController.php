@@ -68,8 +68,8 @@ class TeacherCreatesExpositorController extends Controller
             if(is_null($thisUser)) {
 
                 $user = new User(['key'=> $enrollment,
-                    'password' => (strtolower(str_replace(' ', '', $lastName))."_".$enrollment),
-                    'rol' => 'expositor', 
+                    'password' => (strtolower(str_replace(' ', '', $firstName))."_".$enrollment),
+                    'rol' => 'expositor',
                     'permanent'=> false
                 ]);
 
@@ -88,12 +88,16 @@ class TeacherCreatesExpositorController extends Controller
             $projectStudent->project = $project->id;
             $projectStudent->student = $enrollment;
             $projectStudent->attended = false;
-                            
-            $projectStudent->save();
+
+            if($projectStudent->save()){
+                session()->flash("status", "Registro expositor exitoso");
+            }else{
+                session()->flash("status", "Hubo un problema en el registro");
+            }
 
         }
 
-        return redirect()->back();
+        return redirect()->route("teacherRegistroExpositor.index");
     }
 
     /**

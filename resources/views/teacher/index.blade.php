@@ -1,6 +1,46 @@
 @extends('teacher.struct')
 
 @section('Content')
+
+    @if(session()->has('status'))
+
+    <script type="text/javascript">
+        @if(session()->get('status') == "Registro expositor exitoso")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#0de4fe',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
+        @if(session()->get('status') == "Hubo un problema en el registro")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'#a70202',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+        @endif
+
+    </script>
+    @php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    @endphp
+    @endif
+
 <div class="col-sm p-3">
     <div class="container-fluid" >
         <div class="row">
