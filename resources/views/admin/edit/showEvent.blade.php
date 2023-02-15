@@ -26,11 +26,13 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-5 col-12 mx-auto mb-md-0 mb-1 mt-2">
-                                    <label for="viewEventGuest">Invitado</label>
+
+                                    <label for="viewEventDate">Cantidad total</label>
                                     <div class="input-group">
-                                        <div class="input-group-text"><i class="bi bi-person-fill" style="color:#e23a87"></i></div>
-                                        <input disabled autocomplete="off" value="{{$event->guest()->first()->fullName}}" type="text" class="form-control" name="viewEventGuest" id="viewEventGuest" placeholder="Nombre del Evento" required>
+                                        <div class="input-group-text"><i class="bi bi-people-fill" style="color:#e23a87"></i></div>
+                                        <input disabled value="{{$count}}" required type="text" class="form-control" >
                                     </div>
+
                                 </div>
 
                                 <div class="col-xl-10 col-md-11 col-12 mx-auto my-5">
@@ -57,13 +59,17 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-10 col-md-11 col-12 mx-auto my-5">
-                                    <label for="viewEventDate">Cantidad total</label>
-                                    <div class="input-group">
-                                        <div class="input-group-text"><i class="bi bi-people-fill" style="color:#e23a87"></i></div>
-                                        <input disabled value="{{$count}}" required type="text" class="form-control" >
+                                @foreach ($guests as $guest)
+                                    <div class="col-xl-10 col-md-11 col-12 mx-auto mt-2">
+                                        <label for="viewEventGuest">Invitado</label>
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-person-fill" style="color:#e23a87"></i></div>
+                                            <input disabled autocomplete="off" value="{{$guest->guest()->first()->fullName}}" type="text" class="form-control" name="viewEventGuest" id="viewEventGuest" placeholder="Nombre del Invitado" required>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
+
+
 
                             </div>
 

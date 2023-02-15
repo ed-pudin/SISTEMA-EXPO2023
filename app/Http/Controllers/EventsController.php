@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\event;
 use App\Models\eventStudent;
 use App\Models\externalPeopleEvent;
+use App\Models\eventGuest;
 use Illuminate\Support\Facades\Storage;
 
 class EventsController extends Controller
@@ -20,7 +21,7 @@ class EventsController extends Controller
         //Regresar los invitados
         $guests = \App\Models\guest::all();
         //Vista de eventos
-        $events = event::with('guest')->orderby('eventName', 'asc')->get();
+        $events = event::get();
 
         return view('admin.events', compact('guests', 'events'));
     }
@@ -55,12 +56,24 @@ class EventsController extends Controller
         $event->date =  $request->regEventDate;
         $event->startTime = $request->regEventStartHour;
         $event->endTime = $request->regEventEndHour;
-        $event->guest = $request->regEventGuest;
+        //$event->guest = $request->regEventGuest;
         $event->typeEvent = $request->regEventType;
         $event->image = $fileName;
 
         if($event->save()){
-            session()->flash("status","Evento registrado");
+
+            //Guardar invitado evento
+            foreach($request->regEventGuest as $requestEvents){
+                $eventGuest = new eventGuest();
+                $eventGuest->guest = $requestEvents;
+                $eventGuest->event = $event->id;
+
+                if($eventGuest->save())
+                    session()->flash("status","Evento registrado");
+                else
+                    session()->flash("status","Hubo un problema en el registro");
+            }
+
         }else{
             session()->flash("status","Hubo un problema en el registro");
         }
@@ -75,7 +88,9 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        $event = event::with('guest')->find($id);
+        $event = event::find($id);
+
+        $guests = eventGuest::with('guest')->where('event', '=', $id)->get();
 
         $count = externalPeopleEvent::with('event')->whereHas('event', function ($query) use($id) {
             $query->where('id', '=', $id);
@@ -89,7 +104,7 @@ class EventsController extends Controller
 
         $eventExternals = externalPeopleEvent::where('event', '=', $id)->get();
 
-        return view('admin.edit.showEvent', compact('event', 'count', 'eventStudents', 'eventExternals'));
+        return view('admin.edit.showEvent', compact('event', 'count', 'eventStudents', 'eventExternals', 'guests'));
     }
 
     /**
@@ -130,7 +145,7 @@ class EventsController extends Controller
         $event->date = $request->editEventDate;
         $event->startTime = $request->editEventStartHour;
         $event->endTime = $request->editEventEndHour;
-        $event->guest = $request->editEventGuest;
+        //$event->guest = $request->editEventGuest;
         $event->typeEvent = $request->editEventType;
 
         $event->image = $fileName;

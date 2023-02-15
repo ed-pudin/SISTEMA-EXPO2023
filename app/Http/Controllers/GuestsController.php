@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use  App\Models\guest;
 use  App\Models\event;
+use  App\Models\eventGuest;
 
 class GuestsController extends Controller
 {
@@ -107,7 +108,7 @@ class GuestsController extends Controller
     {
         $guest = guest::find($id);
 
-        $events = event::with('guest')
+        $events = eventGuest::with('guest')
             ->whereHas('guest', function ($query) use($id) {
                 $query->where('id', '=', $id);
             })->count();
