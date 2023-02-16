@@ -11,6 +11,7 @@ class WelcomeController extends Controller
 {
     //
     public function index(){
+        $allEvents = event::all();
 
         $conferencias = event::where('typeEvent','=', 'Conferencia')->get();
 
@@ -34,10 +35,10 @@ class WelcomeController extends Controller
             $user = User::where('id', '=', $id)->first();
             if($user != null){
                 $rol = $user->rol;
-                return view('welcome', compact('rol', 'companies', 'conferencias', 'mesasRedondas', 'masterClasses', 'torneos', 'otros'));
+                return view('welcome', compact('rol', 'companies', 'conferencias', 'mesasRedondas', 'masterClasses', 'torneos', 'otros', 'allEvents'));
             }
         }
 
-        return view('welcome', compact('companies', 'conferencias', 'mesasRedondas', 'masterClasses', 'torneos', 'otros'));
+        return view('welcome', compact('companies', 'conferencias', 'mesasRedondas', 'masterClasses', 'torneos', 'otros', 'allEvents'));
     }
 }

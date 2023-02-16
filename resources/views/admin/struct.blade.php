@@ -40,26 +40,26 @@
 
         <div class="col-sm-auto bg-dark sticky-top">
             <div class="d-flex flex-sm-column flex-row flex-nowrap bg-dark align-items-center sticky-top">
-                <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                <a href="/" class="d-block py-3 px-1 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
                     <img class="logo-img" src="{{ asset('images/LOGO.png') }}" height="30">
                 </a>
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
                     <li>
-                        <a href="{{ route('adminInicio.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                        <a href="{{ route('adminInicio.index') }}" class="nav-link py-3 px-md-2 px-1" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                             <i class="bi bi-house-fill fs-3"></i>
                                 <p class="d-none d-sm-block nav-txt">Inicio</p>
                             </i>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('adminRegistroEventos.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                        <a href="{{ route('adminRegistroEventos.index') }}" class="nav-link py-3 px-md-2 px-1" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                             <i class="bi bi-calendar2-heart-fill fs-5">
                                 <p class="d-none d-sm-block nav-txt">Evento</p>
                             </i>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('adminRegistroInvitados.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                        <a href="{{ route('adminRegistroInvitados.index') }}" class="nav-link py-3 px-md-2 px-1" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
                             <i class="bi bi-people-fill fs-3">
                                 <p class="d-none d-sm-block nav-txt">Invitados</p>
                             </i>
@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('adminRegistroEmpresas.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                        <a href="{{ route('adminRegistroEmpresas.index') }}" class="nav-link py-3 px-md-2 px-1" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
                             <i class="bi bi-buildings-fill fs-3">
                                 <p class="d-none d-sm-block nav-txt">Empresas</p>
                             </i>
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('adminRegistroMaestros.index') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+                        <a href="{{ route('adminRegistroMaestros.index') }}" class="nav-link py-3 px-md-2 px-1" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
                             <i class="bi bi-mortarboard-fill fs-3">
                                 <p class="d-none d-sm-block nav-txt">Maestros</p>
                             </i>
@@ -83,7 +83,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('cerrarSesion') }}" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                        <a href="{{ route('cerrarSesion') }}" class="nav-link py-3 px-md-2 px-1" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                             <i class="bi bi-x-circle-fill fs-3">
                                 <p class="d-none d-sm-block nav-txt">Salir</p>
                             </i>
