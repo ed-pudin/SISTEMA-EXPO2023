@@ -3,7 +3,7 @@
 @section('Content')
 
 @if(session()->has('status'))
-        
+
         <script type="text/javascript">
             @if(session()->get('status') == "Edición en evento exitosa")
             document.addEventListener("DOMContentLoaded", function(){
@@ -15,7 +15,7 @@
                     showConfirmButton: false,
                     timer: 1500
                 })
-            
+
             });
             @endif
 
@@ -29,11 +29,16 @@
                     showConfirmButton: false,
                     timer: 1500
                 })
-            
+
             });
             @endif
 
         </script>
+        @php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+@endphp
     @endif
 
 <script>
@@ -73,9 +78,9 @@
 <div class="col p-3 min-vh-100 w-50 backgroundImg tab-pane show active">
     <div class="container-fluid">
         <div class="row" >
-            
+
             <form class="row align-items-center py-5 px-lg-5 px-md-3 px-sm-0" id="editarEvento" method="POST" enctype="multipart/form-data" action="{{route('adminRegistroEventos.update',[$event->id])}}">
-                @method('PUT')    
+                @method('PUT')
                 @csrf
                 <h1 style="text-align: center;"> Editando un Evento </h1>
                 <div class="col-sm-12 my-2">
@@ -130,7 +135,7 @@
                 <div class="col-sm-7 my-2">
                     <div class="form-floating">
                         <select class="form-select" id="editEventGuest" name="editEventGuest">
-                            @foreach ($guests as $guest) 
+                            @foreach ($guests as $guest)
                                 <option value="{{$guest->id}}" @if($event->guest()->first()->fullName == $guest->fullName) selected @endif >{{$guest->fullName}}</option>
                             @endforeach
                         </select>

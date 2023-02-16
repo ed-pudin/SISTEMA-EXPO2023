@@ -110,11 +110,11 @@
     @endif
 
     </script>
-@php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-@endphp
+    @php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    @endphp
 @endif
 
 @if(session()->has('email'))
@@ -148,11 +148,11 @@ header("Pragma: no-cache");
     @endif
 
     </script>
-@php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-@endphp
+    @php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    @endphp
 @endif
 
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">

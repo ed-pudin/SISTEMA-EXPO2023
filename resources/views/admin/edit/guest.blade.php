@@ -2,7 +2,7 @@
 
 @section('Content')
   @if(session()->has('update'))
-        
+
         <script type="text/javascript">
             @if(session()->get('update') == "Edición en invitado exitosa")
             document.addEventListener("DOMContentLoaded", function(){
@@ -14,7 +14,7 @@
                 showConfirmButton: false,
                 timer: 1500
                 })
-            
+
             });
             @endif
 
@@ -28,10 +28,15 @@
                 showConfirmButton: false,
                 timer: 1500
                 })
-            
+
             });
             @endif
         </script>
+        @php
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        @endphp
 @endif
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
@@ -40,7 +45,7 @@
 <div class="col p-3 min-vh-100 w-50 backgroundImg tab-pane">
     <div class="container-fluid">
         <div class="row" >
-            
+
             <form class="row align-items-center p-5" id="registroInvitados"action="{{route('adminRegistroInvitados.update', [$guest->id])}}" method="post">
                 @method('PUT')
                 @csrf
@@ -60,12 +65,12 @@
                         <div class="form-floating">
                             <select class="form-select" id="editGuestCmpany" name="editGuestCmpany">
                                 <option value="0">Ninguna</option>
-                                @foreach ($companies as $company) 
-                                    <option value="{{$company->id}}" 
-                                    @if($guest->company()->first() != null) 
-                                        @if($company->id == $guest->company()->first()->id) 
-                                            selected 
-                                        @endif 
+                                @foreach ($companies as $company)
+                                    <option value="{{$company->id}}"
+                                    @if($guest->company()->first() != null)
+                                        @if($company->id == $guest->company()->first()->id)
+                                            selected
+                                        @endif
                                     @endif>
                                     {{$company->nameCompany}}</option>
                                 @endforeach

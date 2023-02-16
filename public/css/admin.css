@@ -260,7 +260,7 @@ table {
     text-align: center;
 }
 
-input[readonly]{
+input[readonly], .readonly{
     border-bottom: 2px solid #0de4fe!important;
     text-shadow: 0 0 4px #ff0000!important;
 }
@@ -404,3 +404,26 @@ input[type="search"]::-webkit-search-cancel-button:hover {
     height: 350px;
     max-height: 350px;
 }
+.form-floating>.form-control, .form-floating>.form-control-plaintext, .form-floating>.form-select {
+    height:unset;
+    line-height: 1.25;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: black;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

@@ -38,7 +38,7 @@ class StaffExpositorController extends Controller
     {
         $projects = projectStudent::where('student', '=', $request->matricula)->get();
 
-        if($projects != null){
+        if(count($projects) != 0 ){
             foreach ($projects as $projectStudent) {
                 if($projectStudent->attended == true){
                     session()->flash("status","El alumno ya tiene asistencia");

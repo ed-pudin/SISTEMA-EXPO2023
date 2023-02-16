@@ -100,7 +100,7 @@ class StaffEventController extends Controller
                 if($tempEvent != null){
                     //Asistencia repetida
                     session()->flash("status","La persona ya asistió");
-                    return redirect()->route('staffEvento.index');
+                    return redirect()->back();
                 }
             }
 
@@ -116,7 +116,7 @@ class StaffEventController extends Controller
                 session()->flash("status","Hubo un problema en la asistencia");
             }
 
-            return redirect()->route('staffEvento.index');
+            return redirect()->back();
 
         }else{
             //REGISTRAR ENTRADA EXTERNO
@@ -143,7 +143,7 @@ class StaffEventController extends Controller
             if($tempEvent != null){
                 //Asistencia repetida
                 session()->flash("status","La persona ya asistió");
-                return redirect()->route('staffEvento.index');
+                return redirect()->back();
             }
 
             $externalPeopleEvent = new externalPeopleEvent();
@@ -157,7 +157,7 @@ class StaffEventController extends Controller
                 session()->flash("status","Hubo un problema en la asistencia");
             }
 
-            return redirect()->route('staffEvento.index');
+            return redirect()->back();
 
         }
 

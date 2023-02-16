@@ -173,7 +173,6 @@ header("Pragma: no-cache");
                             <thead>
                                 <tr>
                                     <th class="w-priority">Nombre</th>
-                                    <th>Invitado</th>
                                     <th>Tipo</th>
                                     <th>Fecha</th>
                                     <th>Hora Inicio</th>
@@ -187,7 +186,6 @@ header("Pragma: no-cache");
                                 @foreach($events as $event)
                                 <tr>
                                     <td>{{$event->eventName}}</td>
-                                    <td>{{$event->guest()->first()->fullName}}</td>
                                     <td>{{$event->typeEvent}}</td>
                                     <td>{{$event->date}}</td>
                                     <td>{{$event->startTime}}</td>
@@ -219,7 +217,7 @@ header("Pragma: no-cache");
 
                 <div class="tab-pane fade show" id="register-event" aria-labelledby="register-event-tab">
 
-                    <form class="row align-items-center py-5 px-lg-5 px-md-3 px-sm-0" id="registroEventos" method="POST" enctype="multipart/form-data" action="{{route('adminRegistroEventos.store')}}">
+                    <form class="row py-5 px-lg-5 px-md-3 px-sm-0" id="registroEventos" method="POST" enctype="multipart/form-data" action="{{route('adminRegistroEventos.store')}}">
                         @csrf
                         <h1 style="text-align: center;"> Registrando un Evento </h1>
                         <div class="col-sm-12 my-2">
@@ -273,7 +271,7 @@ header("Pragma: no-cache");
 
                         <div class="col-sm-7 my-2">
                             <div class="form-floating">
-                                <select multiple class="form-select" id="regEventGuest" name="regEventGuest">
+                                <select class="form-select" id="regEventGuest" name="regEventGuest[]" multiple="multiple" size="5" style="overflow-y: auto">
                                     @foreach ($guests as $guest)
                                         <option value="{{$guest->id}}">{{$guest->fullName}}</option>
                                     @endforeach
@@ -313,8 +311,25 @@ header("Pragma: no-cache");
 <!-- ADMIN EVENTOS -->
 <!-- ------------- -->
 <script>
-    $(function() {
-      $('.multiple-select').multipleSelect()
-    })
+    $("#regEventGuest").mousedown(function(e) {
+        selections = $(this).val();
+
+      }).click(function() {
+
+        if (selections == null) {
+          var selected = -1;
+          selections = [];
+        } else
+          var selected = selections.indexOf($.isArray($(this).val()) ? $(this).val()[$(this).val().length - 1] : $(this).val());
+
+        if (selected >= 0)
+          selections.splice(selected, 1);
+        else
+          selections.push($(this).val()[0]);
+
+        $('#regEventGuest option').each(function() {
+          $(this).prop('selected', selections.indexOf($(this).val()) >= 0);
+        });
+      });
   </script>
 @endsection
