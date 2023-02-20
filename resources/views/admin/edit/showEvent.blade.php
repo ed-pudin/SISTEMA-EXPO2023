@@ -126,8 +126,10 @@
                                             <td>
                                                 @if($eventExternal->externalPeople()->first()->genre == "female")
                                                 Femenino
-                                                @else
+                                                @elseif ($eventExternal->externalPeople()->first()->genre == "male")
                                                 Masculino
+                                                @else
+                                                No binario
                                                 @endif
                                             </td>
                                             <td>{{$eventExternal->attended}}</td>
