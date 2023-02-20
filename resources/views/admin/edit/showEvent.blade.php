@@ -98,7 +98,9 @@
                                         <tr>
                                             <td>{{$eventStudent->thisStudent()->first()->enrollment}}</td>
                                             <td>{{$eventStudent->thisStudent()->first()->getFullName()}}</td>
-                                            <td>{{$eventStudent->attended}}</td>
+                                            <td>
+                                                <input onclick="return false;" class="form-check-input" type="checkbox" id="attendance" name="attendance" @if($eventStudent->attended == 1) checked @endif>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -132,7 +134,9 @@
                                                 No binario
                                                 @endif
                                             </td>
-                                            <td>{{$eventExternal->attended}}</td>
+                                            <td>
+                                                <input onclick="return false;" class="form-check-input" type="checkbox" id="attendance" name="attendance" @if($eventExternal->attended == 1) checked @endif>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
