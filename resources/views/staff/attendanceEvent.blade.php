@@ -90,7 +90,7 @@
 
                     <form class="my-4 form-student" id="studentEventAttendance" method="post" action="{{route('staffEvento.update', [$events->id ])}}">
                         @method('put')
-                        @csrf>
+                        @csrf
                         <div class="d-md-flex justify-content-center align-items-center">
                             <div class="col-md-3 col-lg-3 col-xl-2 my-2 mx-3 mx-xl-5">
                                 <div class="form-floating">

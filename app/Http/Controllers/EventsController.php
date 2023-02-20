@@ -7,6 +7,8 @@ use App\Models\event;
 use App\Models\eventStudent;
 use App\Models\externalPeopleEvent;
 use App\Models\eventGuest;
+use App\Models\externalPeople;
+use App\Models\student;
 use Illuminate\Support\Facades\Storage;
 
 class EventsController extends Controller
@@ -104,7 +106,10 @@ class EventsController extends Controller
 
         $eventExternals = externalPeopleEvent::where('event', '=', $id)->get();
 
-        return view('admin.edit.showEvent', compact('event', 'count', 'eventStudents', 'eventExternals', 'guests'));
+        $Students = student::join('event_students', 'students.enrollment', '=', 'event_students.student')->get();
+        $Externals = externalPeople::join('external_people_events', 'external_people.id', '=', 'external_people_events.externalPeople')->get();
+
+        return view('admin.edit.showEvent', compact('event', 'count', 'eventStudents', 'eventExternals', 'guests', 'Students', 'Externals'));
     }
 
     /**
