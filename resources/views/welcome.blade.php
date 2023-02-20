@@ -222,10 +222,10 @@
                                     <i class="bi bi-arrow-left-circle" style="font-size: 2.0rem"></i>
                                 </a>
 
-                                <div class="carousel-inner p-3" style="text-align: -webkit-center;background-color:#000;">
+                                <div id="event-carousel" class="carousel-inner p-3" style="text-align: -webkit-center;background-color:#000;">
                                     @foreach ($allEvents as $event)
-                                    @if($event->typeEvent != "Master Class" and $event->typeEvent != "Conferencia")
-                                    <div class="carousel-item {{$loop->first ? 'active': ''}}" style="align-content: center">
+                                    @if($event->typeEvent != "Master Class" && $event->typeEvent != "Conferencia")
+                                    <div class="carousel-item" style="align-content: center">
                                         <img src="{{ asset('storage/eventImages/'.$event->image) }}" class="img-fluid w-100 d-block CarouselImg" style="min-height: 25.0rem; max-height:25.0rem;">
                                         <div class="d-none d-md-block" style="background: #000; padding: 10px">
                                             <h1 style="text-align: center; display: inline-block;">{{$event->eventName}}</h1>
@@ -397,6 +397,17 @@
 </html>
 
 <script>
+
+    var carouselActive = function(){
+        var carousel = $('#event-carousel > .carousel-item');
+        var firstElement = carousel.first();
+
+        firstElement.addClass('active');
+    }
+
+    var Interval = setInterval(carouselActive, 10);
+
+    setInterval(function(){clearInterval(Interval)},1000);
     
     var splide = new Splide( '.splide', {
         perPage: 1,
