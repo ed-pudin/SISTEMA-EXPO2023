@@ -68,13 +68,13 @@
                                         <th class="w-priority">Asistencia</th>
                                     </tr>
                                 </thead>
-                                
+
                                 <tbody>
                                     @foreach ($projects as $projectStudent)
                                     <tr>
                                         <td>{{$projectStudent->project()->first()->subject}}</td>
                                         <td>
-                                            {{$projectStudent->attended}}
+                                            <input onclick="return false;" class="form-check-input" type="checkbox" id="attendance" name="attendance" @if($projectStudent->attended == 1) checked @endif>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -82,7 +82,7 @@
                             </table>
                         </div>
                         @endif
-                       
+
                 </div>
             </div>
 
@@ -129,7 +129,7 @@
                                         <th class="w-priority">Asistencia</th>
                                     </tr>
                                 </thead>
-                                
+
                                 <tbody>
                                     @foreach ($projects as $projectStudent)
                                     <tr>

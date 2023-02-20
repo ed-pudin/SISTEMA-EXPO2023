@@ -121,6 +121,7 @@
                                     <select class="form-select" id="genre" name="genre">
                                         <option value="Female">Femenino</option>
                                         <option value="Male">Masculino</option>
+                                        <option value="They">No binario</option>
                                     </select>
                                     <label for="genre">Género</label>
                                 </div>

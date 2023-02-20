@@ -160,14 +160,19 @@
                         </div>
 
                         <div class="container col-12 d-md-flex mt-4">
-                            <div class="col-12 col-md-6 justify-content-center">
+                            <div class="col-12 col-md-4 justify-content-center">
                                 <h2 class="text-center" style="font-size:3em; font-weight:bold;"> @if ($femaleExternalCount <= 0) — @else{{$femaleExternalCount}}@endif </h2>
                                 <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> FEMENINO </b> </h1>
                             </div>
 
-                            <div class="col-12 col-md-6 justify-content-center">
+                            <div class="col-12 col-md-4 justify-content-center">
                                 <h2 class="text-center" style="font-size:3em; font-weight:bold;"> @if ($maleExternalCount <= 0) — @else{{$maleExternalCount}}@endif </h2>
                                 <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> MASCULINO </b> </h1>
+                            </div>
+
+                            <div class="col-12 col-md-4 justify-content-center">
+                                <h2 class="text-center" style="font-size:3em; font-weight:bold;"> @if ($theyExternalCount <= 0) — @else{{$theyExternalCount}}@endif </h2>
+                                <h1 class="text-center" style="text-shadow:unset; font-size:1.0em;"> <b> NO BINARIO </b> </h1>
                             </div>
                         </div>
                     </div>

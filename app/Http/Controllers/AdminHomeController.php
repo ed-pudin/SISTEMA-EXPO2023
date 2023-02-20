@@ -42,6 +42,11 @@ class AdminHomeController extends Controller
             $query->where('genre', '=', 'male');
         })->get()->count();
 
+        $theyExternalCount = externalPeopleEvent::with('externalPeople')
+        ->whereHas('externalPeople', function ($query) {
+            $query->where('genre', '=', 'they');
+        })->get()->count();
+
         $eventCount = event::all()->count();
 
         $companyCount = company::all()->count();
@@ -75,7 +80,7 @@ class AdminHomeController extends Controller
 
 
 
-        return view('admin.index', compact('finalCount', 'studentsCount', 'externalCount', 'femaleExternalCount', 'maleExternalCount', 'eventCount', 'companyCount', 'expositorCount', 'eventsName', 'eventsTotalCount', 'accounts'));
+        return view('admin.index', compact('finalCount', 'studentsCount', 'externalCount', 'femaleExternalCount', 'maleExternalCount', 'eventCount', 'companyCount', 'expositorCount', 'eventsName', 'eventsTotalCount', 'accounts', 'theyExternalCount'));
     }
 
     /**
