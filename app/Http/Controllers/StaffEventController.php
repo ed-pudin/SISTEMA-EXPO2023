@@ -19,7 +19,7 @@ class StaffEventController extends Controller
     public function index()
     {
         //Mostrar todos los eventos
-        $events = event::with('guest')->get();
+        $events = event::get();
 
         return view('staff.events', compact('events'));
     }
