@@ -134,9 +134,15 @@ header("Pragma: no-cache");
 
                 <div class="col-sm-7 my-2">
                     <div class="form-floating">
-                        <select class="form-select" id="editEventGuest" name="editEventGuest">
+                        <select class="form-select" id="editEventGuest" name="editEventGuest[]" multiple="multiple" size="5" style="overflow-y: auto">
                             @foreach ($guests as $guest)
-                                <option value="{{$guest->id}}" @if($event->guest()->first()->fullName == $guest->fullName) selected @endif >{{$guest->fullName}}</option>
+                                <option value="{{$guest->id}}"
+                                    @foreach ($eventGuests as $eventGuest)
+                                        @if($eventGuest->guest == $guest->id)
+                                        selected
+                                        @endif
+                                    @endforeach
+                                    >{{$guest->fullName}}</option>
                             @endforeach
                         </select>
                         <label for="editEventGuest">Invitado</label>
@@ -166,6 +172,27 @@ header("Pragma: no-cache");
 </div>
 <!-- ADMIN EVENTOS -->
 <!-- ------------- -->
+<script>
+    $("#editEventGuest").mousedown(function(e) {
+        selections = $(this).val();
 
+      }).click(function() {
+
+        if (selections == null) {
+          var selected = -1;
+          selections = [];
+        } else
+          var selected = selections.indexOf($.isArray($(this).val()) ? $(this).val()[$(this).val().length - 1] : $(this).val());
+
+        if (selected >= 0)
+          selections.splice(selected, 1);
+        else
+          selections.push($(this).val()[0]);
+
+        $('#editEventGuest option').each(function() {
+          $(this).prop('selected', selections.indexOf($(this).val()) >= 0);
+        });
+      });
+  </script>
 
 @endsection

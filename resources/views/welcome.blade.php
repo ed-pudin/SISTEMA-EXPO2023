@@ -56,7 +56,7 @@
 
     </head>
     <body>
-        
+
         <nav class="navbar navbar-expand-lg bg-dark sticky-top">
             <div class="container-fluid">
                 <div class="col-md-0 p-2 ms-lg-3">
@@ -239,7 +239,7 @@
                                     <i class="bi bi-arrow-right-circle" style="font-size: 2.0rem"></i>
                                 </a>
 
-                                
+
 
                             </div>
 
@@ -248,7 +248,6 @@
                     </div>
                 @endif
             </div>
-
             <!--
             <div class="slider4">
                 @if(count($torneos) > 0)
@@ -344,9 +343,9 @@
                         @foreach ($allEvents as $event)
                         @if($event->typeEvent == "Master Class" || $event->typeEvent == "Conferencia")
                         <li class="splide__slide">
-                            
+
                             <div class="card bg-dark" >
-                                <img width="150" height="150" src="{{asset('storage/eventImages/'.$event->image)}}" class=" p-3" alt="{{$event->eventName}} image" style="align-self: center;">
+                                <img width="250" height="250" src="{{asset('storage/eventImages/'.$event->image)}}" class=" p-3" alt="{{$event->eventName}} image" style="align-self: center;">
                                 <div class="card-body">
                                     <h5 class="card-title" style="
                                     display: inline-block;
@@ -357,10 +356,10 @@
                                 ">{{$event->eventName}}</h5>
                                 </div>
                                 <div class="card-footer text-muted text-center">
-                                    {{$event->date}} <br> Hora Inicio: {{$event->startTime}} <br> Hora final: {{$event->endTime}} 
+                                    {{$event->date}} <br> Hora Inicio: {{$event->startTime}} <br> Hora final: {{$event->endTime}}
                                 </div>
                             </div>
-                        
+
                         </li>
                         @endif
                         @endforeach
@@ -368,7 +367,7 @@
                 </div>
             </section>
 
-            <div class="empresas mt-5" style="background-color: #000">
+            <div class="empresas mt-5" style="background-color: ">
                 @if(count($companies) > 0)
                     <div class="row align-items-center p-5">
                         <h1 style="text-align: center;"> E m p r e s a s </h1>
@@ -377,13 +376,13 @@
                     <div class="row d-flex justify-content-center">
                     @foreach ($companies as $company )
                         <div class="col-md-3 col-sm-6 mt-5" style="text-align: center;">
-                            <img src="https://placehold.co/200x200?text={{$company->nameCompany}}" class="img-fluid rounded-circle shadow p-3 mb-5" alt="{{$company->nameCompany}}" height="200">
+                            <img src="https://placehold.co/200x200/000000/FFFFFF?text={{$company->nameCompany}}" class="img-fluid rounded-circle shadow p-3 mb-5" alt="{{$company->nameCompany}}" height="200">
                         </div>
                     @endforeach
                     </div>
                 @endif
             </div>
-            
+
             <div class="empresas">
                 @if(count($companies) == 0 && count($otros) == 0 && count($torneos) == 0 && count($masterClasses) == 0 && count($mesasRedondas) == 0 && count($conferencias) == 0)
                     <div class="row align-items-center p-5">
@@ -408,13 +407,13 @@
     var Interval = setInterval(carouselActive, 10);
 
     setInterval(function(){clearInterval(Interval)},1000);
-    
+
     var splide = new Splide( '.splide', {
         perPage: 1,
         focus: 'center',
         autoWidth: true,
     } );
-    
+
 
     splide.mount();
 

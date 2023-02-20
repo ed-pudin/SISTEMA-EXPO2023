@@ -129,6 +129,14 @@ class EventsController extends Controller
     {
         $event = event::find($id);
 
+        //Eliminar los invitados anteriores
+        $eventGuests = eventGuest::where('event', '=', $id)->get();
+
+        foreach($eventGuests as $eventGuest)
+        {
+            $eventGuest->delete();
+        }
+
         if($request->file('editBtnEventImg') != null) {
             //Nombre de archivo
             $fileName = time().'_'.$request->file('editBtnEventImg')->getClientOriginalName();
@@ -151,7 +159,17 @@ class EventsController extends Controller
         $event->image = $fileName;
 
         if($event->save()) {
-            session()->flash("update","Edición en evento exitosa");
+              //Guardar invitado evento
+              foreach($request->editEventGuest as $requestEvents){
+                $eventGuest = new eventGuest();
+                $eventGuest->guest = $requestEvents;
+                $eventGuest->event = $event->id;
+
+                if($eventGuest->save())
+                    session()->flash("update","Edición en evento exitosa");
+                else
+                    session()->flash("update","Hubo un error, intente de nuevo");
+            }
         }else{
             session()->flash("update","Hubo un error, intente de nuevo");
         }
@@ -192,9 +210,9 @@ class EventsController extends Controller
 
     public function editarEvento($eventToEdit) {
         $guests = \App\Models\guest::all();
-        $event = event::with('guest')->find($eventToEdit);
-
-        return view('admin.edit.event', compact('event', 'guests'));
+        $event = event::find($eventToEdit);
+        $eventGuests = eventGuest::where('event', '=', $eventToEdit)->get();
+        return view('admin.edit.event', compact('event', 'guests', 'eventGuests'));
     }
 
 }
