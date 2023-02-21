@@ -77,12 +77,6 @@
                         </div>
 
                     </div>
-                    
-                    <div class="row mt-3">
-                        <div class="col-10 mx-auto" style="text-align-last: end">
-                            <button onclick="Export()" class="btn btn-secondary mx-auto">Exportar EXCEL</button>
-                        </div>
-                    </div>
 
                     <hr class="colorfull col-11 mx-auto">
 
@@ -158,33 +152,8 @@
     </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script>
 
 
-<script>
-    function Export()
-    {
-        var filename='Asistencia Evento {{$event->eventName}}.xlsx';
-
-        var dataStudents = {!! json_encode($Students) !!};
-        var dataExternals = {!! json_encode($Externals) !!};
-
-        /*dataStudents.forEach(element => {
-            element.splice(2, element.length);
-        }); 
-
-        dataExternals.forEach(element => {
-            element.splice(2, element.length);
-        }); */
-
-        var ws = XLSX.utils.json_to_sheet(dataStudents);
-        var wb = XLSX.utils.book_new();
-        var ws_2 = XLSX.utils.json_to_sheet(dataExternals);
-        XLSX.utils.book_append_sheet(wb, ws, "Estudiantes");
-        XLSX.utils.book_append_sheet(wb, ws_2, "Externos");
-        XLSX.writeFile(wb,filename);
-    }
-
-</script>
 
 @endsection
