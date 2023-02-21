@@ -20,12 +20,20 @@ class EventsController extends Controller
      */
     public function index()
     {
+        $Students = student::join('event_students', 'students.enrollment', '=', 'event_students.student')
+                            ->join('events', 'event_students.event', '=', 'events.id')
+                            ->get(['students.enrollment','students.fullName', 'events.eventName', 'event_students.attended']);
+
+        $Externals = externalPeople::join('external_people_events', 'external_people.id', '=', 'external_people_events.externalPeople')
+                                    ->join('events', 'external_people_events.event', '=', 'events.id')
+                                    ->get(['external_people.fullName', 'external_people.genre', 'events.eventName', 'external_people_events.attended']);
+
         //Regresar los invitados
         $guests = \App\Models\guest::all();
         //Vista de eventos
         $events = event::get();
 
-        return view('admin.events', compact('guests', 'events'));
+        return view('admin.events', compact('guests', 'events', 'Students', 'Externals'));
     }
 
     /**
@@ -106,10 +114,8 @@ class EventsController extends Controller
 
         $eventExternals = externalPeopleEvent::where('event', '=', $id)->get();
 
-        $Students = student::join('event_students', 'students.enrollment', '=', 'event_students.student')->get();
-        $Externals = externalPeople::join('external_people_events', 'external_people.id', '=', 'external_people_events.externalPeople')->get();
 
-        return view('admin.edit.showEvent', compact('event', 'count', 'eventStudents', 'eventExternals', 'guests', 'Students', 'Externals'));
+        return view('admin.edit.showEvent', compact('event', 'count', 'eventStudents', 'eventExternals', 'guests'));
     }
 
     /**
