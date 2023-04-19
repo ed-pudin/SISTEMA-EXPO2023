@@ -86,7 +86,7 @@ header("Pragma: no-cache");
                 <div class="col-sm-12 my-2">
                     <div>
                         <div class="mb-4 d-flex justify-content-center">
-                            <img src="{{ asset('storage/eventImages/'.$event->image) }}" width="300" height="200" onclick="document.getElementById('editBtnEventImg').click();" name="editEventImg" id="editEventImg" src="https://placehold.co/300x200?text=Imagen+del+evento" alt="example placeholder"/>
+                            <img src="{{ asset('storage/eventImages/'.$event->image) }}" width="300" height="200" onclick="document.getElementById('editBtnEventImg').click();" name="editEventImg" id="editEventImg" src="https://placehold.co/300x200?text=Imagen+del+evento" alt="example placeholder" style="object-fit: contain"/>
                         </div>
                         <div class="d-flex justify-content-center">
                             <div class="btn btn-primary btn-rounded" onclick="document.getElementById('editBtnEventImg').click();">

@@ -212,7 +212,7 @@
             -->
             <div class="slider3 pb-5">
                 @if(count($allEvents) > 0)
-                    <div class="row align-items-center" style="background-color:#000; ">
+                    <div class="row align-items-center" style="">
                         <h1 style="text-align: center"> Disfruta nuestros eventos</h1>
 
                         <div class="col-sm-10 col-12 mx-auto my-3" style="text-align: center;">
@@ -222,12 +222,12 @@
                                     <i class="bi bi-arrow-left-circle" style="font-size: 2.0rem"></i>
                                 </a>
 
-                                <div id="event-carousel" class="carousel-inner p-3" style="text-align: -webkit-center;background-color:#000;">
+                                <div id="event-carousel" class="carousel-inner p-3" style="text-align: -webkit-center;">
                                     @foreach ($allEvents as $event)
                                     @if($event->typeEvent != "Master Class" && $event->typeEvent != "Conferencia")
                                     <div class="carousel-item" style="align-content: center">
-                                        <img src="{{ asset('storage/eventImages/'.$event->image) }}" class="img-fluid w-100 d-block CarouselImg" style="min-height: 25.0rem; max-height:25.0rem;">
-                                        <div class="d-none d-md-block" style="background: #000; padding: 10px">
+                                        <img src="{{ asset('storage/eventImages/'.$event->image) }}" class="img-fluid w-100 d-block CarouselImg" style="min-height: 25.0rem; max-height:25.0rem;object-fit: contain;">
+                                        <div class="d-none d-md-block" style=" padding: 10px">
                                             <h1 style="text-align: center; display: inline-block;">{{$event->eventName}}</h1>
                                         </div>
                                     </div>
