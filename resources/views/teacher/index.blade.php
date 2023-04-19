@@ -1,7 +1,6 @@
 @extends('teacher.struct')
 
 @section('Content')
-
     @if(session()->has('status'))
 
     <script type="text/javascript">
@@ -51,10 +50,8 @@
             <div class="d-flex justify-content-center flex-wrap">
                 <div class="col-12 col-md-3 col-lg-2 col-xl-1 m-2">
                     <div class="form-floating">
-                        <select class="form-select" id="semesterCmb" onchange=updateInput()>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        <select class="form-select" id="semesterCmb" onchange=updateInputSemesterCmb()>
+
                         </select>
                         <label for="semesterCmb">Semestre</label>
                     </div>
@@ -62,10 +59,8 @@
 
                 <div class="col-12 col-md-6 col-lg-4 col-xl-3 m-2">
                     <div class="form-floating">
-                        <select class="form-select" id="UACmb" onchange=updateInput()>
-                            <option value="1">Programacion web capa intermedia</option>
-                            <option value="2">Realidad Virtual</option>
-                            <option value="3">Optimizacion de videojuegos</option>
+                        <select class="form-select" id="UACmb">
+
                         </select>
                         <label for="UACmb">Materia</label>
                     </div>
@@ -84,8 +79,8 @@
                 @csrf
                     <!--HIDDEN INPUTS-->
 
-                    <input type="text" value="1" name="semester" id="semester" hidden>
-                    <input type="text" value="Programacion web capa intermedia" name="UA" id="UA" hidden>
+                    <input type="text" name="semester" id="semester" hidden>
+                    <input type="text" name="UA" id="UA" hidden>
                     <input type="text" id="inputCount" name="inputCount" value=1 hidden>
 
                     <div class="d-flex justify-content-center flex-wrap">
@@ -166,10 +161,68 @@
         </div>
     </div>
 </div>
+    <script type="text/javascript">
+
+        function updateInputSemesterCmb(){
+
+            var select = document.getElementById("UACmb");
+
+            //Eliminar opciones
+            document.getElementById("UACmb").innerHTML = "";
+
+            var optionSelected = document.getElementById("semesterCmb").value;
+
+            for(var subject in semestersSubjects[optionSelected]){
+                // Crear una nueva opción
+                var opcion = document.createElement("option");
+
+                opcion.value = semestersSubjects[optionSelected][subject];
+                opcion.text = semestersSubjects[optionSelected][subject];
+
+                // Agregar la opción al select
+                select.add(opcion);
+
+            }
+
+             //Se updatea el valor en los hidden inputs
+             document.getElementById("semester").value = document.getElementById("semesterCmb").value;
+             document.getElementById("UA").value = document.getElementById("UACmb").value;
+
+        }
+
+        var semestersSubjects =
+        {
+        '2': ['Programación básica','Matemáticas para videojuegos I', 'Tecnologías multimedia', 'Dibujo de la anatomía humana'],
+        '3': ['Programación avanzada', 'Matemáticas para videojuegos II', 'Producción multimedia', 'Modelado arquitectónico'],
+        '4': ['Modelado orgánico', 'Lenguaje ensamblador'],
+        '5': ['Gráficas computacionales I', 'Fotografía digital', 'Cinematografía', 'Animación básica', 'Preproducción de vídeo', 'Preproducción 2D', 'Administración de alto volumen de datos'],
+        '6': ['Programación web I', 'Gráficas computacionales II', 'Escenarios de videojuegos', 'Modelado en alto poligonaje', 'Interface y experiencia de usuario en web', 'Ilustración digital', 'Efectos Visuales I'],
+        '7': ['Programación web de capa intermedia', 'Programación orientada a internet', '	Optimización de videojuegos', 'Gráficas computacionales en web', 'Base de datos multimedia', 'Actuación y dirección para animación', 'Animación tradicional de humanos y de animales', 'Efectos visuales II', '	Programación de sistemas móviles'],
+        '8': ['Diseño de videojuegos en línea', 'Programación web II', 'Realidad Virtual', 'Animación tradicional de escenarios', 'Esqueletos de personajes', 'Iluminación y audio'],
+        '9': ['Postproducción']
+        }
+
+        var select = document.getElementById("semesterCmb");
+
+        for (var valor in semestersSubjects) {
+            // Crear una nueva opción
+            var opcion = document.createElement("option");
+
+            // Asignar el valor y el texto de la opción
+            opcion.value = valor;
+            opcion.text = valor;
+
+            // Agregar la opción al select
+            select.add(opcion);
+        }
+
+        updateInputSemesterCmb();
+    </script>
 
     <script>
         function cambiaMayuscula (){
             $("#name0").val($("#name0").val().toUpperCase());
         }
+
     </script>
 @endsection

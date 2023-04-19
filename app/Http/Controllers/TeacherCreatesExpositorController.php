@@ -40,6 +40,7 @@ class TeacherCreatesExpositorController extends Controller
      */
     public function store(Request $request)
     {
+
         $numStudents = $request->inputCount;
         $semester = $request->semester;
         $ua = $request->UA;

@@ -81,14 +81,10 @@ function setDynamicInputs(){
                     '<input required onchange="checkNum(this)" type="number" min=1000000 max=9999999 class="form-control" name="enrollment'+count+'" id="enrollment'+count+'" placeholder="Matricula" value="" required>' +
                     '<label for="enrollment'+count+'">Matricula</label>' +
                 '</div>' +
-                '<div class="form-check mt-2">' +
-                    '<input class="form-check-input" type="checkbox" name="attendance'+count+'" id="attendance'+count+'" >' +
-                    '<label class="form-check-label text-light" for="attendance'+count+'">Comprobar</label>'+
-                '</div>'+
             '</div>'+
             '<div class="col-12 col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">' +
                 '<div class="form-floating">'+
-                    '<input type="text" class="form-control" name="name'+count+'" id="name'+count+'" readonly placeholder="Nombre completo" value="'+generateName()+'">'+
+                    '<input required type="text" class="form-control" name="name'+count+'" id="name'+count+'"placeholder="Nombre completo" onkeyup="this.value = this.value.toUpperCase()">'+
                     '<label for="name'+count+'">Nombre completo</label>'+
                 '</div>'+
             '</div>'+
