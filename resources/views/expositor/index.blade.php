@@ -110,14 +110,14 @@
                             padding: 5px;">
                         </div>
 
-                      <div class="container text-center mt-5" hidden>
+                      <div class="container text-center mt-5">
                         <a href="https://example.com">Networking</a>
                     </div>
 
                     @if(count($projects) > 0)
                         <div class="col-12 d-md-flex justify-content-center align-items-center mt-5" style="">
                             <hr class="colorfull col-md-11">
-                            <h2 class="text-center"> Exposiciones del Alumno </h2>
+                            <h2 class="text-center"> Exposiciones del Alumno aaaa</h2>
 
                         </div>
                         <div class="table-responsive my-3 col-11 m-auto">
@@ -141,6 +141,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
                         </div>
                     @endif
 

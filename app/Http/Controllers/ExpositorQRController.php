@@ -18,13 +18,22 @@ class ExpositorQRController extends Controller
     public function index()
     {
         //Mostrar codigo QR - EXPOSITOR
+        $attendedAllProjects = 1;
 
         $user = User::where('id', session()->get('id'))->first();
         $student = student::where('enrollment', '=', $user->key)->first();
 
         $projects = projectStudent::where('student', '=', $student->enrollment)->get();
 
-        return view('expositor.index', compact('student', 'projects'));
+        foreach($projects as $projectStudent){
+            if($projectStudent->attended != 1)
+            {
+                $attendedAllProjects = 2;
+
+            }
+        }
+
+        return view('expositor.index', compact('student', 'projects', 'attendedAllProjects'));
     }
 
     /**

@@ -48,6 +48,11 @@
         @endif
 
     </script>
+    @php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    @endphp
 @endif
 
 <div class="col-sm p-3 test">
@@ -101,7 +106,7 @@
 
                             <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="fullNameStudentEvent" name="fullNameStudentEvent" placeholder="Nombre completo" required>
+                                    <input type="text" class="form-control" id="fullNameStudentEvent" name="fullNameStudentEvent" placeholder="Nombre completo" onkeyup="this.value = this.value.toUpperCase()" required>
                                     <label for="fullNameStudentEvent">Nombre completo</label>
                                 </div>
                             </div>
@@ -129,7 +134,7 @@
 
                             <div class="col-md-7 col-lg-6 col-xl-4 my-2 mx-3 mx-xl-5">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" name="regEventExternal" id="regEventExternal" placeholder="Nombre completo" required>
+                                    <input type="text" class="form-control" name="regEventExternal" id="regEventExternal"  onkeyup="this.value = this.value.toUpperCase()" placeholder="Nombre completo" required>
                                     <label for="regEventExternal">Nombre completo</label>
                                 </div>
                             </div>
