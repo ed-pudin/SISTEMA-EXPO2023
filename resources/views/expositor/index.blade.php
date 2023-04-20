@@ -39,9 +39,15 @@
 
                         </div>
 
-                        <div class="container text-center mt-5" hidden>
-                            <a href="https://example.com">Networking</a>
-                        </div>
+                        @if($attendedAllProjects == true)
+                            <div class="container text-center mt-3">
+                                <a href="https://example.com">Registrarse al Networking</a>
+                                <p> Al registrarse usted oficialmente acepta que su información personal será de visualización pública.
+                                    <i class="bi bi-exclamation-triangle-fill" style="color: orange"></i>
+                                </p>
+                            </div>
+                        @endif
+
 
                         <div class="row d-md-flex justify-content-center align-items-center" style="margin-top:10px">
                         <div class="col-1 d-md-flex justify-content-center align-items-center" style="margin-top:1px">
@@ -110,14 +116,30 @@
                             padding: 5px;">
                         </div>
 
-                      <div class="container text-center mt-5">
-                        <a href="https://example.com">Networking</a>
+                        @if ($attendedAllProjects == true)
+                            <div class="container text-center mt-3">
+                                <a href="https://example.com">Registrarse al Networking</a>
+                                <p> Al registrarse usted oficialmente acepta que su información personal será de visualización pública.
+                                    <i class="bi bi-exclamation-triangle-fill" style="color: orange"></i>
+                                </p>
+                            </div>
+                        @endif
+
+                    <div class="row d-md-flex justify-content-center align-items-center" style="margin-top:10px">
+                    <div class="col-1 d-md-flex justify-content-center align-items-center" style="margin-top:1px">
+                        <button type="button" class="btn btn-primary" onClick="window.location.reload();">
+                        <svg width="20" height="20" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                        </svg>
+                        </button>
+                    </div>
                     </div>
 
                     @if(count($projects) > 0)
                         <div class="col-12 d-md-flex justify-content-center align-items-center mt-5" style="">
                             <hr class="colorfull col-md-11">
-                            <h2 class="text-center"> Exposiciones del Alumno aaaa</h2>
+                            <h2 class="text-center"> Exposiciones del Alumno</h2>
 
                         </div>
                         <div class="table-responsive my-3 col-11 m-auto">
@@ -135,7 +157,7 @@
                                     <tr>
                                         <td>{{$projectStudent->project()->first()->subject}}</td>
                                         <td>
-                                            {{$projectStudent->attended}}
+                                            <input onclick="return false;" class="form-check-input" type="checkbox" id="attendance" name="attendance" @if($projectStudent->attended == 1) checked @endif>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -147,7 +169,7 @@
 
                 </div>
 
-        </div>
+            </div>
     </div>
 </div>
 
