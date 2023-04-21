@@ -209,6 +209,16 @@ class EventsController extends Controller
             //Checar relacion entre guest y events
             session()->flash("delete","El evento ya esta siendo asistido y no se puede eliminar");
         }else{
+            // si es un evento sin asistencias
+            // y hay un invitado, se borra la relacion del
+            // invitado con el evento para evitar problemas
+            $eventGuests = eventGuest::where('event', '=', $id)->get();
+
+            foreach($eventGuests as $eventguest)
+            {
+                $eventguest->delete();
+            }
+
             if($event->delete()){
                 session()->flash("delete","Se ha eliminado correctamente $event->eventName");
             }else{

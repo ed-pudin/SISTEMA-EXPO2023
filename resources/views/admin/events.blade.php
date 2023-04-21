@@ -344,6 +344,7 @@ header("Pragma: no-cache");
 
       function Export()
         {
+            @if(count($events) > 0)
             var filename='Asistencia Evento {{$event->eventName}}.xlsx';
 
             var dataStudents = {!! json_encode($Students) !!};
@@ -363,6 +364,7 @@ header("Pragma: no-cache");
             XLSX.utils.book_append_sheet(wb, ws, "Estudiantes");
             XLSX.utils.book_append_sheet(wb, ws_2, "Externos");
             XLSX.writeFile(wb,filename);
+            @endif
         }
 
   </script>
