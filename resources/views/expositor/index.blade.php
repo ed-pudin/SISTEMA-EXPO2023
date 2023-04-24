@@ -3,6 +3,92 @@
 @section('Content')
 <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
+@if(session()->has('status'))
+
+    <script type="text/javascript">
+        @if(session()->get('status') == "Alumno registrado")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor:'#0de4fe',
+                title: `{{ session()->get('status') }}`,
+                html: `Correo: {{ session()->get('correo') }} <br><br>
+                Contraseña: {{session()->get('contraseña')}}`,
+                showConfirmButton: false,
+                timer: 2500
+            })
+
+        });
+        @endif
+
+        @if(session()->get('status') == "Expo añadida al alumno")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor:'#0de4fe',
+                title: `{{ session()->get('status') }}`,
+                html: `Correo: {{ session()->get('correo') }} <br><br>
+                Contraseña: {{session()->get('contraseña')}}`,
+                showConfirmButton: false,
+                timer: 2500
+            })
+
+        });
+        @endif
+
+        @if(session()->get('status') == "Alumno previamente registrado")
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'info',
+                iconColor:'#0de4fe',
+                title: `{{ session()->get('status') }}`,
+                html: `Correo: {{ session()->get('correo') }} <br><br>
+                Contraseña: {{session()->get('contraseña')}}`,
+                showConfirmButton: false,
+                timer: 2500
+            })
+
+        });
+        @endif
+
+        @if(session()->has('msg'))
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'red',
+                title: `{{ session()->get('status') }}`,
+                html: `{{ session()->get('msg') }}`,
+                showConfirmButton: false,
+                timer: 2500
+            })
+
+        });
+        @else
+        document.addEventListener("DOMContentLoaded", function(){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                iconColor:'red',
+                title: `{{ session()->get('status') }}`,
+                showConfirmButton: false,
+                timer: 2500
+            })
+
+        });
+        @endif
+
+    </script>
+    @php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    @endphp
+@endif
+
 
 <div class="col-sm p-3 min-vh-80">
     <div class="container-fluid" style="height:80vh">
@@ -41,7 +127,7 @@
 
                         @if($attendedAllProjects == true)
                             <div class="container text-center mt-3">
-                                <a href="https://example.com">Registrarse al Networking</a>
+                                <a href="{{route('RegistroNetworking')}}">Registrarse al Networking</a>
                                 <p> Al registrarse usted oficialmente acepta que su información personal será de visualización pública.
                                     <i class="bi bi-exclamation-triangle-fill" style="color: orange"></i>
                                 </p>
@@ -118,7 +204,7 @@
 
                         @if ($attendedAllProjects == true)
                             <div class="container text-center mt-3">
-                                <a href="https://example.com">Registrarse al Networking</a>
+                                <a href="{{route('RegistroNetworking')}}">Registrarse al Networking</a>
                                 <p> Al registrarse usted oficialmente acepta que su información personal será de visualización pública.
                                     <i class="bi bi-exclamation-triangle-fill" style="color: orange"></i>
                                 </p>

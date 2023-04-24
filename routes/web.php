@@ -158,11 +158,13 @@ Route::group(['middleware' => 'isTeacherOrAdmin'], function () {
 
 Route::group(['middleware' => 'isExpositor'], function () {
 
-    //Acceso solo expositores y admin
+    //Acceso solo expositores
     Route::resource('expositorQR', ExpositorQRController::class, [
         'index' => 'expositorQR.index'
     ]);
 
+
+    Route::get('/RegistroNetworking', [ExpositorQRController::class, 'apiStoreNetworking'])->name('RegistroNetworking');
 });
 
 
